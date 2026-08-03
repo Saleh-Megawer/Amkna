@@ -2,16 +2,19 @@
 namespace App\Http\Controllers\Dashboard\Property;
 
 use App\Enums\Property\PropertyAvailabilityStatus;
+use App\Helpers\File;
 use App\Helpers\FileUploader;
 use App\Helpers\Response;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Property\StorePropertyRequest;
 use App\Http\Requests\Property\UpdatePropertyRequest;
 use App\Models\Property\Property;
+use App\Models\Property\PropertyAttachment;
 use App\Traits\Property\FindsPropertyByUuid;
 use App\Traits\Property\HandlesPropertyData;
 use App\Traits\Property\HasPropertyTabs;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Str;
 
 class PropertyController extends Controller
@@ -180,7 +183,7 @@ class PropertyController extends Controller
 
         // Normalize searchable fields
         $baseData['title_normalized_ar']       = normalizeArabic($data['ar']['title']);
-      //  $baseData['title_normalized_en']       = Str::lower($data['en']['title']);
+      //      $baseData['title_normalized_en']       = Str::lower($data['en']['title']);
         $baseData['description_normalized_ar'] = normalizeArabic($data['ar']['description']);
        // $baseData['description_normalized_en'] = Str::lower($data['en']['description']);
 
@@ -251,6 +254,55 @@ class PropertyController extends Controller
                 'status'  => false,
                 'message' => 'Upload failed',
             ], 500);
+        }
+    }
+
+    /**
+     * Delete a property and its related data.
+     */
+    public function destroy(Request $request)
+    {
+        $property = Property::find($request->id);
+
+        if (! $property) {
+            return Response::error('لا يمكن تنفيذ هذا الإجراء، فهذه البيانات غير متوفرة في النظام', ['style' => 'toastr']);
+        }
+
+        // Rental contracts have a RESTRICT foreign key - block deletion to protect financial data.
+        if ($property->rentalContracts()->exists()) {
+            return Response::error('لا يمكن حذف هذا العقار لوجود عقود إيجار مرتبطة به', ['style' => 'toastr']);
+        }
+
+        try {
+            return DB::transaction(function () use ($property) {
+                // Pivot tables use RESTRICT foreign keys - detach first.
+                $property->features()->detach();
+                $property->amenities()->detach();
+                $property->deals()->detach();
+
+                // Delete media files (main image + attachments + unit images).
+                if ($property->main_image) {
+                    File::delete(Property::PATH, $property->main_image);
+                }
+
+                foreach ($property->attachments as $attachment) {
+                    File::delete(PropertyAttachment::PATH, $attachment->attachment_name);
+                }
+
+                foreach ($property->units as $unit) {
+                    if ($unit->image) {
+                        File::delete('properties/units', $unit->image);
+                    }
+                }
+
+                // Translations, attachments, units and deal pivots cascade on delete;
+                // interests.property_id nulls out automatically.
+                $property->delete();
+
+                return Response::success('تم حذف العقار بنجاح', ['style' => 'toastr']);
+            });
+        } catch (\Throwable $e) {
+            return Response::error('تعذر حذف العقار، يرجى المحاولة مرة أخرى', ['style' => 'toastr']);
         }
     }
 }
