@@ -1,5 +1,10 @@
 @if ($options['show'])
 
+    @php
+        $supportUrl   = whatsappContactUrl('أريد التواصل مع الدعم الفني');
+        $advertiseUrl = whatsappContactUrl('أرغب في الإعلان عن عقار');
+    @endphp
+
     <header class="main-header fixed-top">
         <div class="{{ $options['full_width'] == false ? 'container-fluid' : 'px-3' }} ">
             <nav class="navbar navbar-expand-lg main-navbar px-0">
@@ -87,7 +92,7 @@
 
                     <!-- Account -->
                     <li class="nav-item tip" title="دعم العملاء">
-                        <a class="nav-link d-flex flex-column align-items-center" href="{{ appUrl('login') }}">
+                        <a class="nav-link d-flex flex-column align-items-center" href="{{ $supportUrl ?: appUrl('login') }}" target="_blank">
                             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
                                 fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
                                 stroke-linejoin="round"
@@ -102,10 +107,10 @@
                             {{-- <span class="nav-label">{{ __('navbar.account') }}</span> --}}
                         </a>
                     </li>
-                   
+
 
                     <li class="nav-item mr-2 tip d-block d-lg-none " title="أعلن عن عقارك">
-                        <a class="nav-link d-flex flex-column align-items-center" href="{{ appUrl('login') }}">
+                        <a class="nav-link d-flex flex-column align-items-center" href="{{ $advertiseUrl ?: appUrl('login') }}" target="_blank">
                             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
                                 fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
                                 stroke-linejoin="round" class="icon icon-tabler icons-tabler-outline icon-tabler-plus">
@@ -117,7 +122,7 @@
                     </li>
 
                     <li class="nav-item btn-advertise-your-property d-none d-lg-block">
-                        <a class="nav-link d-flex align-items-center" href="{{ appUrl('login') }}">
+                        <a class="nav-link d-flex align-items-center" href="{{ $advertiseUrl ?: appUrl('login') }}" target="_blank">
                             <span class="nav-label">أعلن عن عقارك</span>
                         </a>
                     </li>
@@ -315,10 +320,11 @@
 
                             </div><!--  -->
 
-                            <div class="col-12">
+                            <div class="col-12 d-none">
                                 <x-form-group :properties="[
                                     'input' => [
                                         'name' => 'marketing_license',
+                                        'value' => 'لا يوجد',
                                         'options' => ['required'],
                                     ],
                                     'label' => [

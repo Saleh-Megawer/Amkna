@@ -1,5 +1,5 @@
-@section('title', __('main.property.properties'))
-@section('description', 'search')
+@section('title', $seo->pageTitle)
+@section('description', $seo->metaDescription)
 @section('image', metaImage('meta-home.webp'))
 @section('image-type', 'webp')
 @extends('main.layouts.master')
@@ -59,10 +59,10 @@
 
                 <!-- Top bar -->
                 <div class="results-header d-flex justify-content-between align-items-center mb-2">
-                    <h4 class="m-0 text-black">
-                        {{ __('main.filters.properties_found_label') }}
+                    <h1 class="h4 m-0 text-black">
+                        {{ $seo->heading }}
                         <span id="resultsCount">{{ $properties->total() }}</span>
-                    </h4>
+                    </h1>
                     {{-- <h4 class="m-0 text-black">Properties <span class=" font-15 text-secondary">( Found 32 )</span></h4> --}}
 
                     <div class="actions d-flex flex-wrap">

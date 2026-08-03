@@ -122,7 +122,7 @@
                                     <a href="{{ route('main.properties.index', ['neighborhood_id' => $neighborhood->id]) }}"
                                         class="city-card d-block position-relative overflow-hidden">
 
-                                        <img src="{{ $neighborhood->image != '' ? largeAsset('neighborhoods/' . $neighborhood->image) : asset('assets/images/default/default-banner-home.png') }}"
+                                        <img src="{{ $neighborhood->image != '' ? smallAsset('neighborhoods/' . $neighborhood->image) : asset('assets/images/default/default-banner-home.png') }}"
                                             class="img-fluid w-100 h-100 city-card__image" alt="{{ $neighborhood->name }}">
 
                                         <div class="city-card__overlay d-flex align-items-center justify-content-between">

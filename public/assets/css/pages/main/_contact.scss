@@ -7,7 +7,7 @@ $shadow-hover: 0 6px 20px rgba(208, 169, 104, 0.25);
 $transition-base: all 0.3s ease;
 
 // Gradients
-$primary-gradient: linear-gradient(135deg, var(--accent-1) 0%, #212121 100%);
+$primary-gradient: linear-gradient(135deg, var(--accent) 0%, #212121 100%);
 $accent-gradient: linear-gradient(135deg, var(--accent) 0%, #b8935a 100%);
 $green-gradient: linear-gradient(135deg, #25d366 0%, #128c7e 100%);
 
@@ -59,7 +59,7 @@ $green-gradient: linear-gradient(135deg, #25d366 0%, #128c7e 100%);
 // Section Badge
 .section-badge {
     background: var(--accent-soft);
-    color: var(--accent);
+    color: #ffffff;
     padding: 8px 20px;
     border-radius: 25px;
     font-size: 14px;

@@ -11,6 +11,7 @@ use App\Models\Dashboard\Source;
 use App\Models\Interest;
 use App\Models\Neighborhood;
 use App\Models\Property\Property;
+use App\Services\PropertyListingSeo\PropertyListingTitleBuilder;
 use Illuminate\Http\Request;
 use Illuminate\Validation\Rule;
 
@@ -39,11 +40,13 @@ class PropertyController extends Controller
         ];
     }
 
-    public function index(Request $request)
+    public function index(Request $request, PropertyListingTitleBuilder $titleBuilder)
     {
         $filterRanges   = PropertyFilterController::getFilterRanges();
         $propertyTypes  = PropertyFilterController::getPropertyTypes();
         $filterSections = PropertyFilterController::getFilterSections();
+
+        $seo = $titleBuilder->forRequest($request)->build();
 
         // ✅ Get location name for display
         $locationName = null;
@@ -97,6 +100,7 @@ class PropertyController extends Controller
             'filterRanges'  => $filterRanges,
             'filters'       => $filters,
             'sort'          => $sort,
+            'seo'           => $seo,
             'navbarOptions' => ['hide_search' => true, 'full_width' => true],
             'footerOptions' => ['hide' => true],
         ]);

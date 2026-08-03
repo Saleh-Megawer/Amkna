@@ -3,7 +3,7 @@
 @section('css')
     <style>
         .list-group-item.active {
-            color: #000000;
+            color: #ffffff;
             background-color: var(--second-color);
             border-color: var(--second-color);
         }

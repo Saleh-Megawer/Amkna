@@ -144,3 +144,31 @@ if (!function_exists('mainViewSocialMedia')) {
         ];
     }
 }
+
+if (! function_exists('contactPhone')) {
+    function contactPhone(): ?string
+    {
+        $first = trim(explode('|', (string) setting('contact.phone'))[0] ?? '');
+
+        return $first === '' ? null : $first;
+    }
+}
+
+if (! function_exists('whatsappContactUrl')) {
+    function whatsappContactUrl(?string $text = null): ?string
+    {
+        $phone = contactPhone();
+
+        if ($phone === null) {
+            return null;
+        }
+
+        $url = 'https://api.whatsapp.com/send/?phone=' . $phone;
+
+        if ($text !== null && $text !== '') {
+            $url .= '&text=' . urlencode($text);
+        }
+
+        return $url;
+    }
+}
