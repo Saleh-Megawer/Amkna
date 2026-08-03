@@ -30,7 +30,7 @@ class PropertyFilterController extends Controller
         $sort = $request->get('sort', 'latest');
 
         $query = Property::with(['city', 'neighborhood', 'type'])
-            ->where('approval_status', 'approved')
+          //  ->where('approval_status', 'approved')
             ->where('is_archived', false)
             ->filter($filters);
 

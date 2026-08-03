@@ -63,8 +63,9 @@ class PropertyController extends Controller
 
         // ✅ استخدم الـ method المشتركة
         $query      = PropertyFilterController::buildPropertyQuery($request);
-        $properties = $query->paginate(20);
+        $properties = $query->get();
 
+        dd($properties);
         $sort = $request->get('sort', 'latest');
 
         $filters = $request->only([
