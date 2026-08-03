@@ -1,0 +1,228 @@
+<div class="property-filters-wrapper">
+
+
+    {{-- Location --}}
+    <div class="filter-group">
+        <div class="form-group">
+            <label class="label-search-filter">
+                <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="#000000" viewBox="0 0 256 256">
+                    <path
+                        d="M200,224H150.54A266.56,266.56,0,0,0,174,200.25c27.45-31.57,42-64.85,42-96.25a88,88,0,0,0-176,0c0,31.4,14.51,64.68,42,96.25A266.56,266.56,0,0,0,105.46,224H56a8,8,0,0,0,0,16H200a8,8,0,0,0,0-16ZM56,104a72,72,0,0,1,144,0c0,57.23-55.47,105-72,118C111.47,209,56,161.23,56,104Zm112,0a40,40,0,1,0-40,40A40,40,0,0,0,168,104Zm-64,0a24,24,0,1,1,24,24A24,24,0,0,1,104,104Z">
+                    </path>
+                </svg>
+                {{ __('main.filters.location') }}
+            </label>
+
+            <input type="search" class="form-control location-search-input"
+                placeholder="{{ __('main.filters.location_placeholder') }}"
+                data-search-url="{{ route('main.properties.filters.locations') }}"
+                value="{{ $filters['locationName'] ?? '' }}" autocomplete="off">
+
+            <input type="hidden" class="selected-city-id" name="city_id" value="{{ $filters['city_id'] ?? '' }}">
+            <input type="hidden" class="selected-neighborhood-id" name="neighborhood_id"
+                value="{{ $filters['neighborhood_id'] ?? '' }}">
+            <input type="hidden" class="selected-location-type" value="">
+        </div>
+    </div>
+    <hr>
+
+    {{-- Property Type --}}
+    <div class="filter-group">
+        <label class="label-search-filter">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"
+                class="icon icon-tabler icons-tabler-outline icon-tabler-building-community">
+                <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                <path d="M8 9l5 5v7h-5v-4m0 4h-5v-7l5 -5m1 1v-6a1 1 0 0 1 1 -1h10a1 1 0 0 1 1 1v17h-8" />
+                <path d="M13 7l0 .01" />
+                <path d="M17 7l0 .01" />
+                <path d="M17 11l0 .01" />
+                <path d="M17 15l0 .01" />
+            </svg>
+            {{ __('main.filters.property_type') }}
+        </label>
+
+        <div class="property-types d-flex flex-wrap">
+            <button type="button"
+                class="select-property-type {{ empty($filters['property_type_id']) ? 'active' : '' }}" data-type-id="">
+                {{ __('main.filters.all') }}
+            </button>
+            @foreach ($propertyTypes as $type)
+                <button type="button"
+                    class="select-property-type {{ ($filters['property_type_id'] ?? '') == $type->id ? 'active' : '' }}"
+                    data-type-id="{{ $type->id }}">
+                    {{ $type->name }}
+                </button>
+            @endforeach
+        </div>
+
+        <input type="hidden" class="selected-property-type-id" value="{{ $filters['property_type_id'] ?? '' }}">
+    </div>
+    <hr>
+
+    {{-- Purpose (Sale/Rent) --}}
+    <div class="filter-group mt-4">
+
+        <label class="label-search-filter">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"
+                class="icon icon-tabler icons-tabler-outline icon-tabler-key">
+                <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                <path
+                    d="M16.555 3.843l3.602 3.602a2.877 2.877 0 0 1 0 4.069l-2.643 2.643a2.877 2.877 0 0 1 -4.069 0l-.301 -.301l-6.558 6.558a2 2 0 0 1 -1.239 .578l-.175 .008h-1.172a1 1 0 0 1 -.993 -.883l-.007 -.117v-1.172a2 2 0 0 1 .467 -1.284l.119 -.13l.414 -.414h2v-2h2v-2l2.144 -2.144l-.301 -.301a2.877 2.877 0 0 1 0 -4.069l2.643 -2.643a2.877 2.877 0 0 1 4.069 0z" />
+                <path d="M15 9h.01" />
+            </svg>
+            {{ __('main.filters.section') }}
+        </label>
+
+        <div class="property-types form-row">
+            @foreach ($sections as $key => $section)
+                <div class="col-6">
+                    <button type="button"
+                        class="btn-property-select select-property-purpose btn-block {{ ($filters['purpose'] ?? '') == $key ? 'active' : '' }}"
+                        data-purpose="{{ $key }}">
+                        {!! $section['icon'] !!}
+                        {{ $section['name'] }}
+                    </button>
+                </div>
+            @endforeach
+        </div>
+
+        <input type="hidden" class="selected-purpose" value="{{ $filters['purpose'] ?? '' }}">
+    </div>
+    <hr>
+
+    {{-- Price Range --}}
+    <div class="filter-group">
+        <label class="label-search-filter mb-1">
+            {{ __('main.filters.price') }} <small>({{ __('main.filters.sar') }})</small>
+        </label>
+        <div class="mr-3">
+            <div class="price-slider" data-slider="price" data-min="{{ $filterRanges['price_min'] }}"
+                data-max="{{ $filterRanges['price_max'] }}"></div>
+
+            <div class="d-flex justify-content-between small mt-2">
+                <span @style(lang() == 'ar' ? 'direction:rtl;' : '') class="price-min">
+                    {{ number_format($filterRanges['price_min']) }}
+                </span>
+                <span @style(lang() == 'ar' ? 'direction:rtl;' : '') class="price-max">
+                    {{ number_format($filterRanges['price_max']) }}
+                </span>
+            </div>
+        </div>
+
+        <input type="hidden" class="selected-price-min" value="{{ $filters['price_min'] ?? '' }}">
+        <input type="hidden" class="selected-price-max" value="{{ $filters['price_max'] ?? '' }}">
+    </div>
+    <hr>
+
+    {{-- Area Range --}}
+    <div class="filter-group">
+        <label class="label-search-filter mb-1">
+            {{ __('main.filters.area') }} <small>({{ __('main.filters.m2') }})</small>
+        </label>
+        <div class="mr-3">
+            <div class="area-slider" data-min="{{ $filterRanges['area_min'] }}"
+                data-max="{{ $filterRanges['area_max'] }}"></div>
+
+            <div class="d-flex justify-content-between small mt-2">
+                <span @style(lang() == 'ar' ? 'direction:rtl;' : '') class="area-min">
+                    {{ number_format($filterRanges['area_min']) }}
+                </span>
+                <span @style(lang() == 'ar' ? 'direction:rtl;' : '') class="area-max">
+                    {{ number_format($filterRanges['area_max']) }}
+                </span>
+            </div>
+        </div>
+
+        <input type="hidden" class="selected-area-min" value="{{ $filters['area_min'] ?? '' }}">
+        <input type="hidden" class="selected-area-max" value="{{ $filters['area_max'] ?? '' }}">
+    </div>
+    <hr>
+
+    {{-- Bedrooms --}}
+    <div class="filter-group">
+        <label class="label-search-filter">
+            <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px">
+                <path
+                    d="M176-200h-30.3L126-280H80v-214q0-25.9 17-43.95Q114-556 140-556h26v-144q0-24.75 17.63-42.38Q201.25-760 226-760h507q24.75 0 42.38 17.62Q793-724.75 793-700v144h27q24.75 0 42.38 17.62Q880-520.75 880-496v216h-46l-19.78 80h-30.44L764-280H197l-21 80Zm334-356h223v-144H510v144Zm-284 0h224v-144H226v144Zm-86 216h680v-156H140v156Zm680 0H140h680Z">
+                </path>
+            </svg>
+            {{ __('main.filters.rooms') }}
+        </label>
+
+        <div class="property-number-rooms d-flex flex-wrap">
+            <button type="button"
+                class="select-property-number-room {{ empty($filters['bedrooms']) ? 'active' : '' }}">
+                {{ __('main.filters.all') }}
+            </button>
+            @for ($i = 1; $i < 6; $i++)
+                <button type="button"
+                    class="select-property-number-room {{ ($filters['bedrooms'] ?? '') == $i || ($i == 5 && ($filters['bedrooms'] ?? 0) >= 5) ? 'active' : '' }}">
+                    {{ $i == 5 ? '+5' : $i }}
+                </button>
+            @endfor
+        </div>
+
+        <input type="hidden" class="selected-bedrooms" value="{{ $filters['bedrooms'] ?? '' }}">
+    </div>
+    <hr>
+
+    {{-- Bathrooms --}}
+    <div class="filter-group ">
+        <label class="label-search-filter">
+            <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="#000000"
+                viewBox="0 0 256 256">
+                <path
+                    d="M240,96H208a8,8,0,0,0-8-8H136a8,8,0,0,0-8,8H64V52A12,12,0,0,1,76,40a12.44,12.44,0,0,1,12.16,9.59,8,8,0,0,0,15.68-3.18A28.32,28.32,0,0,0,76,24,28,28,0,0,0,48,52V96H16a8,8,0,0,0-8,8v40a56.06,56.06,0,0,0,56,56v16a8,8,0,0,0,16,0V200h96v16a8,8,0,0,0,16,0V200a56.06,56.06,0,0,0,56-56V104A8,8,0,0,0,240,96Zm-48,8v32H144V104Zm40,40a40,40,0,0,1-40,40H64a40,40,0,0,1-40-40V112H128v32a8,8,0,0,0,8,8h64a8,8,0,0,0,8-8V112h24Z">
+                </path>
+            </svg>
+            {{ __('main.filters.baths') }}
+        </label>
+
+        <div class="property-baths d-flex flex-wrap">
+            <button type="button" class="select-property-baths {{ empty($filters['bathrooms']) ? 'active' : '' }}">
+                {{ __('main.filters.all') }}
+            </button>
+            @for ($i = 1; $i < 6; $i++)
+                <button type="button"
+                    class="select-property-baths {{ ($filters['bathrooms'] ?? '') == $i || ($i == 5 && ($filters['bathrooms'] ?? 0) >= 5) ? 'active' : '' }}">
+                    {{ $i == 5 ? '+5' : $i }}
+                </button>
+            @endfor
+        </div>
+
+        <input type="hidden" class="selected-bathrooms" value="{{ $filters['bathrooms'] ?? '' }}">
+    </div>
+    <hr>
+
+    {{-- Search Button (Mobile Only) --}}
+    @if ($showSearchButton ?? false)
+        <div class="form-row  mt-4 mb-3">
+
+            <div class="col-7">
+                <button type="button" class="btn btn-second btn-block" id="applyFiltersBtn">
+                    {{ __('main.filters.search') }}
+                </button>
+            </div>
+
+            <div class="col-5">
+                <a href="{{ route('main.properties.index') }}" class="btn btn-soft-main btn-block px-0">
+
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round" class="icon icon-tabler icons-tabler-outline icon-tabler-x">
+                        <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                        <path d="M18 6l-12 12" />
+                        <path d="M6 6l12 12" />
+                    </svg>
+
+                    {{ __('main.filters.clear_all') }}
+                </a><!-- clear -->
+            </div>
+
+
+        </div>
+    @endif
+
+</div>

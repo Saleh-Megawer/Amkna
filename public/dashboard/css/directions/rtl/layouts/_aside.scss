@@ -1,0 +1,33 @@
+#aside {
+    transition: right 0.3s linear;
+    right: 0px;
+    .side-menu {
+        .side-item {
+            a {
+                .side-name-lable {
+                    margin-right: 9px;
+                }
+                .arrow-icon {
+                    float: left;
+                    transform: rotate(90deg);
+                }
+            }
+            .sub-menu {
+                .sub-item {
+                    .side-icon {
+                        &::before {
+                            right: 6px;
+                            transform: rotate(-40deg) !important;
+                            right: 7px;
+                        }
+                        &::after {
+                            right: 6px;
+                            transform: rotate(40deg) !important;
+                            right: 7px;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

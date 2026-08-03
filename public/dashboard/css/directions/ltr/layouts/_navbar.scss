@@ -1,0 +1,36 @@
+
+.toggle {
+    left: var(--aside-minus-width) !important; // Replace
+}
+// Navbar
+#navbar {
+    border-left: solid 1px var(--border-color);
+    #btn-aside-toggle {
+        float: left; // Replace
+    }
+    /* IF Clicked Button #btn-sidebar-toggle Start This Action*/
+    .toggle {
+        left: var(--aside-minus-width) !important; // Replace
+    }
+}
+
+@media (max-width: 1024px) {
+    // Body
+    body {
+        padding-left: 0px !important; // Replace
+    }
+    // Aside
+    #aside {
+        left: var(--aside-minus-width); // Replace
+        .aside-overlay {
+            right: 0px; // Replace
+        }
+    }
+    .toggle {
+        left: 0px !important; // Replace
+    }
+
+    #navbar {
+        width: 100% !important;
+    }
+}

@@ -1,0 +1,37 @@
+#mailbox {
+    .folders {
+        .nav {
+            i,
+            svg {
+                margin-right: 5px;
+            }
+        }
+    } // End Tabs Links
+
+    // Tabs Contents
+    #Inbox {
+        .mail {
+            .send-at {
+                text-align: right; // Replace To left In Arabic File
+            }
+            .send-by{
+                margin-left: 5px; // Replace To right
+            }
+
+        }
+    }
+}
+
+
+#read-mail {
+
+    .box-head{
+        .name{
+            float: left;
+        }
+
+        .actions{
+            float: right;
+        }
+    }
+}

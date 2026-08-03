@@ -1,0 +1,9 @@
+:root {
+
+    /* Aside Width & Minus Width*/
+    --aside-width: 260px;
+    --aside-minus-width: -260px;
+    /* Navbar */
+    --navbar-height: 70px;
+    
+}

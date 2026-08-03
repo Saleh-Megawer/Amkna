@@ -1,0 +1,58 @@
+:root {
+
+    /* Website Main Background */
+    --background: #f2f7fb;
+    /* Website Main Color For Basic Text */
+    --color: #333;
+
+    /* Main & Secondary Colors For This Theme */
+    --main-color: #4099ff;
+    --secondary-color: #6c757d;
+
+    --link-color: #4099ff;
+
+    /* Card ( box ) Style Colors */
+    --card-background: #fff;
+    --card-color: #212121;
+    --card-shadow: 0 0 5px 0 rgb(43 43 43 / 10%), 0 11px 6px -7px rgb(43 43 43 / 10%);
+    --card-border: none;
+
+
+    /* Buttons Colors */
+    --btn-main-background: #4099ff;
+    --btn-main-color: #fff;
+    --btn-secondary-background: #ecf3ff;
+    --btn-secondary-color: #212121;
+
+    /* Borders */
+    --border-color: #dee4ec;
+    --border-radius: 5px;
+
+
+    /* Input */
+    --input-color: #212121;
+    --input-background: #fff;
+    --input-border-color: #ebebeb;
+    --input-focus-border-color: #4099ff;
+    --input-focus-background: #f9f9f9;
+
+
+    /* Aside ( side bar ) Bar */
+    --aside-background: #263544;
+    --aside-border-color: #263544;
+    --aside-color: #c7cbd1;
+    /* hover links */
+    --aside-link-hover-background: transparent;
+    --aside-link-hover-color: #ffffff;
+    /* active links */
+    --aside-link-active-background: transparent;
+    --aside-link-active-color: #4099ff;
+
+
+    /* Navbar */
+    --navbar-background: #ffffff;
+    --navbar-color: #333;
+    --navbar-hover-color: #4099ff;
+
+
+}

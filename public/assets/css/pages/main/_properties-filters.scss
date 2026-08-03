@@ -1,0 +1,520 @@
+.filter-actions .btn,
+.filter-actions-mobile .btn {
+    width: 100%;
+}
+
+// ============================================
+// صفحة البحث - الحاوي الرئيسي
+// ============================================
+.search-page {
+    // خليه يتبع html dir
+    direction: inherit;
+}
+
+// ============================================
+// استايلات مشتركة بين Sidebar و Overlay
+// ============================================
+.property-offcanvas-filter,
+.search-filters,
+.filters-overlay-content {
+    // عناوين الفلاتر
+    .label-search-filter {
+        font-weight: 500;
+        color: var(--text-black) !important;
+        margin-bottom: 10px;
+        font-size: 15px;
+
+        svg {
+            margin-top: -4px;
+            width: 20px;
+            height: 20px;
+        }
+    }
+
+    // حقول الإدخال والسيليكت
+    select,
+    input {
+        height: 42px;
+    }
+
+    // الفواصل الأفقية
+    hr {
+        margin-top: 1rem;
+        margin-bottom: 1rem;
+        border: 0;
+        border-top: 1px solid rgba(0, 0, 0, 0.077);
+
+        // بدل left/right
+        margin-inline-start: -1rem;
+        margin-inline-end: -1rem;
+    }
+
+    // أزرار الفلاتر (Property Types, Rooms, Baths)
+    //  .property-types,
+    //  .property-number-rooms,
+    //  .property-baths {
+    .btn-property-select, // this global
+        .select-property-type,
+        .select-property-number-room,
+        .select-property-baths {
+        // بدل margin-right/left حسب الاتجاه
+        margin-inline-end: 5px;
+        margin-bottom: 5px;
+        border: solid 1px #e9ecef;
+        background-color: #ffffff;
+        border-radius: var(--border-radius);
+        padding: 8px 15px;
+        font-size: 15px;
+        color: var(--text-gray);
+    }
+
+    // الحالة النشطة للأزرار
+    .active {
+        position: relative;
+        overflow: hidden;
+        color: var(--accent);
+        border-color: var(--accent);
+
+        &::after {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background-color: var(--accent);
+            opacity: 0.1;
+        }
+    }
+
+    // }
+
+    // تخصيص أزرار الغرف والحمامات (مربعة)
+    .property-number-rooms,
+    .property-baths {
+        .select-property-number-room,
+        .select-property-baths {
+            padding: 0px;
+            width: 40px;
+            height: 40px;
+        }
+    }
+}
+
+// ============================================
+// Sidebar للشاشات الكبيرة
+// ============================================
+.search-filters {
+    position: sticky;
+    height: calc(100vh - var(--navbar-height));
+    overflow-y: auto;
+    top: var(--navbar-height);
+    padding-top: 20px;
+
+    // بدل padding-right/left
+    padding-inline-end: 1rem;
+
+    // بدل border-right/left
+    border-inline-end: 1px solid #e9ecef;
+
+    background: #ffffff;
+}
+
+// ============================================
+// منطقة النتائج
+// ============================================
+.search-results {
+    .results-header {
+        padding-top: 20px;
+        padding-bottom: 15px;
+
+        h4 {
+            white-space: nowrap;
+            font-weight: 600;
+            font-size: clamp(0.875rem, 0.6776rem + 0.7895vw, 1.625rem);
+        }
+    }
+}
+
+// ============================================
+// صندوق الترتيب (Sort Dropdown)
+// ============================================
+.sort-box {
+    button {
+        margin-inline-start: 3px;
+        @include btn-accent-icon();
+    }
+
+    // زر الـ Dropdown
+    .dropdown-toggle {
+        transition: color 0.3s ease;
+        font-size: clamp(0.875rem, 0.831rem + 0.1408vw, 1rem);
+
+        // إخفاء السهم الافتراضي
+        &::after {
+            display: none;
+        }
+
+        // Fix long text inside the button (mobile)
+        .current-options {
+            display: inline-block;
+            max-width: 250px; // قلّل/زوّد حسب المساحة
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            vertical-align: middle;
+        }
+
+        @include maxMedia(sm) {
+            svg {
+                width: 18px;
+                height: 18px;
+            }
+            .current-options {
+                max-width: 90px;
+            }
+        }
+    }
+
+    // قائمة الـ Dropdown
+    .dropdown-menu {
+        min-width: 220px;
+        padding: 10px;
+        margin-top: 8px;
+        border: none;
+        border-radius: var(--border-radius);
+        box-shadow: 0 8px 30px rgba(0, 0, 0, 0.1);
+        text-align: start;
+
+        @include rtl {
+            left: 10px !important;
+        }
+
+        .dropdown-item {
+            padding: 10px 16px;
+            margin-bottom: 4px;
+            color: $dark-gray;
+            font-weight: 400;
+            border-radius: 8px;
+            transition: all 0.25s ease;
+
+            &:last-child {
+                margin-bottom: 0;
+            }
+
+            &:hover,
+            &:focus {
+                background-color: var(--accent-soft);
+                color: $accent;
+            }
+
+            &:active {
+                background: rgba($accent, 0.15);
+                color: $accent;
+            }
+        }
+
+        .dropdown-divider {
+            margin: 8px 0;
+            border-top: 1px solid rgba($accent, 0.15);
+        }
+    }
+}
+
+// ============================================
+// زر فتح الفلاتر للموبايل
+// ============================================
+#openFiltersBtn {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    @include btn-accent-icon();
+}
+
+// ============================================
+// تعديلات RTL (اتشالت لأنها كانت معتمدة على $dir)
+// لو محتاج سطر left/right بعينه هنبدله بـ logical
+// ============================================
+
+// ============================================
+// سلايدرز (Price & Area)
+// ============================================
+.price-slider,
+.area-slider {
+    height: 8px;
+    margin-top: 1rem;
+
+    // الخلفية الأساسية
+    .noUi-base {
+        background: #e9ecef;
+        border-radius: 1px !important;
+    }
+
+    // الجزء النشط (المحدد)
+    .noUi-connect {
+        background: var(--accent) !important;
+    }
+
+    // المقبض
+    .noUi-handle {
+        width: 22px !important;
+        height: 22px !important;
+        border-radius: 50% !important;
+        background: #ffffff !important;
+        border: 2px solid var(--accent) !important;
+        top: -8px !important;
+        cursor: pointer;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+
+        // إخفاء الخطوط الافتراضية
+        &:before,
+        &:after {
+            display: none !important;
+        }
+
+        .noUi-touch-area {
+            background: transparent;
+        }
+
+        // تأثير الـ Hover
+        &:hover {
+            box-shadow: 0 3px 12px rgba(0, 0, 0, 0.25);
+        }
+    }
+}
+
+// تصحيح موضع المقابض
+.noUi-handle-upper {
+    // transform: translateX(-12px) !important;
+}
+.noUi-handle-lower {
+    // transform: translateX(0px) !important;
+
+    @include rtl {
+        //   transform: translateX(-15px) !important;
+    }
+}
+
+.noUi-txt-dir-rtl.noUi-horizontal .noUi-origin {
+    right: auto;
+
+    @include rtl {
+        left: -5px;
+    }
+}
+
+.noUi-txt-dir-rtl.noUi-horizontal .noUi-handle {
+    @include rtl {
+        left: 0 !important;
+        right: auto !important;
+    }
+}
+
+// ============================================
+// صندوق فلتر السعر
+// ============================================
+.price-filter-box {
+    .choices {
+        width: 100%;
+    }
+
+    .price-selects select {
+        height: 44px;
+        border-radius: var(--border-radius);
+    }
+}
+
+// ============================================
+// مكتبة Choices.js (للـ Select المتقدم)
+// ============================================
+.choices__list--multiple {
+    direction: ltr !important;
+}
+
+.choices__list--multiple .choices__item {
+    border-radius: var(--border-radius);
+}
+
+.choices[data-type*="select-multiple"] .choices__button,
+.choices[data-type*="text"] .choices__button {
+    border-left: none;
+    margin: 0px;
+}
+
+.choices__inner {
+    background-color: var(--input-background);
+    font-size: 16px;
+}
+
+.choices__list--dropdown .choices__item,
+.choices__list[aria-expanded] .choices__item {
+    background-color: #ffffff;
+    border-bottom: 1px solid #eeeeee;
+    margin-bottom: 3px;
+    position: relative;
+    padding: 7px 10px;
+    font-size: 15px;
+
+    &:last-of-type {
+        border-bottom: none !important;
+    }
+}
+
+.choices__input {
+    height: 40px !important;
+    margin: 8px !important;
+}
+
+.choices[data-type*="select-one"] .choices__input {
+    width: calc(100% - 16px);
+    padding: 10px;
+    padding-bottom: 10px !important;
+    border-color: var(--accent);
+}
+
+.choices[data-type*="select-one"] .choices__inner {
+    padding-bottom: 6px;
+}
+
+[data-type="select-multiple"] .choices__inner {
+    padding: 15px 7.5px 7.5px;
+}
+
+.choices__list--dropdown,
+.choices__list[aria-expanded] {
+    z-index: 3;
+}
+
+.choices__list--single {
+    color: var(--input-color);
+}
+
+// ============================================
+// Overlay الفلاتر للموبايل
+// ============================================
+.filters-overlay {
+    position: fixed;
+    inset: 0;
+    z-index: 1050;
+    background: rgba(0, 0, 0, 0.45);
+    display: none;
+    align-items: stretch;
+    justify-content: center;
+
+    // حالة الفتح
+    &.is-open {
+        display: flex;
+    }
+
+    // محتوى الـ Overlay
+    .filters-overlay-content {
+        background: #ffffff;
+        width: 100%;
+        height: 100%;
+        max-width: 100%;
+        padding: 1.25rem 1rem;
+        overflow-y: auto;
+    }
+}
+
+// ============================================
+// الشاشات الصغيرة (Mobile)
+// ============================================
+@media (max-width: 767.98px) {
+    .search-page {
+        // إخفاء الـ Sidebar
+        .search-filters {
+            display: none;
+        }
+    }
+}
+
+/*******
+*********
+*********
+*********
+*********
+*********
+*********
+*********
+*********
+*********
+*********
+*********
+*********
+*/
+// Location Autocomplete Suggestions
+.location-suggestions {
+    position: absolute;
+    top: 100%;
+    z-index: 1000;
+    width: 100%;
+    background: #fff;
+    border: 1px solid #e9ecef;
+    border-top: none;
+    border-radius: 0 0 var(--border-radius) var(--border-radius);
+    max-height: 300px;
+    overflow-y: auto;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    display: none;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+
+    // RTL Support
+    @include ltr {
+        left: 0;
+        right: auto;
+    }
+
+    @include rtl {
+        right: 0;
+        left: auto;
+    }
+
+    li {
+        padding: 12px 15px;
+        cursor: pointer;
+        transition: background-color 0.2s;
+        border-bottom: 1px solid #f8f9fa;
+        font-size: 14px;
+        color: var(--text-black);
+
+        // Text direction
+        @include rtl {
+            text-align: right;
+        }
+
+        @include ltr {
+            text-align: left;
+        }
+
+        &:last-child {
+            border-bottom: none;
+        }
+
+        &:hover {
+            background-color: #f8f9fa;
+            color: var(--accent);
+        }
+
+        &:active {
+            background-color: #e9ecef;
+        }
+    }
+}
+
+// Loading state for input
+.form-control.loading {
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='20' height='20' viewBox='0 0 24 24'%3E%3Cpath fill='%23999' d='M12,1A11,11,0,1,0,23,12,11,11,0,0,0,12,1Zm0,19a8,8,1,1,8-8A8,8,0,0,1,12,20Z' opacity='.25'/%3E%3Cpath fill='%23333' d='M12,4a8,8,0,0,1,7.89,6.7A1.53,1.53,0,0,0,21.38,12h0a1.5,1.5,0,0,0,1.48-1.75,11,11,0,0,0-21.72,0A1.5,1.5,0,0,0,2.62,12h0a1.53,1.53,0,0,0,1.49-1.3A8,8,0,0,1,12,4Z'%3E%3CanimateTransform attributeName='transform' type='rotate' dur='0.75s' values='0 12 12;360 12 12' repeatCount='indefinite'/%3E%3C/path%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-size: 20px;
+
+    // Position based on direction
+    @include ltr {
+        background-position: right 10px center;
+        padding-right: 40px;
+    }
+
+    @include rtl {
+        background-position: left 10px center;
+        padding-left: 40px;
+    }
+}

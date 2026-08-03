@@ -1,0 +1,74 @@
+.select2-container{
+    z-index: 99999;
+}
+/* Wrapper */
+.select2-container .select2-selection--single {
+    height: var(--input-height) !important;
+    background: var(--input-background) !important;
+    border: 1px solid var(--input-border-color) !important;
+    border-radius: var(--input-border-radius) !important;
+    display: flex;
+    align-items: center;
+    padding: 0 12px;
+}
+
+/* النص */
+.select2-container--default .select2-selection--single .select2-selection__rendered {
+    color: var(--input-color) !important;
+    line-height: var(--input-height) !important;
+    padding-left: 0 !important;
+    padding-right: 10px !important; /* space for arrow */
+    font-size: 15px;
+}
+
+/* السهم */
+.select2-container--default .select2-selection--single .select2-selection__arrow {
+    height: var(--input-height) !important;
+}
+
+/* القايمة المنسدلة */
+.select2-container .select2-dropdown {
+    border-color: var(--input-border-color) !important;
+    border-radius: var(--input-border-radius) !important;
+}
+
+/* عنصر داخل القائمة */
+.select2-results__option {
+    padding: 8px 12px !important;
+    font-size: 15px;
+    display: flex;
+    align-items: center;
+}
+
+/* عند الـ hover */
+.select2-results__option--highlighted {
+    background: #f5f5f5 !important;
+    color: var(--input-color) !important;
+}
+
+/* حالة الـ focus */
+.select2-container--default.select2-container--focus .select2-selection--single {
+    border-color: var(--input-focus-border-color) !important;
+    box-shadow: var(--input-focus-shadow) !important;
+}
+
+/* صورة العلم */
+.flag-img {
+    width: 20px;
+    height: 15px;
+    object-fit: cover;
+    margin-right: 0px;
+}
+
+html[dir="rtl"] {
+    .select2-selection__arrow {
+        left: 6px !important;
+    
+    }
+}
+
+html[dir="ltr"] {
+    .select2-selection__arrow {
+        right: 6px !important;
+    }
+}

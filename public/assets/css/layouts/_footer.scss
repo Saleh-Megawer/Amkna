@@ -1,0 +1,355 @@
+.main-footer {
+    background: var(--accent);
+    color: #ffffff;
+
+    a {
+        color: #dddddd;
+        text-decoration: none;
+        transition: all 0.3s ease;
+
+        &:hover {
+            color:var(--accent-1);
+        }
+    }
+}
+
+// Footer Top Section
+.footer-top {
+    padding: 60px 0 40px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.footer-logo {
+    max-width: 120px;
+    height: auto;
+    //   filter: brightness(0) invert(1); // يخلي اللوجو أبيض
+}
+
+.footer-description {
+    font-size: 14px;
+    line-height: 1.7;
+    color: #dddddd;
+    margin-top: 15px;
+    margin-bottom: 0;
+}
+
+// Headings
+.footer-heading {
+    font-size: 18px;
+    font-weight: 600;
+    color: #ffffff;
+    margin-bottom: 15px;
+    text-transform: uppercase;
+
+    // &::after {
+    //     content: "";
+    //     display: block;
+    //     width: 40px;
+    //     height: 2px;
+    //     background: var(--brand-main-color, #3498db);
+    //     margin-top: 8px;
+    // }
+}
+
+// Footer Links
+.footer-links {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+
+    li {
+        margin-bottom: 12px;
+
+        a {
+            font-size: 14px;
+            display: inline-block;
+            position: relative;
+
+            &::before {
+                content: "›";
+                margin-right: 8px;
+                color: var(--accent-1);
+                transition: margin 0.3s ease;
+            }
+
+            &:hover {
+                color: var(--accent-1);
+            }
+            &:hover::before {
+                margin-right: 12px;
+            }
+        }
+    }
+}
+
+// Contact Items
+.footer-contact {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+
+    .contact-item {
+        display: flex;
+        align-items: center;
+        gap: 5px;
+        margin-bottom: 15px;
+
+        svg {
+            color: #ffffff;
+            flex-shrink: 0;
+        }
+
+        a {
+            font-size: 14px;
+        }
+    }
+}
+
+// Social Links
+.footer-social {
+    h6 {
+        font-size: 18px;
+        font-weight: 600;
+        color: #ffffff;
+        margin-bottom: 15px;
+    }
+}
+
+.social-links {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+
+    li {
+        a {
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: var(--accent-1);
+            border-radius: var(--border-radius);
+            transition: all 0.3s ease;
+
+            svg {
+                width: 18px;
+                height: 18px;
+                fill: #fff;
+                transition: all 0.3s ease;
+            }
+
+            &:hover {
+                background: var(--accent-1);
+                transform: translateY(-3px);
+                svg {
+                    fill: #fff;
+                }
+            }
+        }
+    }
+}
+
+// Newsletter
+.footer-newsletter {
+    h6 {
+        font-size: 14px;
+        font-weight: 600;
+        color: #ffffff;
+    }
+}
+
+.newsletter-form {
+    .input-group {
+        display: flex;
+        border-radius: 8px;
+        overflow: hidden;
+        box-shadow: 0 3px 10px rgba(0, 0, 0, 0.2);
+
+        .form-control {
+            border: none;
+            padding: 12px 15px;
+            font-size: 14px;
+            background: #ffffff;
+
+            &:focus {
+                outline: none;
+                box-shadow: none;
+            }
+        }
+
+        .btn {
+            border: none;
+            padding: 12px 20px;
+            background: var(--accent-1);
+
+            &:hover {
+                background: darken(#3498db, 10%);
+            }
+
+            svg {
+                stroke: #ffffff;
+            }
+        }
+    }
+}
+
+// Footer Bottom
+.footer-bottom {
+    padding: 25px 0;
+    background: var(--accent);
+
+    p {
+        font-size: 14px;
+        color: #ffffff;
+
+        a {
+            color: var(--accent-1);
+            font-weight: 600;
+        }
+    }
+}
+
+.footer-bottom-links {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+
+    @media (min-width: 768px) {
+        justify-content: flex-end;
+    }
+
+    li {
+        a {
+            font-size: 13px;
+            color: #ffffff;
+
+            &:hover {
+                color: var(--brand-main-color, #3498db);
+            }
+        }
+    }
+}
+
+// Responsive
+@media (max-width: 991px) {
+    .footer-top {
+        padding: 40px 0 30px;
+    }
+
+    .footer-heading::after {
+        margin-bottom: 15px;
+    }
+}
+
+@media (max-width: 991px) {
+    .main-footer {
+        .footer-brand {
+            display: flex;
+            align-items: center;
+            //  text-align: center;
+
+            .footer-logo {
+            }
+
+            .footer-description {
+                margin: 0px 10px;
+                //     text-align: center !important;
+            }
+        }
+    }
+
+    .footer-rights {
+        text-align: center !important;
+    }
+
+    .social-links {
+        //   justify-content: center;
+    }
+
+    .footer-bottom-links {
+        flex-wrap: wrap;
+        gap: 15px;
+    }
+}
+
+@media (max-width: 768px) {
+    .main-footer {
+        .footer-brand {
+            display: block;
+
+            .footer-logo {
+                margin-bottom: 15px;
+            }
+        }
+    }
+}
+
+// RTL Support
+html[lang="ar"] {
+    .footer-links {
+        li a::before {
+            content: "›"; // عكس السهم
+            margin-right: 0;
+            margin-left: 8px;
+        }
+
+        li a:hover::before {
+            margin-left: 12px;
+            margin-right: 0;
+        }
+    }
+
+    .contact-item {
+        flex-direction: row-reverse;
+        text-align: right;
+    }
+
+    .footer-description {
+        text-align: right;
+    }
+
+    .footer-bottom-links {
+        @media (min-width: 768px) {
+            // justify-content: flex-start;
+        }
+    }
+
+    .newsletter-form .input-group {
+        flex-direction: row-reverse;
+    }
+}
+
+html[lang="en"] {
+    .footer-links li a::before {
+        margin-right: 8px;
+        margin-left: 0;
+    }
+
+    .footer-links li a:hover::before {
+        margin-right: 12px;
+        margin-left: 0;
+    }
+
+    .contact-item {
+        text-align: left;
+    }
+
+    .footer-description {
+        text-align: left;
+    }
+}
+
+// General RTL/LTR
+.main-footer {
+    direction: inherit;
+
+    * {
+        direction: inherit;
+    }
+}

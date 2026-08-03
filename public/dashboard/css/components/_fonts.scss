@@ -1,0 +1,49 @@
+// Map للأحجام المطلوبة
+$font-sizes: (16, 20, 22, 24, 26);
+
+// Min & Max viewport
+$min-vw: 420;
+$max-vw: 1920;
+
+// Loop لإنشاء كل الـ combinations
+@each $min in $font-sizes {
+    @each $max in $font-sizes {
+        @if $max > $min {
+            .fs-clamp-#{$min}-#{$max} {
+                $min-rem: calc($min / 16);
+                $max-rem: calc($max / 16);
+                $slope: calc(($max - $min) / ($max-vw - $min-vw));
+                $intercept-px: calc($min - ($slope * $min-vw));
+                $intercept-rem: calc($intercept-px / 16);
+                $slope-vw: calc($slope * 100);
+
+                font-size: clamp(#{$min-rem}rem, #{$intercept-rem}rem + #{$slope-vw}vw, #{$max-rem}rem);
+            }
+        }
+    }
+}
+
+/*
+ |
+ | Font Size
+ |
+*/
+$size: 8;
+@for $i from 7 through 46 {
+    .font-#{$size + 1} {
+        font-size: $size + 1px !important;
+    }
+    $size: $size + 1;
+}
+
+/*
+ |
+ | Font Weight
+ |
+*/
+$weights: (100, 200, 300, 400, 500, 600, 700, 800, 900);
+@each $weight in $weights {
+    .font-weight-#{$weight} {
+        font-weight: $weight !important;
+    }
+}

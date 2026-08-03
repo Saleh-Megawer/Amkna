@@ -1,0 +1,49 @@
+/*
+|||||||||||||||||||||||||||||||||||||||||||||||||| File Map
+- Bootstrap
+- Font Aw..
+*/
+
+/*
+*
+*
+*
+* Bootstrap
+*
+*
+*
+*/
+
+.alert-dismissible .close {
+    right: -4px !important;
+    text-align: right;
+}
+.modal-open {
+    padding-right: 0px !important;
+    overflow: hidden;
+}
+// Input Group
+.input-group {
+    input {
+        border-radius: 0px var(--border-radius) var(--border-radius) 0px !important ;
+    }
+
+    .input-group-text {
+        border-radius: var(--border-radius) 0px 0px var(--border-radius) !important ;
+    }
+}
+
+/*
+*
+*
+*
+* Font Aw..
+*
+*
+*
+*/
+.alert {
+    .svg-inline--fa {
+        margin-right: 5px;
+    }
+}

@@ -1,0 +1,79 @@
+#kpi-cards {
+    .analytics-card {
+        transition: all 0.3s ease;
+
+        &:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.08);
+        }
+    }
+
+    .analytics-card-icon {
+        width: 50px;
+        height: 50px;
+        transition: transform 0.3s ease;
+
+        svg {
+            color: #fff;
+        }
+
+        &.total {
+            background: linear-gradient(135deg, var(--third-color) 0%, #4a6fa5 100%);
+        }
+
+        &.active {
+            background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+        }
+
+        &.conversion {
+            background: linear-gradient(135deg, #8b5cf6 0%, #7c3aed 100%);
+        }
+
+        &.new {
+            background: linear-gradient(135deg, var(--second-color) 0%, #b8935a 100%);
+        }
+
+        &.account {
+            background: linear-gradient(135deg, #3b82f6 0%, #2563eb 100%);
+        }
+
+        &.verified {
+            background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+        }
+
+        &.inactive {
+            background: linear-gradient(135deg, #f59e0b 0%, #d97706 100%);
+        }
+
+        &.interests {
+            background: linear-gradient(135deg, #ec4899 0%, #db2777 100%);
+        }
+
+        &.avg {
+            background: linear-gradient(135deg, #06b6d4 0%, #0891b2 100%);
+        }
+
+        &.archived {
+            background: linear-gradient(135deg, #64748b 0%, #475569 100%);
+        }
+
+        &.won-deals {
+            background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+        }
+
+        &.disabled {
+            background: linear-gradient(135deg, #ef4444 0%, #dc2626 100%);
+        }
+    }
+
+    .analytics-card-number {
+        font-size: 22px;
+        font-weight: 700;
+        color: var(--main-color);
+        line-height: 1;
+    }
+
+    .analytics-card-label {
+        font-weight: 500;
+    }
+}

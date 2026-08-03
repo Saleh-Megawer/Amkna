@@ -1,0 +1,24 @@
+/*
+|
+| Left To Right Files
+| Import All File From "ltr" Directions Only
+|
+*/
+
+/* Global */
+@import "global/_global.scss";
+
+/* Plugins */
+@import "plugins/_plugins.scss";
+
+/*
+| Layouts ( Aside , Navbar )
+*/
+@import "layouts/_aside.scss";
+@import "layouts/_navbar.scss";
+
+
+/*
+| App Pages Style
+*/
+@import "pages/mail/mailbox.scss";

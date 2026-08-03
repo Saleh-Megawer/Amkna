@@ -1,0 +1,37 @@
+/*
+*
+*
+*
+* Nice Select
+*
+*
+*
+*/
+.nice-select {
+    width: 100%;
+    background-color: var(--input-background);
+    color: var(--input-text-color);
+    border: 1px solid var(--border);
+    border-radius: var(--border-radius);
+    .list {
+        width: 100%;
+        background-color: var(--box-background);
+        li {
+            color: var(--main-text-color);
+        }
+    }
+}
+
+.nice-select:hover {
+    border-color: transparent;
+}
+.nice-select .option:hover,
+.nice-select .option.focus,
+.nice-select .option.selected.focus {
+    background-color: var(--background) !important;
+}
+.nice-select:active,
+.nice-select.open,
+.nice-select:focus {
+    border-color: var(--main-color);
+}

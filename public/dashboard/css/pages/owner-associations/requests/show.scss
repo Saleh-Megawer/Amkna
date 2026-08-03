@@ -1,0 +1,203 @@
+#request-show-page {
+    .request-info {
+        .info-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 0.6rem;
+            padding-bottom: 0.6rem;
+            border-bottom: 1px solid #e9ecef;
+
+            &:last-child {
+                margin-bottom: 0;
+                padding-bottom: 0;
+                border-bottom: none;
+            }
+
+            // للصفوف اللي فيها أيقونة
+            &.with-icon {
+                svg {
+                    margin-left: 0.5rem;
+                    color: #6c757d;
+                    flex-shrink: 0;
+                    width: 17px;
+                    height: 17px;
+                }
+
+                .info-content {
+                    min-width: 0;
+
+                    small {
+                        display: block;
+                        color: #6c757d;
+                        margin-bottom: 0.25rem;
+                    }
+
+                    a,
+                    span {
+                        display: block;
+                        font-weight: 600;
+                        overflow: hidden;
+                        text-overflow: ellipsis;
+                        white-space: nowrap;
+                    }
+                }
+            }
+
+            // للصفوف العادية (label + value)
+            &.inline {
+                justify-content: space-between;
+
+                small {
+                    color: #6c757d;
+                }
+
+                .value {
+                    font-size: 0.875rem;
+                    font-weight: 600;
+                }
+
+                .badge {
+                    font-size: 0.75rem !important;
+                }
+            }
+        }
+    }
+
+
+    .replies-chat {
+        max-height: 500px;
+        overflow-y: auto;
+        display: flex;
+        flex-direction: column-reverse; // يخلي أحدث رد تحت تلقائي!
+        overflow-x: hidden;
+        padding: 1rem;
+        margin-bottom: 1rem;
+
+        // تحسين الـ scrollbar
+        &::-webkit-scrollbar {
+            width: 6px;
+        }
+
+        &::-webkit-scrollbar-track {
+            background: #f1f1f1;
+            border-radius: 10px;
+        }
+
+        &::-webkit-scrollbar-thumb {
+            background: #c1c1c1;
+            border-radius: 10px;
+
+            &:hover {
+                background: #a8a8a8;
+            }
+        }
+
+        .badge-light{
+            background-color: #fff !important;
+        }
+        // الصورة الرمزية
+        .reply-avatar {
+            width: 45px;
+            height: 45px;
+            min-width: 45px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: 600;
+            font-size: 1.1rem;
+            flex-shrink: 0;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+
+            &.bg-gradient-purple {
+                background: linear-gradient(135deg, #6dd5ed 0%, #2193b0 100%); // أزرق فاتح
+            }
+
+            &.bg-gradient-pink {
+                background: linear-gradient(135deg, #f857a6 0%, #ff5858 100%); // وردي/أحمر
+            }
+        }
+
+        // المسافات بين الردود
+        .media {
+            margin-bottom: 1.5rem;
+            align-items: flex-start;
+        }
+
+        // تحسين Media body
+        .media-body {
+            flex: 1;
+            max-width: calc(100% - 70px);
+
+            .card {
+                border-radius: 1rem;
+                overflow: visible;
+            }
+        }
+
+        // بالون رد العميل (يسار - RTL)
+        .client-bubble {
+            .card-body {
+                background: #eef7ff;
+                border-radius: 1rem 1rem 0 1rem;
+                position: relative;
+                padding: 1rem;
+
+                // السهم للعميل
+                &:before {
+                    content: "";
+                    position: absolute;
+                    left: -10px;
+                    top: 10px;
+                    width: 0;
+                    height: 0;
+                    border-style: solid;
+                    border-width: 0 0 15px 15px;
+                    border-color: transparent transparent #eef7ff transparent;
+                    border-radius: 5px;
+                }
+            }
+        }
+
+        // بالون رد الأدمن (يمين - RTL)
+        .admin-bubble {
+            .card-body {
+                background: #f1f1f181;
+                border-radius: 1rem 1rem 1rem 0;
+                position: relative;
+                padding: 1rem;
+
+                // السهم للأدمن
+                &:before {
+                    content: "";
+                    position: absolute;
+                    right: -10px;
+                    top: 10px;
+                    width: 0;
+                    height: 0;
+                    border-style: solid;
+                    border-width: 15px 0 0 15px;
+                    border-radius: 5px;
+                    border-color: rgba(0, 0, 0, 0) rgba(0, 0, 0, 0) rgba(0, 0, 0, 0) #f1f1f1a7;
+                }
+            }
+        }
+
+        // زر الحذف
+        .btn-delete-reply {
+            opacity: 0.6;
+            transition: opacity 0.2s;
+            line-height: 1;
+
+            &:hover {
+                opacity: 1;
+                text-decoration: none;
+            }
+
+            svg {
+                display: block;
+            }
+        }
+    }
+}

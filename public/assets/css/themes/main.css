@@ -1,0 +1,125 @@
+:root {
+
+    /* Accent 1 */
+    --accent-1: #C9A227;
+    --accent-soft-1: #c9a3272f;
+    --accent-link: #1B3A5C;
+
+    --accent: #1B3A5C;
+    --accent-soft: #1b3a5c30;
+    /* نفس اللون بصيغة RGB */
+
+
+    /* Navbar */
+    --nav-bg: #ffffff;
+    --nav-text-color: #000000;
+    --nav-hover-color: var(--accent);
+
+    /* Text Colors */
+    --text-black: #000000;
+    --text-gray: #666666;
+    --text-white: #ffffff;
+
+
+    /* Backgrounds */
+    --bg-main: #efefef;
+    --bg-white: #ffffff;
+    --bg-gray-50: #fcfcfc;
+    --bg-gray-100: #fafafa;
+    --bg-gray-200: #f1f1f1;
+
+    /* Borders */
+    --border-color: #f4f4f4;
+    --border-radius: 8px;
+
+
+    /* Buttons */
+    --btn-border-radius: var(--border-radius);
+    --btn-bg: var(--accent);
+    --btn-color: #ffffff;
+    /**/
+    --btn-soft-bg: rgba(0, 0, 0, 0.060);
+    --btn-soft-color: #000000;
+    /**/
+    --btn-second-bg: var(--accent-1);
+    --btn-second-color: #ffffff;
+
+
+    /* Inputs */
+    --input-color: #161616;
+    --input-height: 45px;
+    --input-background: #ffffff;
+    /**/
+    --input-border-color: #e7e7e7;
+    --input-border-radius: var(--border-radius);
+    /**/
+    --input-focus-border-color: var(--accent);
+    --input-focus-background: #ffffff;
+    --input-focus-shadow: 0 0 0 0.2rem rgba(27, 58, 92, 0.15);
+
+
+    /*8888888888888888888888888888888888888888888888888*/
+
+
+
+
+
+
+
+    /*2b2d33*/
+    --container-max-width: 1400px;
+
+    /* Brand Colors */
+    --brand-main-color: var(--accent);
+    /* 235cf7 */
+    --brand-second-color: #C9A227;
+
+
+
+    /* Colors */
+    --text-second: #444444;
+
+
+
+    --border-radius-md: 4px;
+    --border-radius-sm: 2px;
+    --border-radius-xs: 0px;
+
+
+    /**/
+
+
+
+    /* Navbar */
+    --navbar-height: 70px;
+    --navbar-bg: #ffffff;
+    --navbar-color: #000000;
+    /* --navbar-shadow: 0 1px 5px rgba(0, 0, 0, 0.1); */
+    --navbar-shadow: 0 1px 30px rgba(0, 0, 0, 0.070);
+
+
+
+
+    /* Card ( box ) Style Colors */
+    --card-bg: #fff;
+    --card-padding: 1rem;
+    --card-color: #212121;
+    --card-shadow: 18px 0 87px rgba(10, 15, 70, .07);
+    --card-border: none;
+    --card-border-radius: var(--border-radius);
+
+
+    /* DIRS */
+    --start: left;
+    --end: right;
+    --text-start: left;
+    --text-end: right;
+
+}
+
+html[dir="rtl"] {
+    --start: right;
+    --end: left;
+    --text-start: right;
+    --text-end: left;
+}

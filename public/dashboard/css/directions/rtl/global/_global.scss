@@ -1,0 +1,63 @@
+
+// Global
+body {
+    direction: rtl !important;
+    padding-right: var(--aside-width); // Replace
+    text-align: right;
+    
+}
+// h1,
+// h2,
+// h3,
+// h4,
+// h5,
+// h6,
+// label,
+// div,
+// section,
+// article,
+// b,
+// strong,
+// ul,
+// li,
+// a,
+// button {
+//     text-align: right;
+    
+// }
+
+/* Bootstrap */
+.alert-dismissible {
+    i,
+    svg {
+        margin-left: 5px;
+    }
+}
+///////////////////////////////////////////////////////////////// DELETE
+// Page Title And Button Add New
+#links-bar {
+    float: right;
+}
+
+.btn-add-new {
+    float: left;
+    margin-right: 5px;
+}
+
+// Padding Remove
+.pr-remove {
+    padding-left: 0px !important;
+}
+
+// Categories
+.search-buttons {
+    button,
+    a {
+        // Dir
+        left: 0px;
+        border-radius: var(--border-radius) 0px 0px var(--border-radius);
+    }
+}
+
+
+

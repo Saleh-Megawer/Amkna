@@ -1,0 +1,18 @@
+$response-alerts: (
+    "success" #fff #76aa60,
+    "error" #fff #bd362f,
+    "warning" #000 #ffc107,
+    "info" #004085 #cce5ff,
+    "notfound" #000 #ffc107,
+);
+
+@each $class-name, $color, $bg in $response-alerts {
+    .alert-box-#{$class-name} {
+        margin-bottom: 0px !important;
+        background-color: $bg;
+        padding: 10px 15px;
+        border-radius: var(--border-radius);
+        box-shadow: none !important;
+        color: $color;
+    }
+}

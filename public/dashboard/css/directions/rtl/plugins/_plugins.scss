@@ -1,0 +1,82 @@
+/*
+|||||||||||||||||||||||||||||||||||||||||||||||||| File Map
+- Bootstrap
+- Data table js
+- Font Aw..
+*/
+
+/*
+*
+*
+*
+* Bootstrap
+*
+*
+*
+*/
+
+.alert-dismissible .close {
+    left: -4px !important;
+    text-align: left;
+}
+.modal-open {
+    padding-left: 0px !important;
+    overflow: hidden;
+
+    // If Aside not display in dom set this option
+    @media (min-width: 1024px) {
+        padding-right: var(--aside-width) !important;
+    }
+}
+
+.dropdown-menu {
+    //  text-align: right ;
+}
+/*
+*
+*
+*
+* Font Aw..
+*
+*
+*
+*/
+.alert {
+    .svg-inline--fa {
+        margin-left: 5px;
+    }
+}
+
+/*
+*
+*
+*
+* Data table js
+*
+*
+*
+*/
+table.dataTable thead th,
+table.dataTable thead td,
+table.dataTable tfoot th,
+table.dataTable tfoot td {
+    text-align: right !important;
+}
+
+div.dataTables_wrapper div.dataTables_filter {
+    text-align: left !important;
+}
+
+#myTable_wrapper {
+    .col-md-6 {
+        padding: 0px !important;
+    }
+}
+#myTable_filter {
+    input {
+        width: 240px;
+        height: 40px;
+        padding: 0.5rem 0.5rem;
+        margin-left: 0px;
+    }
+}

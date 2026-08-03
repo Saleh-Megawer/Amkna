@@ -1,0 +1,41 @@
+// Aside
+#aside {
+    transition: left 0.3s linear; // Replace
+   // border-right: 1px solid  var(--aside-border-color);
+
+    left: 0px; // Replace
+    
+    // ul li a
+    .side-menu {
+        .side-item {
+            a {
+                .side-name-lable {
+                    margin-left: 10px; // Replace
+                }
+                .arrow-icon {
+                    float: right; // Replace
+                    transform: rotate(-90deg);
+                }
+            }
+
+            // Sub Menu
+            .sub-menu {
+                .sub-item {
+                    .side-icon {
+                        &::before {
+                            left: 6px; // Replace
+                            transform: rotate(40deg) !important; // Replace
+                            left: 7px;
+                        }
+
+                        &::after {
+                            left: 6px; // Replace
+                            transform: rotate(-40deg) !important; // Replace
+                            left: 7px;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

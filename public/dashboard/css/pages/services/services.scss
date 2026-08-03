@@ -1,0 +1,40 @@
+#services,#show-sub-services {
+    .box {
+        .table {
+            tbody {
+
+                td,
+                th {
+                    border-bottom: 1px solid #f5f6fa !important;
+                    padding-top: 0px;
+                    padding-bottom: 0px;
+                    line-height: 60px;
+                }
+
+                tr {
+                    transition: background-color 0.2s linear;
+
+                    &:hover {
+                        background-color: var(--background);
+                    }
+                }
+            }
+
+            .border-b:last-of-type {
+                border-bottom: none !important;
+            }
+        }
+    }
+}
+
+
+
+.partners-box {
+    position: relative;
+
+    .btn-delete-attech {
+        position: absolute;
+        top: 5px;
+        right: 20px;
+    }
+}

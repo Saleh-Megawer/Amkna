@@ -1,0 +1,87 @@
+// Button Action Effects
+.btn {
+    border-radius: var(--btn-border-radius) !important;
+    transition: all 0.1s linear;
+    padding: 0.67rem 1rem;
+    &:disabled {
+        cursor: not-allowed;
+        opacity: 0.6;
+    }
+    &:hover {
+        opacity: 0.9;
+    }
+    &:active {
+        opacity: 0.9;
+        transform: scale(0.98);
+    }
+    &:focus {
+        box-shadow: none !important;
+    }
+    font-size: 16px;
+    svg {
+        transition: all 0.1s linear;
+    }
+}
+
+.btn-sm {
+    padding: 0.25rem 0.5rem !important;
+    font-size: 0.875rem !important;
+    line-height: 1.5 !important;
+    border-radius: var(--btn-border-radius) !important;
+}
+
+.btn-light {
+    background-color: #e2e2e2;
+}
+
+.btn-light:hover {
+    color: #212529;
+    background-color: #eeeeee;
+    border-color: #eeeeee;
+}
+
+/*
+|
+| Soft Buttons
+|
+*/
+
+$buttons-soft: (
+    "btn-soft-success" $success $soft-success,
+    "btn-soft-info" $info $soft-info,
+    "btn-soft-primary" $primary $soft-primary,
+    "btn-soft-warning" $warning $soft-warning,
+    "btn-soft-danger" $danger $soft-danger,
+    "btn-soft-light" $light $soft-light,
+    "btn-soft-main" var(--btn-soft-color) var(--btn-soft-bg)
+);
+@each $class-name, $color, $bg in $buttons-soft {
+    .#{$class-name} {
+        background-color: $bg;
+        color: $color !important;
+        border-radius: var(--btn-border-radius);
+    }
+}
+
+.btn-outline-main {
+    background-color: transparent;
+    border: solid 1px var(--btn-bg);
+    color: var(--btn-bg);
+
+    &:hover {
+        background-color: var(--btn-bg);
+        color: var(--btn-color);
+        svg {
+            fill: var(--btn-color);
+        }
+    }
+}
+
+.btn-main {
+    background-color: var(--btn-bg);
+    color: var(--btn-color) !important;
+}
+.btn-second {
+    background-color: var(--btn-second-bg);
+    color: var(--btn-second-color) !important;
+}

@@ -1,0 +1,23 @@
+/*
+|
+| Soft Background
+|
+*/
+$background-color-list: (
+    "bg-soft-success": $soft-success,
+    "bg-soft-info": $soft-info,
+    "bg-soft-primary": $soft-primary,
+    "bg-soft-warning": $soft-warning,
+    "bg-soft-danger": $soft-danger,
+    "bg-soft-light": $soft-light,
+    "bg-soft-main": var(--soft-main-color),
+);
+@each $class-name, $color in $background-color-list {
+    .#{$class-name} {
+        background-color: $color;
+    }
+}
+
+.bg-main {
+    background-color: var(--background);
+}

@@ -1,0 +1,673 @@
+@import url("https://fonts.googleapis.com/css2?family=Noto+Kufi+Arabic:wght@100..900&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Tajawal:wght@300;400;500;700;800&display=swap");
+
+/* 
+|--------------------------------------------------------------------------
+| File Map
+|--------------------------------------------------------------------------
+| 1. Global
+| 2. Components
+|    2.1 Client Search Box
+| 3. Inputs
+| 4. Pagination (Laravel)
+| 5. Buttons Bar (Publish / Draft)
+| 6. Extra UI Helpers
+| 7. Input Price Icon Component
+| 8. Pagination Component Styles
+|--------------------------------------------------------------------------
+*/
+
+/*
+|--------------------------------------------------------------------------
+| 1. Global
+|--------------------------------------------------------------------------
+*/
+
+* {
+    margin: 0px;
+    padding: 0px;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+html,
+body {
+    width: 100%;
+    max-width: 100%;
+   overflow-x: clip;
+}
+
+
+body {
+    transition: padding 0.3s linear;
+    background-color: var(--background);
+    color: var(--color);
+    font-family: "Tajawal", sans-serif;
+    font-size: 0.95rem;
+}
+
+section {
+    scroll-margin-top: 120px;
+}
+
+button {
+    outline: none;
+    border: 0px;
+    background-color: transparent;
+
+    &:disabled {
+        cursor: not-allowed;
+    }
+}
+
+a {
+    text-decoration: none !important;
+    color: #007bff;
+}
+.stat-link {
+    color: #3c3c3c;
+    &:hover {
+        color: #007bff;
+    }
+}
+hr {
+    border-top: 1px solid rgba(128, 128, 128, 0.148);
+}
+
+.display-none {
+    display: none;
+}
+
+.show-full-text {
+    cursor: pointer;
+}
+
+.ltr {
+    direction: ltr !important;
+}
+
+.md-currency-icon-svg {
+    svg {
+        width: 18px;
+        height: 18px;
+    }
+}
+.sm-currency-icon-svg {
+    svg {
+        width: 16px;
+        height: 16px;
+    }
+}
+.xs-currency-icon-svg {
+    svg {
+        margin-top: -2px;
+        width: 14px;
+        height: 14px;
+    }
+}
+/*
+|--------------------------------------------------------------------------
+| 2. Components
+|--------------------------------------------------------------------------
+*/
+
+// .table-modern {
+//     td,
+//     th {
+//         border-bottom: 1px solid #f5f6fa !important;
+//         padding-right: 25px !important;
+//         padding-left: 25px !important;
+//         vertical-align: middle;
+//     }
+//     tbody {
+//         background-color: #fff;
+//         tr {
+//             transition: background-color 0.2s linear;
+
+//             &:hover {
+//                 background-color: var(--table-hover-bg);
+//             }
+
+//             &:last-of-type {
+//                 td {
+//                     border-bottom: none !important;
+//                 }
+//             }
+//         }
+//     }
+
+//     .border-b:last-of-type {
+//         border-bottom: none !important;
+//     }
+// }
+
+.table-modern {
+    td,
+    th {
+        border-bottom: none !important; // مخفي افتراضيًا
+        border-top: 1px solid #eef0f6;
+        padding-right: 25px !important;
+        padding-left: 25px !important;
+        vertical-align: middle;
+    }
+
+    tbody tr {
+        transition: background-color 0.2s linear;
+
+        &:hover {
+            background-color: var(--table-hover-bg);
+        }
+    }
+
+    /* مود البوردر الكامل */
+    &.table-modern-bordered {
+        border: 1px solid #eef0f6;
+        td,
+        th {
+            border: 1px solid #eef0f6 !important;
+        }
+    }
+}
+
+.table-modern-sm {
+    td,
+    th {
+        padding: 0.6rem;
+    }
+}
+
+.table-modern-xs {
+    td,
+    th {
+        padding-right: 10px !important;
+        padding-left: 10px !important;
+        padding: 10px 0;
+    }
+}
+
+.li-inside {
+    list-style-position: inside;
+}
+
+.error {
+    color: #ff0000;
+    display: block;
+    border-radius: var(--border-radius);
+    margin-top: 3px;
+    font-size: 14px;
+}
+
+#links-bar {
+    margin-top: 15px;
+    margin-bottom: 15px;
+
+    a {
+        font-size: 16px;
+        color: #2d2d2d;
+        font-weight: 400;
+    }
+
+    .links-bar-item-slash {
+        margin: 0px 2px;
+    }
+
+    a:first-child {
+        font-size: 22px !important;
+        color: #000 !important;
+        margin-bottom: 0px;
+        font-weight: 600 !important;
+    }
+    a:last-child {
+        color: var(--link-color);
+        font-weight: 500;
+    }
+
+    @media (max-width: 500px) {
+        a {
+            font-size: 14px;
+        }
+        a:first-child {
+            font-size: 18px !important;
+        }
+    }
+    @media (max-width: 380px) {
+        a {
+            font-size: 13px;
+        }
+        a:first-child {
+            font-size: 16px !important;
+        }
+    }
+}
+
+.btn-add-new {
+    padding: clamp(0.15625rem, 0.1012rem + 0.1761vw, 0.3125rem) 10px;
+    margin-top: 18px;
+    font-size: 14px;
+}
+
+.active-link {
+    color: var(--main-color);
+}
+
+.submit-spinner {
+    border: 0.2em solid var(--btn-main-color);
+    border-right-color: transparent;
+}
+
+.icon {
+    line-height: 1;
+    vertical-align: middle;
+}
+
+/* 2.1 Wrapper for client search input and results */
+// .client-search {
+//     position: relative;
+
+//     .client-search-results {
+//         position: absolute;
+//         top: 100%;
+//         left: 0;
+//         width: 100%;
+//         background: #fff;
+//         border: 1px solid #ddd;
+//         border-radius: 6px;
+//         margin-top: 4px;
+//         max-height: 220px;
+//         overflow-y: auto;
+//         display: none;
+//         z-index: 50;
+
+//         .client-search-item {
+//             padding: 8px 12px;
+//             cursor: pointer;
+//             transition: 0.2s;
+
+//             &:hover {
+//                 background: #f5f5f5;
+//             }
+//         }
+//     }
+// }
+
+.client-search {
+    position: relative;
+
+    .client-search-input-wrapper {
+        position: relative;
+    }
+
+    .client-search-clear {
+        position: absolute;
+        left: 12px;
+        top: 54%;
+        transform: translateY(-50%);
+        background: #e3e3e3;
+        color: #000000;
+        border: none;
+        border-radius: var(--border-radius);
+        padding: 4px 6px;
+        font-size: 12px;
+        cursor: pointer;
+        z-index: 10;
+        transition: 0.2s;
+        &:hover {
+            background: #e00f24;
+            svg {
+                fill: #ffffff;
+            }
+        }
+        svg {
+            fill: #000000;
+            width: 16px;
+            height: 16px;
+        }
+    }
+
+    .client-search-results {
+        position: absolute;
+        top: 100%;
+        left: 0;
+        width: 100%;
+        background: #fff;
+        border: 1px solid #ddd;
+        border-radius: 6px;
+        margin-top: 4px;
+        max-height: 220px;
+        overflow-y: auto;
+        display: none;
+        z-index: 50;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+
+        .client-search-item {
+            padding: 8px 12px;
+            cursor: pointer;
+            transition: 0.2s;
+            border-bottom: 1px solid #f0f0f0;
+
+            &:last-child {
+                border-bottom: none;
+            }
+
+            &:hover {
+                background: #f5f5f5;
+            }
+        }
+
+        .client-search-no-results {
+            padding: 12px;
+            text-align: center;
+            color: #999;
+            font-size: 14px;
+        }
+    }
+}
+
+/*
+|--------------------------------------------------------------------------
+| 3. Inputs
+|--------------------------------------------------------------------------
+*/
+
+input[type="checkbox"] {
+    vertical-align: middle;
+}
+input[type="number"] {
+    direction: ltr;
+}
+
+input[type="submit"] {
+    border: 0px;
+}
+
+input:read-only {
+    color: gray !important;
+    cursor: not-allowed;
+    &:focus {
+        border: 1px solid var(--border-color) !important;
+        box-shadow: unset !important;
+    }
+}
+
+input[type="file"],
+[type="checkbox"],
+input[type="color"] {
+    opacity: 1 !important;
+    cursor: pointer !important;
+    background-color: var(--input-background) !important;
+}
+
+/*
+|--------------------------------------------------------------------------
+| 4. Pagination custom for Laravel
+|--------------------------------------------------------------------------
+*/
+
+// .pagination {
+//     li {
+//         a {
+//             background-color: var(--card-background);
+//             padding: 9px 15px;
+//             border-radius: var(--border-radius);
+//             color: var(--card-color);
+//             transition: all 0.1s linear;
+
+//             &:hover {
+//                 background-color: var(--btn-main-background);
+//                 color: var(--btn-main-color);
+//             }
+//         }
+//     }
+
+//     .pages {
+//         margin: 0px 8px;
+//     }
+// }
+
+// ============================================
+// pagination
+// ============================================
+.pagination {
+    text-align: center;
+    margin: 10px 0;
+
+    .nav-links {
+        flex-wrap: wrap;
+        display: inline-flex;
+        gap: 1px;
+        align-items: center;
+        // background: #ffffff;
+        //  padding: 10px 15px;
+        // border-radius: var(--border-radius-xs);
+        //  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+
+        .page-numbers {
+            background: #ffffff;
+            display: flex;
+            min-width: 35px;
+            height: 35px;
+            justify-content: center;
+            align-items: center;
+
+            font-size: 16px;
+            font-weight: bold;
+            color: #000;
+            border-radius: var(--border-radius);
+            border: solid 1px var(--border-color);
+            transition:
+                background 0.3s,
+                color 0.3s;
+
+            &:hover {
+                background: var(--second-color);
+                color: #fff;
+                border: solid 1px var(--second-color);
+            }
+
+            &.current {
+                background: var(--second-color);
+                color: #fff;
+                pointer-events: none;
+            }
+
+            &.dots {
+                background: transparent;
+                color: #6c757d;
+                border: none !important;
+                min-width: 25px !important;
+            }
+        }
+
+        .next,
+        .prev {
+            // background: var(--second-color);
+            color: var(--text-black);
+            // padding: 8px 15px;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: background 0.3s;
+            display: flex;
+            width: 35px;
+            height: 35px;
+            justify-content: center;
+            align-items: center;
+            svg {
+                width: 16px;
+                height: 16px;
+                fill: var(--second-color);
+            }
+            &:hover {
+                background: var(--second-color);
+                svg {
+                    fill: #fff;
+                }
+            }
+        }
+    }
+}
+
+/*
+|--------------------------------------------------------------------------
+| 5. Buttons bar (publish / draft…)
+|--------------------------------------------------------------------------
+*/
+
+#publish-buttons-bar {
+    position: fixed;
+    width: 100%;
+    bottom: 0px;
+    right: 0px;
+    left: 0px;
+    background-color: #ffffff81; //var(--card-background);
+    backdrop-filter: blur(5px);
+    z-index: 1000;
+    padding: 12px 15px;
+    box-shadow: var(--card-shadow);
+    border-top: 1px dashed var(--border-color);
+    text-align: left;
+
+    @media (max-width: 768px) {
+        padding: 8px 15px;
+        .btn {
+            padding-top: 5px;
+            padding-bottom: 5px;
+        }
+    }
+}
+
+.table thead th {
+    border-bottom: 1px solid var(--border-color) !important;
+    border-top: none;
+}
+
+th,
+td {
+    white-space: nowrap;
+}
+
+.text-wrap {
+    white-space: normal !important;
+}
+
+/*
+|--------------------------------------------------------------------------
+| 6. Extra UI Helpers
+|--------------------------------------------------------------------------
+*/
+
+.phone-inputs {
+    direction: ltr;
+    display: flex;
+    flex-wrap: wrap;
+
+    .choices__list--single .choices__item,
+    .choices__list--dropdown .choices__item {
+        text-align: left !important;
+    }
+
+    .choices[data-type*="select-one"] .choices__inner {
+        direction: ltr;
+        text-align: left;
+    }
+
+
+    label {
+        width: 100%;
+        font-weight: 500;
+    }
+
+    .input-flags {
+        width: 100px;
+        margin-right: 5px;
+    }
+
+    .input-phone {
+        width: calc((100% - 100px) - 5px);
+    }
+
+    .dropdown-item.active,
+    .dropdown-item:active {
+        background-color: #e8e8e8;
+    }
+}
+
+/*
+|--------------------------------------------------------------------------
+| 7. Input Price Set Currency Icon
+|--------------------------------------------------------------------------
+*/
+
+.input-price {
+    position: relative;
+
+    input {
+        padding-left: calc(var(--input-height) / 2 + 15px) !important;
+        direction: ltr;
+    }
+
+    .append-icon {
+        position: absolute;
+        width: calc(var(--input-height) / 2);
+        top: calc(var(--input-height) / 2 - 6px);
+        z-index: 1;
+        left: 10px;
+        text-align: center;
+        svg {
+            width: 16px;
+            height: 16px;
+            opacity: 0.5;
+        }
+    }
+}
+
+/*
+|--------------------------------------------------------------------------
+| 8. Pagination Component Styles
+| This section defines the appearance and behavior of pagination elements
+| across the admin panel, including active states, hover effects, and icons.
+|--------------------------------------------------------------------------
+*/
+.main-pageinate {
+    .pagination {
+        flex-wrap: wrap;
+
+        .active {
+            .page-link {
+                background-color: var(--btn-third-background) !important;
+                color: var(--btn-third-color) !important;
+            }
+        }
+
+        .page-link {
+            $link-h: 38px;
+            border-radius: var(--border-radius);
+            width: $link-h;
+            height: $link-h;
+            margin: 5px 2px;
+            text-align: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            line-height: unset;
+            border: none !important;
+            font-weight: 500;
+
+            &:focus {
+                box-shadow: none !important;
+            }
+
+            &:hover {
+                background-color: var(--btn-soft-third-background);
+                color: var(--btn-soft-third-color);
+                border-color: var(--second-color);
+                svg {
+                    fill: #fff;
+                }
+            }
+        }
+    }
+}

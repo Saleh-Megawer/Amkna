@@ -1,0 +1,66 @@
+:root {
+
+    /* Website Main Background */
+    --background: #f3f3f9;
+    /* Website Main Color For Basic Text */
+    --color: #212529;
+
+    /* Main & Secondary Colors For This Theme */
+    --main-color: #405189;
+    --secondary-color: #6c757d;
+
+    --link-color: var(--main-color);
+
+
+    /* Borders */
+    --border-color: #ededed;
+    --border-radius: 3px;
+
+    /* Card ( box ) Style Colors */
+    --card-background: #fff;
+    --card-color: var(--color);
+    --card-shadow:0px 2px 4px rgba(214, 214, 214, 0.214); /* box-shadow: rgba(0, 0, 0, 0.1) 0px 1px 2px 0px; */
+    --card-border: 1px solid #ededed;
+
+
+    /* Buttons Colors */
+    --btn-main-background: var(--main-color);
+    --btn-main-color: #fff;
+    --btn-secondary-background:  rgba(53,119,241,.15);
+    --btn-secondary-color: #3577f1;
+
+
+
+
+    /* Input */
+    --input-color: var(--color);
+    --input-background: #fff;
+    --input-border-color: var(--border-color);
+    --input-focus-border-color: #a0a8c4;
+    --input-focus-background: #fff;
+
+
+    /* Aside ( side bar ) Bar */
+    --aside-background: #405189;
+    --aside-border-color: var(--aside-background);
+    --aside-color: #bdc4de;
+    /*var(--color);*/
+
+    /* hover links */
+    --aside-link-hover-background: #4c5f9d;
+    --aside-link-hover-color: #fff;
+    /*var(--color);*/
+    /* active links */
+    --aside-link-active-background: #4c5f9d;
+    --aside-link-active-color: #fff;
+    /*var(--color);*/
+
+
+    /* Navbar */
+    --navbar-background: #fff;
+    --navbar-color: var(--color);
+    --navbar-hover-color: #abb9e8;
+    /*var(--color);*/
+
+
+}

@@ -1,0 +1,32 @@
+#mailbox {
+    .folders {
+        .nav {
+            i {
+                margin-left: 5px;
+            }
+            svg {
+                margin-left: 5px;
+            }
+        }
+    }
+    #Inbox {
+        .mail {
+            .send-at {
+                text-align: left;
+            }
+            .send-by {
+                margin-right: 5px;
+            }
+        }
+    }
+}
+#read-mail {
+    .box-head {
+        .name {
+            float: right;
+        }
+        .actions {
+            float: left;
+        }
+    }
+}

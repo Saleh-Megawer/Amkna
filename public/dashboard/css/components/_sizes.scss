@@ -1,0 +1,16 @@
+/*
+ |
+ | Sizes
+ |
+*/
+$sizes: (128, 256);
+
+@each $size in $sizes {
+    .w-#{$size}px {
+        width: $size + px;
+    }
+
+    // .h-#{$size}px {
+    //     height: $size + px;
+    // }
+}

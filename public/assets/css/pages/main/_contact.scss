@@ -1,0 +1,321 @@
+// Shadows
+$shadow-lg: 0 10px 40px rgba(0, 0, 0, 0.08);
+$shadow-md: 0 8px 20px rgba(208, 169, 104, 0.15);
+$shadow-sm: 0 4px 15px rgba(0, 0, 0, 0.1);
+$shadow-hover: 0 6px 20px rgba(208, 169, 104, 0.25);
+
+$transition-base: all 0.3s ease;
+
+// Gradients
+$primary-gradient: linear-gradient(135deg, var(--accent-1) 0%, #212121 100%);
+$accent-gradient: linear-gradient(135deg, var(--accent) 0%, #b8935a 100%);
+$green-gradient: linear-gradient(135deg, #25d366 0%, #128c7e 100%);
+
+.contact-body {
+    padding-top: 0;
+    background-color: var(--bg-gray-100);
+}
+// Contact Hero Section
+.contact-hero {
+    background: $primary-gradient;
+    padding: 80px 0 100px;
+
+    position: relative;
+    overflow: hidden;
+
+    &::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background-image: url("../images/banner-contact.jpg");
+        background-position: center center;
+        background-size: cover;
+        opacity: 0.3;
+    }
+
+    &__title {
+        font-size: 2.8rem;
+        color: var(--text-white);
+
+        @media (max-width: 768px) {
+            font-size: 2rem;
+        }
+    }
+
+    &__desc {
+        font-size: 1.1rem;
+        color: var(--text-white);
+        opacity: 0.9;
+
+        @media (max-width: 768px) {
+            font-size: 1rem;
+        }
+    }
+}
+
+// Section Badge
+.section-badge {
+    background: var(--accent-soft);
+    color: var(--accent);
+    padding: 8px 20px;
+    border-radius: 25px;
+    font-size: 14px;
+    font-weight: 600;
+    display: inline-block;
+    margin-bottom: 16px;
+    border: 1px solid rgba(208, 169, 104, 0.2);
+}
+
+// Contact Card
+.contact-card {
+    background: var(--bg-white);
+    border-radius: var(--border-radius);
+    padding: 40px;
+    position: relative;
+    z-index: 10;
+    transition: $transition-base;
+    border: 1px solid var(--border-color);
+    &__title {
+        font-size: 1.5rem;
+        color: var(--text-black);
+        font-weight: 600;
+    }
+
+    @media (max-width: 768px) {
+        padding: 24px;
+    }
+
+}
+
+// Contact Method
+.contact-link {
+    text-decoration: none;
+    color: inherit;
+    display: block;
+}
+
+.contact-method {
+    background: var(--bg-gray-100);
+    border-radius: var(--border-radius);
+    padding: 24px;
+    margin-bottom: 16px;
+    transition: $transition-base;
+    border: 2px solid transparent;
+
+    &:hover {
+        background: var(--bg-white);
+        border-color: var(--accent);
+        box-shadow: $shadow-md;
+        transform: translateX(8px);
+
+        [dir="rtl"] & {
+            transform: translateX(-8px);
+        }
+    }
+
+    &__info {
+        flex: 1;
+
+        small {
+            font-size: 0.875rem;
+            color: var(--text-gray);
+        }
+
+        h5 {
+            font-size: 1.1rem;
+            color: var(--text-black);
+            font-weight: 600;
+        }
+    }
+
+    &__email {
+        font-size: 0.95rem !important;
+        word-break: break-all;
+    }
+
+    @media (max-width: 768px) {
+        padding: 16px;
+
+        &:hover {
+            transform: translateX(4px);
+
+            [dir="rtl"] & {
+                transform: translateX(-4px);
+            }
+        }
+    }
+}
+
+// Contact Icon
+.contact-icon {
+    width: 56px;
+    height: 56px;
+    border-radius: var(--border-radius);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+
+    svg {
+        width: 28px;
+        height: 28px;
+        fill: var(--text-white);
+    }
+
+    &--green {
+        background: $green-gradient;
+    }
+
+    &--blue {
+        background: $primary-gradient;
+    }
+
+    &--orange {
+        background: $accent-gradient;
+    }
+
+    @media (max-width: 768px) {
+        width: 48px;
+        height: 48px;
+
+        svg {
+            width: 24px;
+            height: 24px;
+        }
+    }
+}
+
+// Address Box
+.address-box {
+    background: $primary-gradient;
+    color: var(--text-white);
+    padding: 32px;
+    border-radius: var(--border-radius);
+    margin-bottom: 24px;
+    position: relative;
+    overflow: hidden;
+
+    &::after {
+        content: "";
+        position: absolute;
+        top: -50%;
+        right: -20%;
+        width: 200px;
+        height: 200px;
+        background: var(--accent-soft);
+        border-radius: 50%;
+
+        [dir="rtl"] & {
+            right: auto;
+            left: -20%;
+        }
+    }
+
+    &__title {
+        font-weight: 600;
+        margin-bottom: 12px;
+        color: var(--text-white);
+        font-size: 1.3rem;
+        position: relative;
+        z-index: 1;
+    }
+
+    &__text {
+        margin: 0;
+        opacity: 0.95;
+        line-height: 1.8;
+        margin-bottom: 8px;
+        position: relative;
+        z-index: 1;
+
+        &:last-child {
+            margin-bottom: 0;
+        }
+    }
+
+    @media (max-width: 768px) {
+        padding: 24px;
+
+        &__title {
+            font-size: 1.1rem;
+        }
+    }
+}
+
+// Working Hours
+.working-hours {
+    &__text {
+        line-height: 1.8;
+        color: var(--text-gray);
+
+        strong {
+            color: var(--text-black);
+        }
+    }
+}
+
+// Map Container
+.map-container {
+    border-radius: var(--border-radius);
+    overflow: hidden;
+    box-shadow: $shadow-lg;
+    height: 350px;
+    border: 1px solid var(--border-color);
+
+    iframe {
+        width: 100%;
+        height: 100%;
+        border: 0;
+    }
+
+    @media (max-width: 768px) {
+        height: 350px;
+        border-radius: var(--border-radius);
+    }
+}
+
+// Location Section
+.location-section {
+    background-color: var(--bg-main);
+}
+
+// Google reCAPTCHA Styling
+.g-recaptcha {
+    > div {
+        margin: 0 auto;
+
+        @media (max-width: 480px) {
+            transform: scale(0.85);
+            transform-origin: 0 0;
+
+            [dir="rtl"] & {
+                transform-origin: 100% 0;
+            }
+        }
+    }
+}
+
+// Print Styles
+@media print {
+    .contact-hero,
+    .contact-form,
+    .map-container {
+        display: none;
+    }
+
+    .address-box {
+        background: var(--bg-white);
+        color: var(--text-black);
+        border: 2px solid var(--accent-1);
+    }
+}
+
+// Smooth Scrolling
+@media (prefers-reduced-motion: no-preference) {
+    html {
+        scroll-behavior: smooth;
+    }
+}

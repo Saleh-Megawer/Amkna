@@ -1,0 +1,77 @@
+//// Theme
+$border-color: var(--border-color);
+$border-radius: var(--border-radius);
+$text-color: #474747;
+$main-color: var(--third-color);
+
+.purpose-wrapper {
+    // This Code For Override the code on _bootstreap.scss
+    label {
+        position: unset;
+        top: 0;
+        right: 0;
+    }
+    .purpose-options {
+        .label-content {
+            cursor: pointer;
+            text-align: center;
+            min-width: 120px;
+            padding: 0.5rem 0.75rem;
+            border: solid 1px $border-color;
+            border-radius: $border-radius;
+            margin-left: 5px;
+
+            // input radius
+            input {
+                display: none;
+            }
+
+            // icons
+            .purpose-option-icon svg {
+                width: 26px;
+                height: 26px;
+                margin-left: 3px;
+                fill: $text-color;
+            }
+
+            // Name
+            .purpose-option-name {
+                color: $text-color;
+                font-weight: 600;
+            }
+        }
+
+        .is-active-purpose {
+            color: $main-color;
+            border: solid 1px $main-color;
+            position: relative;
+            z-index: 0;
+            &::after {
+                content: "";
+                position: absolute;
+                inset: 0px;
+                background-color: $main-color;
+                opacity: 0.15;
+                z-index: 2;
+            }
+            &::before {
+                content: "";
+                z-index: 3;
+                background-image: url(data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0idXRmLTgiPz4NCjwhLS0gR2VuZXJhdG9yOiBBZG9iZSBJbGx1c3RyYXRvciAyNC4zLjAsIFNWRyBFeHBvcnQgUGx1Zy1JbiAuIFNWRyBWZXJzaW9uOiA2LjAwIEJ1aWxkIDApICAtLT4NCjxzdmcgdmVyc2lvbj0iMS4xIiBpZD0iTGF5ZXJfMSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB4bWxuczp4bGluaz0iaHR0cDovL3d3dy53My5vcmcvMTk5OS94bGluayIgeD0iMHB4IiB5PSIwcHgiDQoJIHZpZXdCb3g9IjAgMCAxMTIuMyAxMTEuNCIgc3R5bGU9ImVuYWJsZS1iYWNrZ3JvdW5kOm5ldyAwIDAgMTEyLjMgMTExLjQ7IiB4bWw6c3BhY2U9InByZXNlcnZlIj4NCjxzdHlsZSB0eXBlPSJ0ZXh0L2NzcyI+DQoJLnN0MHtmaWxsOiNGRkZGRkY7fQ0KCS5zdDF7ZmlsbDojNTY4MkIxO30NCjwvc3R5bGU+DQo8cmVjdCB4PSIyMi40IiB5PSIxOS40IiBjbGFzcz0ic3QwIiB3aWR0aD0iNjUuOSIgaGVpZ2h0PSI2OS44Ii8+DQo8cGF0aCBjbGFzcz0ic3QxIiBkPSJNOTMuOCwzLjZjOC4yLDAsMTUsNi43LDE1LDE1djc0LjhjMCw4LjItNi43LDE1LTE1LDE1SDE5Yy04LjIsMC0xNS02LjctMTUtMTVWMTguNmMwLTguMiw2LjctMTUsMTUtMTUNCglMOTMuOCwzLjZMOTMuOCwzLjZ6IE04NCwzMC4yYy0yLjUtMS44LTYtMS4zLTcuOCwxLjJMNDguMyw2OS44TDM2LjEsNTcuNmMtMi4yLTIuMi01LjgtMi4yLTcuOSwwYy0yLjIsMi4yLTIuMiw1LjgsMCw3LjlMNDUsODIuNA0KCWMxLjIsMS4yLDIuOCwxLjgsNC40LDEuNmMxLjYtMC4xLDMuMS0xLDQuMS0yLjNMODUuMywzOEM4Ny4xLDM1LjUsODYuNSwzMiw4NCwzMC4yeiIvPg0KPC9zdmc+DQo=);
+                height: 20px;
+                width: 20px;
+                position: absolute;
+                right: 5px;
+                top: -8px;
+            }
+            // icons
+            .purpose-option-icon svg {
+                fill: $main-color;
+            }
+            // Name
+            .purpose-option-name {
+                color: $main-color;
+            }
+        }
+    }
+}

@@ -1,0 +1,217 @@
+$transition-base: all 0.3s ease;
+
+.faqs-body {
+    padding-top: 0;
+}
+
+#faqs-title {
+    font-size: clamp(1.25rem, 0.7658rem + 1.5493vw, 2.625rem);
+}
+// FAQs Hero
+.faqs-hero {
+    background: linear-gradient(135deg, var(--accent-1) 0%, #212121 100%);
+    padding: 80px 0 60px;
+    position: relative;
+    overflow: hidden;
+
+    .lead {
+        font-size: clamp(1rem, 0.912rem + 0.2817vw, 1.25rem);
+    }
+
+    &::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background-image:
+            linear-gradient(
+                30deg,
+                var(--accent) 12%,
+                transparent 12.5%,
+                transparent 87%,
+                var(--accent) 87.5%,
+                var(--accent)
+            ),
+            linear-gradient(
+                150deg,
+                var(--accent) 12%,
+                transparent 12.5%,
+                transparent 87%,
+                var(--accent) 87.5%,
+                var(--accent)
+            ),
+            linear-gradient(
+                30deg,
+                var(--accent) 12%,
+                transparent 12.5%,
+                transparent 87%,
+                var(--accent) 87.5%,
+                var(--accent)
+            ),
+            linear-gradient(
+                150deg,
+                var(--accent) 12%,
+                transparent 12.5%,
+                transparent 87%,
+                var(--accent) 87.5%,
+                var(--accent)
+            );
+        background-size: 80px 140px;
+        background-position:
+            0 0,
+            0 0,
+            40px 70px,
+            40px 70px;
+        opacity: 0.02;
+    }
+
+    &__icon {
+        width: 100px;
+        height: 100px;
+
+        svg {
+            color: var(--accent);
+        }
+    }
+
+    @media (max-width: 768px) {
+        padding: 60px 0 40px;
+    }
+}
+
+// Nav Pills
+.nav-pills {
+    .nav-link {
+        color: var(--text-gray);
+        border: 1px solid var(--border-color);
+        margin: 0 8px;
+        transition: $transition-base;
+
+        &:hover {
+            color: var(--accent);
+            border-color: var(--accent);
+            background: var(--accent-soft);
+        }
+
+        &.active {
+            background: var(--accent);
+            color: var(--accent-1);
+            border-color: var(--accent);
+        }
+    }
+
+    @media (max-width: 768px) {
+        .nav-link {
+            margin: 0 4px;
+            padding: 8px 16px;
+            font-size: 14px;
+        }
+    }
+}
+
+// FAQ Accordion
+.faqs-accordion {
+    .card {
+        transition: $transition-base;
+        overflow: hidden;
+
+        &:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.12) !important;
+        }
+    }
+
+    .btn-link {
+        text-decoration: none;
+        color: var(--text-black);
+
+        &:hover {
+            text-decoration: none;
+        }
+
+        &:focus {
+            text-decoration: none;
+            box-shadow: none;
+        }
+    }
+
+    .faq-icon {
+        transition: transform 0.3s ease;
+        color: var(--accent);
+        flex-shrink: 0;
+        margin-right: 12px;
+
+        @include rtl {
+            margin-right: 0;
+            margin-left: 0px;
+        }
+    }
+
+    .collapse.show + .card-body {
+        animation: fadeIn 0.3s ease;
+    }
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+// Contact Card
+.faqs-contact {
+    background: linear-gradient(135deg, rgba(208, 169, 104, 0.05) 0%, rgba(0, 0, 0, 0.02) 100%);
+    border: 2px solid var(--accent) !important;
+
+    &__icon {
+        width: 80px;
+        height: 80px;
+
+        svg {
+            color: var(--accent);
+        }
+    }
+
+    .btn:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 6px 20px rgba(208, 169, 104, 0.3);
+    }
+}
+
+// Print Styles
+// @media print {
+//     .faqs-hero {
+//         background: var(--bg-white);
+
+//         &__icon {
+//             display: none;
+//         }
+
+//         .display-4 {
+//             color: var(--text-black) !important;
+//         }
+//     }
+
+//     .nav-pills,
+//     .faqs-contact,
+//     #faqSearch {
+//         display: none !important;
+//     }
+
+//     .card {
+//         box-shadow: none !important;
+//         border: 1px solid var(--border-color) !important;
+//         page-break-inside: avoid;
+//     }
+
+//     .collapse {
+//         display: block !important;
+//     }
+// }

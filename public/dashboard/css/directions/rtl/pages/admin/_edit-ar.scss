@@ -1,0 +1,60 @@
+header {
+    // Btn Change Cover
+    $btn-width: 160px;
+    #btn-choose-cover {
+        left: 15px; 
+    }
+    #form-change-cover {
+        button {
+            left: 20px + $btn-width; 
+        }
+    }
+}
+#edit {
+    // portfolio
+    #portfolio {
+        #btn-portfolio-open-model {
+            left: 0px; 
+        }
+        .btn-update-port {
+            float: left; 
+        }
+    }
+
+    // Profile Details
+    #profile-details {
+        .buttons-update {
+            text-align: left; 
+        }
+
+        // Experience
+        #experience {
+            #form-inputs {
+                .row {
+                    $padding-top: 18px;
+                    .btn-delete-job {
+                        left: 0px; 
+                    }
+                }
+            }
+        }
+
+        // Account
+        #account {
+            #security {
+                .info {
+                    float: right; 
+                }
+                form {
+                    float: left; 
+                }
+            }
+        }
+
+        .owner-update-password {
+            button {
+                left: 0px;
+            }
+        }
+    }
+}

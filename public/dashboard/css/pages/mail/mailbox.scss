@@ -1,0 +1,139 @@
+#mailbox {
+    svg {
+        color: var(--color);
+    }
+
+    .folders {
+        background-color: var(--card-background);
+        padding: 0px 0px;
+        border-radius: var(--border-radius);
+        .nav {
+            h5,
+            button,
+            a {
+                padding: 0px 15px;
+                font-weight: 400;
+                height: 53px;
+                line-height: 53px;
+                color: var(--color);
+            }
+            button,
+            a {
+                border-top: solid 1px var(--border-color);
+            }
+            i,
+            svg {
+                font-size: 17px;
+            }
+
+            .active {
+                color: var(--aside-link-active-color);
+                font-weight: 500;
+            }
+        }
+    } // End Tabs Links
+
+    // Tabs Contents
+    #Inbox {
+        .box {
+            padding-bottom: 0px !important;
+            hr {
+                margin-bottom: 0px;
+            }
+        }
+
+        #multi-actions {
+            padding-bottom: 0px !important;
+            button,
+            label {
+                width: 30px;
+                height: 30px;
+                border-radius: var(--border-radius);
+            }
+        }
+    }
+}
+
+#mails {
+    position: relative;
+    .overlay {
+        position: absolute;
+        display: none;
+        inset: 0px;
+        background-color: var(--background);
+        opacity: 0.5;
+        border-radius: var(--border-radius);
+    }
+}
+.mail {
+    padding: 12px 0px;
+    border-top: 1px solid var(--border-color);
+
+    .send-by {
+        h6 {
+            font-weight: 600;
+            color: #000 !important;
+        }
+    }
+    &:last-of-type {
+        border-bottom: 0px;
+        &:hover {
+            border-radius: 0px 0px var(--border-radius) var(--border-radius);
+        }
+    }
+    &:hover {
+        background-color: #eee;
+    }
+
+    &:hover .send-by a {
+        color: var(--aside-link-hover-color) !important;
+    }
+}
+.unread {
+    color: #000 !important;
+    .send-by {
+        color: var(--aside-link-active-color) !important;
+    }
+}
+.send-at {
+    color: #000;
+}
+.content {
+    p {
+        color: #000;
+    }
+}
+/*
+|
+| Read Page
+|
+*/
+#read-mail {
+    #reply {
+        display: none;
+    }
+}
+
+.checkbox {
+    width: 20px !important;
+    height: 20px !important;
+    background-color: var(--background);
+    cursor: pointer;
+    border-radius: 3px !important;
+    text-align: center;
+    font-size: 15px;
+    margin-bottom: 0px;
+    &::after {
+        content: "-";
+        color: transparent;
+    }
+}
+// .checked {
+//     background-color: var(--main-color);
+//     line-height: 20px;
+//     &::after {
+//         content: "\f00c";
+//         font: var(--fa-font-solid);
+//         color: #fff;
+//     }
+// }

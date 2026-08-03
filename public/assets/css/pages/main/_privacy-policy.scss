@@ -1,0 +1,130 @@
+$transition-base: all 0.3s ease;
+
+// .privacy-body{
+//     padding-top: 0;
+// }
+
+// Privacy Hero
+.privacy-hero {
+    @media (max-width: 768px) {
+        padding: 60px 0 40px;
+    }
+}
+
+// Privacy Icon in Cards
+.privacy-icon {
+    width: 56px;
+    height: 56px;
+    background: var(--accent-soft);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+
+    svg {
+        color: var(--accent);
+    }
+}
+
+// Privacy List
+.privacy-list {
+    li {
+        position: relative;
+
+        &::before {
+            content: "";
+            position: absolute;
+            left: 0;
+            top: 10px;
+            width: 6px;
+            height: 6px;
+            background: var(--accent);
+            border-radius: 50%;
+            [dir="rtl"] & {
+                left: auto;
+                right: 0;
+            }
+        }
+    }
+}
+
+// Privacy Highlight Card
+.privacy-highlight {
+    background: linear-gradient(135deg, rgba(208, 169, 104, 0.05) 0%, rgba(0, 0, 0, 0.02) 100%);
+    border: 2px solid var(--accent) !important;
+}
+
+// Card Hover Effect
+.card {
+    transition: $transition-base;
+
+    &:hover {
+        transform: translateY(-4px);
+        box-shadow: 0 8px 25px rgba(0, 0, 0, 0.12) !important;
+    }
+}
+
+// Buttons Hover
+.btn-outline-dark {
+    border-color: var(--border-color);
+    color: var(--text-black);
+
+    svg {
+        color: var(--accent);
+    }
+
+    &:hover {
+        background: var(--accent);
+        border-color: var(--accent);
+        color: var(--accent-1);
+
+        svg {
+            color: var(--accent-1);
+        }
+    }
+}
+
+// RTL Support for Media Component
+[dir="rtl"] {
+    .media {
+        .privacy-icon {
+            margin-right: 0;
+            margin-left: 1rem;
+        }
+    }
+
+    .privacy-list li {
+        padding-right: 0;
+        padding-left: 1rem;
+    }
+
+    .btn svg {
+        margin-right: 0;
+        margin-left: 0.5rem;
+    }
+}
+
+// Print Styles
+@media print {
+    .privacy-hero {
+        background: var(--bg-white);
+
+        &__icon {
+            display: none;
+        }
+
+        .display-4 {
+            color: var(--text-black) !important;
+        }
+    }
+
+    .card {
+        box-shadow: none !important;
+        border: 1px solid var(--border-color) !important;
+        page-break-inside: avoid;
+    }
+
+    .btn {
+        display: none;
+    }
+}

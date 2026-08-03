@@ -1,0 +1,74 @@
+/*
+- Dirs
+- Scroll
+- Cursor
+- Display
+*/
+
+/*
+|
+| Dir
+|
+*/
+.dir-rtl {
+    direction: rtl !important;
+}
+.dir-ltr {
+    direction: ltr !important;
+}
+
+/*
+|
+| Scroll
+|
+*/
+.scroll {
+    overflow-y: scroll;
+
+    &::-webkit-scrollbar {
+        width: 5px;
+    }
+
+    &::-webkit-scrollbar-track {
+        background: var(--background);
+    }
+
+    &::-webkit-scrollbar-thumb {
+        background: var(--secondary-color);
+        border-radius: var(--border-radius);
+    }
+}
+.scroll-w4 {
+    &::-webkit-scrollbar {
+        width: 4px;
+    }
+}
+.scroll-w3 {
+    &::-webkit-scrollbar {
+        width: 3px;
+    }
+}
+.scroll-none {
+    &::-webkit-scrollbar {
+        width: none;
+    }
+}
+
+/*
+|
+| Cursor
+|
+*/
+.cursor-pointer,
+.pointer {
+    cursor: pointer;
+}
+
+/*
+|
+| Display
+|
+*/
+.display-none {
+    display: none;
+}

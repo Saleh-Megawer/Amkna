@@ -1,0 +1,117 @@
+///
+/// Show Page
+///
+#page-show-owner-associations-requests {
+
+    .reply-timeline {
+        position: relative;
+        padding-inline-start: 33px;
+
+        &::before {
+            content: "";
+            position: absolute;
+            inset-inline-start: 9px;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background: var(--border-color);
+        }
+    }
+
+    .reply-item {
+        position: relative;
+
+        &::before {
+            content: "";
+            position: absolute;
+            inset-inline-start: -29px;
+            top: 18px;
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: var(--bg-white);
+            border: 3px solid var(--accent);
+        }
+
+        &.admin-reply::before {
+            border-color: var(--accent-1);
+        }
+
+        .reply-content {
+            background: var(--bg-gray-50);
+            padding: 1rem;
+            border-radius: var(--border-radius);
+            border-bottom: 1px dashed var(--border-color);
+        }
+    }
+
+    .reply-meta {
+        font-size: 0.85rem;
+        color: var(--text-gray);
+        margin-bottom: 0.5rem;
+    }
+
+    .reply-text {
+        color: var(--text-black);
+        line-height: 1.6;
+    }
+
+    .badge.bg-success.bg-opacity-10 {
+        background-color: var(--accent-soft) !important;
+        color: var(--accent) !important;
+    }
+    
+}
+
+// .hover-box {
+//     display: block;
+//     color: var(--text-black);
+//     &:hover {
+//         color: var(--accent);
+//     }
+// }
+
+#page-owner-associations-polls-index {
+
+    .poll-item{
+        position: relative;
+        .status-badges{
+            position: absolute;
+            top: -45px;
+            @media (max-width:500px) {
+                top: -35px;
+            }
+        }
+    }
+
+    
+    #vote-yes,
+    #vote-no {
+        display: none;
+    }
+
+    .btn-outline-success.active,
+    .btn-outline-success:active {
+        background-color: #198754 !important;
+        color: white !important;
+        border-color: #198754 !important;
+    }
+
+    .btn-outline-danger.active,
+    .btn-outline-danger:active {
+        background-color: #dc3545 !important;
+        color: white !important;
+        border-color: #dc3545 !important;
+    }
+
+    .btn-outline-success,
+    .btn-outline-danger {
+        transition: all 0.3s ease;
+    }
+
+    .btn-outline-success.active,
+    .btn-outline-danger.active {
+        transform: scale(1.03);
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+    }
+}

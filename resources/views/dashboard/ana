@@ -1,0 +1,441 @@
+      <section id="deals-analytics">
+            <div class="row">
+
+                <!-- Deals Overview Cards -->
+                <div class="col-lg-3 col-md-6 mb-3">
+                    <div class="analytics-card d-flex align-items-center p-3 bg-white border rounded">
+                        <div
+                            class="analytics-card-icon all-deals rounded d-flex align-items-center justify-content-center ml-3">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24"
+                                fill="none" stroke="currentColor" stroke-width="2">
+                                <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                                <path d="M3 21l18 0" />
+                                <path
+                                    d="M3 7v1a3 3 0 0 0 6 0v-1m0 1a3 3 0 0 0 6 0v-1m0 1a3 3 0 0 0 6 0v-1h-18l2 -4h14l2 4" />
+                                <path d="M5 21l0 -10.15" />
+                                <path d="M19 21l0 -10.15" />
+                                <path d="M9 21v-4a2 2 0 0 1 2 -2h2a2 2 0 0 1 2 2v4" />
+                            </svg>
+                        </div>
+                        <div class="flex-grow-1">
+                            <h3 class="analytics-card-number mb-1">{{ number_format($totalDeals) }}</h3>
+                            <p class="analytics-card-label text-muted mb-0">إجمالي الصفقات</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-3 col-md-6 mb-3">
+                    <div class="analytics-card d-flex align-items-center p-3 bg-white border rounded">
+                        <div
+                            class="analytics-card-icon open-deals rounded d-flex align-items-center justify-content-center ml-3">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24"
+                                fill="none" stroke="currentColor" stroke-width="2">
+                                <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                                <path d="M12 12m-9 0a9 9 0 1 0 18 0a9 9 0 1 0 -18 0" />
+                                <path d="M12 12m-3 0a3 3 0 1 0 6 0a3 3 0 1 0 -6 0" />
+                            </svg>
+                        </div>
+                        <div class="flex-grow-1">
+                            <h3 class="analytics-card-number mb-1">{{ number_format($openDeals) }}</h3>
+                            <p class="analytics-card-label text-muted mb-0">صفقات مفتوحة</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-3 col-md-6 mb-3">
+                    <div class="analytics-card d-flex align-items-center p-3 bg-white border rounded">
+                        <div
+                            class="analytics-card-icon won-deals rounded d-flex align-items-center justify-content-center ml-3">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24"
+                                fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                stroke-linejoin="round"
+                                class="icon icon-tabler icons-tabler-outline icon-tabler-circle-check">
+                                <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                                <path d="M12 12m-9 0a9 9 0 1 0 18 0a9 9 0 1 0 -18 0" />
+                                <path d="M9 12l2 2l4 -4" />
+                            </svg>
+                        </div>
+                        <div class="flex-grow-1">
+                            <h3 class="analytics-card-number mb-1">{{ number_format($wonDeals) }}</h3>
+                            <p class="analytics-card-label text-muted mb-0">صفقات ناجحة</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-3 col-md-6 mb-3">
+                    <div class="analytics-card d-flex align-items-center p-3 bg-white border rounded">
+                        <div
+                            class="analytics-card-icon lost-deals rounded d-flex align-items-center justify-content-center ml-3">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24"
+                                fill="none" stroke="currentColor" stroke-width="2">
+                                <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                                <path d="M18 6l-12 12" />
+                                <path d="M6 6l12 12" />
+                            </svg>
+                        </div>
+                        <div class="flex-grow-1">
+                            <h3 class="analytics-card-number mb-1">{{ number_format($lostDeals) }}</h3>
+                            <p class="analytics-card-label text-muted mb-0">صفقات خاسرة</p>
+                        </div>
+                    </div>
+                </div>
+
+
+
+            </div>
+
+            <!-- Charts Row -->
+            <div class="row mt-2">
+
+                <!-- Donut Chart - Deals Status Distribution -->
+                <div class="col-lg-4 mb-3">
+                    <div class="bg-white border rounded p-3">
+                        <h6 class="font-weight-600 mb-3">توزيع الصفقات</h6>
+                        <div id="dealsDistributionChart"></div>
+                    </div>
+                </div>
+
+                <!-- Bar Chart - Deals Comparison -->
+                <div class="col-lg-4 mb-3">
+                    <div class="bg-white border rounded p-3">
+                        <h6 class="font-weight-600 mb-3">مقارنة الصفقات</h6>
+                        <div id="dealsComparisonChart"></div>
+                    </div>
+                </div>
+
+                <!-- Pie Chart - Deals by Purpose -->
+                <div class="col-lg-4 mb-3">
+                    <div class="bg-white border rounded p-3">
+                        <h6 class="font-weight-600 mb-3">الصفقات حسب النوع</h6>
+                        <div id="dealsByPurposeChart"></div>
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- Line Chart - Won Deals Trend -->
+            <div class="row">
+                <div class="col-lg-12 mb-3">
+                    <div class="bg-white border rounded p-3">
+                        <h6 class="font-weight-600 mb-3">اتجاه الصفقات الناجحة (آخر 6 شهور)</h6>
+                        <div id="wonDealsTrendChart"></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+
+
+
+
+
+
+
+
+        #deals-analytics {
+    .analytics-card {
+        transition: all 0.3s ease;
+
+        &:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.08);
+        }
+    }
+
+    .analytics-card-icon {
+        width: 60px;
+        height: 60px;
+        transition: transform 0.3s ease;
+
+        svg {
+            color: #fff;
+        }
+
+        &.all-deals {
+            background: linear-gradient(135deg, var(--third-color) 0%, #4a6fa5 100%);
+        }
+
+        &.won-deals {
+            background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+        }
+
+        &.lost-deals {
+            background: linear-gradient(135deg, #ef4444 0%, #dc2626 100%);
+        }
+
+        &.open-deals {
+            background: linear-gradient(135deg, #f59e0b 0%, #d97706 100%);
+        }
+    }
+
+    .analytics-card-number {
+        font-size: 28px;
+        font-weight: 700;
+        color: var(--main-color);
+        line-height: 1;
+    }
+
+    .analytics-card-label {
+        font-size: 14px;
+        font-weight: 500;
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+
+            // ============================================
+            // 1. Donut Chart - Deals Distribution
+            // ============================================
+            var dealsDistributionOptions = {
+                series: [{{ $wonDeals }}, {{ $lostDeals }}, {{ $openDeals }}],
+                chart: {
+                    type: 'donut',
+                    height: 300,
+                    fontFamily: 'inherit'
+                },
+                labels: ['ناجحة', 'خاسرة', 'مفتوحة'],
+                colors: ['#10b981', '#ef4444', '#f59e0b'],
+                legend: {
+                    position: 'bottom',
+                    horizontalAlign: 'center'
+                },
+                dataLabels: {
+                    enabled: true,
+                    formatter: function(val) {
+                        return val.toFixed(1) + '%';
+                    }
+                },
+                plotOptions: {
+                    pie: {
+                        donut: {
+                            size: '65%',
+                            labels: {
+                                show: true,
+                                total: {
+                                    show: true,
+                                    label: 'الإجمالي',
+                                    formatter: function(w) {
+                                        return w.globals.seriesTotals.reduce((a, b) => a + b, 0);
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                responsive: [{
+                    breakpoint: 480,
+                    options: {
+                        chart: {
+                            height: 250
+                        },
+                        legend: {
+                            position: 'bottom'
+                        }
+                    }
+                }]
+            };
+
+            var dealsDistributionChart = new ApexCharts(
+                document.querySelector("#dealsDistributionChart"),
+                dealsDistributionOptions
+            );
+            dealsDistributionChart.render();
+
+            // ============================================
+            // 2. Bar Chart - Deals Comparison
+            // ============================================
+            var dealsComparisonOptions = {
+                series: [{
+                    name: 'عدد الصفقات',
+                    data: [{{ $wonDeals }}, {{ $lostDeals }}, {{ $openDeals }}]
+                }],
+                chart: {
+                    type: 'bar',
+                    height: 300,
+                    fontFamily: 'inherit',
+                    toolbar: {
+                        show: false
+                    }
+                },
+                plotOptions: {
+                    bar: {
+                        borderRadius: 2,
+                        horizontal: false,
+                        columnWidth: '60%',
+                        distributed: true
+                    }
+                },
+                colors: ['#10b981', '#ef4444', '#f59e0b'],
+                dataLabels: {
+                    enabled: true,
+                    style: {
+                        fontSize: '12px',
+                        fontWeight: 600
+                    }
+                },
+                legend: {
+                    show: false
+                },
+                xaxis: {
+                    categories: ['ناجحة', 'خاسرة', 'مفتوحة'],
+                    labels: {
+                        style: {
+                            fontSize: '12px'
+                        }
+                    }
+                },
+                yaxis: {
+                    labels: {
+                        style: {
+                            fontSize: '12px'
+                        }
+                    }
+                },
+                grid: {
+                    borderColor: '#f1f1f1'
+                }
+            };
+
+            var dealsComparisonChart = new ApexCharts(
+                document.querySelector("#dealsComparisonChart"),
+                dealsComparisonOptions
+            );
+            dealsComparisonChart.render();
+
+            // ============================================
+            // 3. Pie Chart - Deals by Purpose
+            // ============================================
+            var dealsByPurposeOptions = {
+                series: [
+                    {{ $dealsByPurpose['rent'] ?? 0 }},
+                    {{ $dealsByPurpose['buy'] ?? 0 }}
+                ],
+                chart: {
+                    type: 'pie',
+                    height: 300,
+                    fontFamily: 'inherit'
+                },
+                labels: ['إيجار', 'شراء'],
+                colors: ['#3b82f6', '#8b5cf6'],
+                legend: {
+                    position: 'bottom',
+                    horizontalAlign: 'center'
+                },
+                dataLabels: {
+                    enabled: true,
+                    formatter: function(val, opts) {
+                        return opts.w.config.series[opts.seriesIndex];
+                    }
+                },
+                responsive: [{
+                    breakpoint: 480,
+                    options: {
+                        chart: {
+                            height: 250
+                        }
+                    }
+                }]
+            };
+
+            var dealsByPurposeChart = new ApexCharts(
+                document.querySelector("#dealsByPurposeChart"),
+                dealsByPurposeOptions
+            );
+            dealsByPurposeChart.render();
+
+            // ============================================
+            // 4. Line Chart - Won Deals Trend
+            // ============================================
+            var wonDealsTrendOptions = {
+                series: [{
+                    name: 'صفقات ناجحة',
+                    data: [
+                        @foreach ($wonDealsLastSixMonths as $item)
+                            {{ $item->count }},
+                        @endforeach
+                    ]
+                }],
+                chart: {
+                    type: 'line',
+                    height: 300,
+                    fontFamily: 'inherit',
+                    toolbar: {
+                        show: false
+                    }
+                },
+                stroke: {
+                    curve: 'smooth',
+                    width: 3
+                },
+                colors: ['#10b981'],
+                markers: {
+                    size: 5,
+                    colors: ['#10b981'],
+                    strokeColors: '#fff',
+                    strokeWidth: 2,
+                    hover: {
+                        size: 7
+                    }
+                },
+                xaxis: {
+                    categories: [
+                        @foreach ($wonDealsLastSixMonths as $item)
+                            '{{ \Carbon\Carbon::parse($item->month)->locale('ar')->format('M Y') }}',
+                        @endforeach
+                    ],
+                    labels: {
+                        style: {
+                            fontSize: '12px'
+                        }
+                    }
+                },
+                yaxis: {
+                    labels: {
+                        style: {
+                            fontSize: '12px'
+                        }
+                    }
+                },
+                grid: {
+                    borderColor: '#f1f1f1'
+                },
+                tooltip: {
+                    y: {
+                        formatter: function(val) {
+                            return val + ' صفقة';
+                        }
+                    }
+                }
+            };
+
+            var wonDealsTrendChart = new ApexCharts(
+                document.querySelector("#wonDealsTrendChart"),
+                wonDealsTrendOptions
+            );
+            wonDealsTrendChart.render();
+        });
+    </script>

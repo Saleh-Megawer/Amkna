@@ -1,0 +1,27 @@
+/*
+*
+*
+*
+* iziToast Plugins
+*
+*
+*
+*/
+.iziToast > .iziToast-progressbar > div {
+    height: 3px;
+}
+.iziToast-message {
+    font-weight: 600;
+    font-family: "Tajawal", sans-serif !important;
+    color: #000 !important;
+}
+
+.iziToast > .iziToast-body .iziToast-texts {
+    margin: 10px 15px 0;
+    padding-right: 0px !important;
+}
+
+.iziToast.iziToast-color-green {
+    background: rgb(166, 239, 184);
+    border-color: rgb(166, 239, 184);
+}

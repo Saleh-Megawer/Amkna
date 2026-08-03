@@ -1,0 +1,20 @@
+.table-modern {
+    tbody {
+        td,
+        th {
+            border-bottom: 1px solid #f5f6fa !important;
+            line-height: 50px;
+
+        }
+        tr {
+            transition: background-color 0.2s linear;
+            &:hover {
+                background-color: var(--background);
+            }
+        }
+    }
+
+    .border-b:last-of-type {
+        border-bottom: none !important;
+    }
+}

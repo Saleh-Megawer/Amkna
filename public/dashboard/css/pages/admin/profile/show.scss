@@ -1,0 +1,111 @@
+@import "sass:math";
+
+@import "../../../helpers";
+@import "variables";
+
+header {
+    height: $header-height;
+    background: center center no-repeat;
+    background-size: cover;
+    position: relative;
+
+    #avatar,
+    #banner {
+        position: absolute;
+        padding: 0px 15px;
+    }
+
+    #avatar {
+        top: math.div($header-height, 2)
+           - $profile-margin-top
+           - math.div($avatar-size, 2)
+           + math.div($banner-height, 2);
+
+        img {
+            padding: 5px;
+            background-color: var(--card-background);
+            height: $avatar-size;
+            width: $avatar-size;
+            border-radius: 50%;
+        }
+
+        .first-info {
+            .job {
+                color: rgb(209, 209, 209);
+            }
+        }
+    }
+
+    #banner {
+        height: $banner-height;
+        width: 100%;
+        bottom: $profile-margin-top + 18px;
+    }
+
+    @include media(sm) {
+        height: $header-mobile-height;
+
+        #avatar {
+            top: math.div($header-mobile-height, 2)
+               - $profile-margin-top
+               - math.div($avatar-size, 1.4)
+               + math.div($banner-height, 2);
+
+            right: calc(50% - 140px);
+            text-align: center !important;
+            width: 280px;
+
+            .first-info {
+                margin: 0px !important;
+                text-align: center !important;
+                display: block !important;
+
+                .name {
+                    font-size: 16px;
+                }
+
+                .job {
+                    font-size: 11px !important;
+                }
+            }
+        }
+    }
+}
+
+#profile {
+    margin-top: -$profile-margin-top;
+
+    #info {
+        table {
+            th,
+            td {
+                border: none;
+                padding: 10px 0px !important;
+                color: var(--color);
+                font-size: 13px;
+            }
+        }
+    }
+
+    #portfolio {
+        .social-media {
+            a {
+                width: $social-media-links-size;
+                height: $social-media-links-size;
+                line-height: $social-media-links-size;
+                text-align: center;
+                border-radius: var(--border-radius);
+                transition: all 0.1s linear;
+                margin: 2px;
+            }
+        }
+    }
+
+    #latest-articles {
+        .row {
+            &:last-of-type {
+                margin-bottom: 0px !important;
+            }
+        }
+    }
+}

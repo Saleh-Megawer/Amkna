@@ -1,0 +1,63 @@
+.half {
+    display: flex;
+    min-height: 100vh;
+
+    @media (max-width: 991.98px) {
+        flex-direction: column;
+        min-height: auto;
+    }
+
+    .bg {
+        width: 50%;
+        background-size: cover;
+        background-position: center center;
+        background-repeat: no-repeat;
+        position: relative;
+
+        &::after {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background-color: #00000060;
+            backdrop-filter: blur(0.5px);
+        }
+
+        @media (max-width: 991.98px) {
+            width: 100%;
+            height: 200px;
+            flex-shrink: 0;
+            background-size: cover;
+            order: -1; // الصورة تروح فوق
+        }
+    }
+
+    .contents {
+        width: 50%;
+        background: #f9f9f9;
+
+        @media (min-width: 992px) {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        @media (max-width: 991.98px) {
+            width: 100%;
+            order: 0; // المحتوى تحت
+        }
+
+        .container {
+            padding-top: 2rem;
+            padding-bottom: 2rem;
+
+            @media (max-width: 991.98px) {
+                min-height: auto;
+            }
+        }
+
+        .row {
+            height: auto;
+            min-height: auto;
+        }
+    }
+}

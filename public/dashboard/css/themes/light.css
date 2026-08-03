@@ -1,0 +1,91 @@
+:root {
+
+    /* Website Main Background f4f5f7 */
+    --background: #f0f0f0;
+
+
+    /* Website Main Color For Basic Text */
+    --color: #343434;
+    --color-second: #6c757d;
+
+
+    /* Main & Secondary Colors For This Theme */
+    --main-color: #000000;
+    --second-color: #d0a968;
+    --third-color: #5682B1;
+    --soft-main-color: #464d4632;
+
+    --link-color: #007bff;
+
+
+    /* Shadow Color */
+    --shadow-color: #292e32;
+
+
+
+    /* Card ( box ) Style Colors */
+    --card-background: #fff;
+    --card-color: #212121;
+    --card-shadow: none;
+    --card-border: none;
+
+
+    /* Buttons Colors */
+    --btn-main-background: var(--main-color);
+    --btn-main-color: #ffffff;
+    /**/
+    --btn-soft-main-background: #0000001b;
+    --btn-soft-main-color: #000000;
+    /**/
+    --btn-second-background: var(--second-color);
+    --btn-second-color: #000000;
+    /**/
+    --btn-third-background: var(--third-color);
+    --btn-third-color: #ffffff;
+    --btn-soft-third-background: #5682b123;
+    --btn-soft-third-color: #5682B1;
+
+    /* Borders */
+    --border-color: #eaeaea;
+    --border-color-light: #f3f3f3;
+
+    --border-radius: 3px;
+
+
+    /* Input */
+    --input-color: #161616;
+    --input-height: 48px;
+    --input-background: #ffffff;
+    --input-border-color: #dddddd;
+    --input-focus-border-color: var(--main-color);
+    --input-focus-background: #ffffff;
+    --input-focus-shadow: 0 0 0 0.2rem #464d461b;
+
+
+
+    /* Aside ( side bar ) Bar c6c6c6*/
+
+    --aside-background: #151515;
+    --aside-color: #b1b1b1;
+    --aside-border-color: #ddd;
+    /* hover links */
+    --aside-link-hover-background: #2e2e2e;
+    --aside-link-hover-color: #ffffff;
+    /* active links */
+    --aside-link-active-background: #2e2e2e;
+    --aside-link-active-color: #ffffff;
+
+
+    /* Navbar */
+    --navbar-background: #ffffff;
+    --navbar-color: var(--main-color);
+    --navbar-hover-color: transparent;
+    --navbar-icon-color: #000;
+
+
+    /**/
+    --table-hover-bg: #c6c6c63b;
+
+
+    --primary: #1B56FD;
+}

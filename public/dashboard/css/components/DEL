@@ -1,0 +1,148 @@
+/* Start All Components */
+
+/*
+ 1- Buttons
+ 2- Images
+ 3- Messages Alert
+ 4- Text Colors
+ 5- Bg Colors
+ 6- Borders
+ 7- Font
+ 8- a,li,ul,ol
+*/
+
+/*
+    |
+    | Buttons Components
+    |
+*/
+@mixin btn($bg-color, $text-color) {
+    background-color: $bg-color !important;
+    color: $text-color !important;
+    padding: 8px 18px;
+    border-radius: var(--border-radius);
+    transition: all 0.1s linear;
+    text-align: center;
+    box-shadow: none !important;
+    &:disabled {
+        cursor: not-allowed;
+        opacity: 0.6;
+    }
+    &:hover {
+        background-color: $bg-color;
+        opacity: 0.9;
+    }
+    &:active {
+        background-color: $bg-color !important;
+        opacity: 0.9;
+        transform: scale(0.9);
+    }
+    &:focus {
+        background-color: $bg-color !important;
+    }
+}
+.btn-main {
+    @include btn(var(--btn-main-background), var(--btn-main-color));
+}
+.btn-secondary {
+    @include btn(var(--btn-secondary-background), var(--btn-secondary-color));
+}
+.btn-bg {
+    @include btn(var(--background), var(--color));
+}
+
+/*
+    |
+    | Images Components
+    |
+*/
+@mixin image($width) {
+    width: $width;
+    height: $width;
+    object-fit: cover;
+}
+.img-128 {
+    @include image(128px);
+}
+.img-161 {
+    @include image(161px);
+}
+
+/*
+    |
+    | Messages Alert Components
+    |
+*/
+@mixin alert-message($bg-color, $text-color) {
+    margin-bottom: 0px !important;
+    background-color: $bg-color;
+    padding: 10px 8px;
+    border-radius: var(--border-radius);
+    box-shadow: none !important;
+    margin-top: 1rem;
+    color: $text-color;
+}
+.box-error {
+    @include alert-message(#bd362f, #fff);
+}
+.box-success {
+    @include alert-message(#76aa60, #fff);
+}
+.box-warning {
+    @include alert-message(#ffc107, #000);
+}
+.box-info {
+    @include alert-message(#cce5ff, #004085);
+}
+
+/*
+    |
+    | Text Colors Components
+    |
+*/
+@mixin text($color) {
+    color: $color !important;
+}
+.text-main {
+    @include text(var(--color));
+}
+.theme-text-color {
+    @include text(var(--main-color));
+}
+.text-secondary {
+    @include text(var(--secondary-color));
+}
+
+
+
+/*
+    |
+    | Borders Components
+    |
+*/
+
+@mixin borderRadius($radius) {
+    border-radius: $radius;
+}
+.radius {
+    border-radius: var(--border-radius);
+}
+
+.radius-t {
+    border-radius: var(--border-radius) var(--border-radius) 0px 0px;
+}
+.radius-b {
+    border-radius: 0px 0px var(--border-radius) var(--border-radius);
+}
+
+
+
+
+/*
+ |
+ | a,li,ul,ol
+ |
+*/
+.text-decoration-underline{
+    text-decoration: underline !important;
+}

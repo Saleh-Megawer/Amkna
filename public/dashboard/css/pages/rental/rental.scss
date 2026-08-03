@@ -1,0 +1,31 @@
+#property-results .list-group-item {
+    cursor: pointer;
+}
+
+#property-results .list-group-item:hover {
+    background-color: #f8f9fa;
+}
+
+//
+// Property Search
+//
+#property-results {
+    display: none;
+    position: absolute;
+    z-index: 1000;
+    max-height: 300px;
+    overflow-y: auto;
+    width: calc(100% - 10px);
+
+    .list-group-item {
+        cursor: pointer;
+
+        &:hover {
+            background-color: #f8f9fa;
+        }
+    }
+}
+
+#selected-property {
+    display: none;
+}

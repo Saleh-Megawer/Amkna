@@ -1,0 +1,79 @@
+/*
+|--------------------------------------------------------------------------------------
+| 8. In Any Page Can Add div id=tabs-bar and js fixied thid tabs in top after navbar
+|--------------------------------------------------------------------------------------
+*/
+#tabs-bar {
+    border-bottom: 1px dashed var(--border-color);
+    overflow-x: auto;
+    &::-webkit-scrollbar {
+        height: 1px !important;
+    }
+
+    a {
+        white-space: nowrap;
+        flex-shrink: 0;
+    }
+
+    .tab {
+        background-color: var(--btn-soft-main-background);
+        color: var(--btn-soft-main-color);
+        padding: 0.25rem 0.7rem;
+        font-size: 14px;
+        border-radius: var(--border-radius);
+        margin-left: 8px;
+    }
+
+    &.tabs-fixed {
+        position: fixed;
+        top: var(--navbar-height);
+        z-index: 9999;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+        transition: all 0.2s ease;
+        @media (max-width: 1024px) {
+            width: 100% !important;
+            right: 0 !important;
+            left: 0 !important;
+        }
+    }
+
+    .active-tab {
+        background-color: var(--btn-main-background) !important;
+        color: var(--btn-main-color) !important;
+        font-weight: 500;
+        position: relative;
+
+        &::after {
+            content: "";
+            position: absolute;
+            top: calc(50% - 7.5px);
+            right: -7.5px;
+            width: 15px;
+            height: 15px;
+            background-color: rgb(255, 255, 255);
+            border-radius: 50%;
+        }
+    }
+
+    .btn-sm {
+        &::after {
+            top: calc(50% - 5.5px);
+            right: -5px;
+            width: 11px;
+            height: 11px;
+        }
+    }
+
+    // For Vertical Tbas
+    .btn-tab {
+        display: block;
+        padding: 10px 20px;
+        border-radius: var(--border-radius);
+        margin-bottom: 10px;
+        text-align: unset;
+        font-size: 14px;
+        &:last-of-type {
+            margin-bottom: 0px;
+        }
+    }
+}

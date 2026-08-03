@@ -1,0 +1,49 @@
+.swal-overlay {
+    background: rgba(0, 0, 0, 0.35) !important;
+    backdrop-filter: blur(2px);
+    z-index: 12001 !important; /* أعلى من الـ modal backdrop */
+}
+
+.swal-footer {
+    text-align: unset;
+}
+
+.swal-button--danger {
+    background-color: #f21100 !important;
+}
+
+.swal-icon {
+    margin: 0px auto;
+    width: 60px;
+    height: 60px;
+}
+
+.swal-title:not(:last-child) {
+    margin-bottom: 5px;
+}
+.swal-title {
+    color: rgba(0, 0, 0, 0.737);
+    font-weight: 600;
+    font-size: 24px;
+}
+
+.swal-text {
+    text-align: center;
+}
+
+.swal-icon--warning__body {
+    height: 30px;
+}
+
+.swal-footer {
+    margin-top: 5px;
+    direction: ltr;
+}
+
+.swal-icon--info:before {
+    width: 5px;
+    height: 20px;
+    bottom: 10px;
+    border-radius: 2px;
+    margin-left: -2px;
+}

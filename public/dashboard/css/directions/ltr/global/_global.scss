@@ -1,0 +1,56 @@
+// Global
+body {
+    direction: ltr !important;
+    padding-left: var(--aside-width); // Replace
+ 
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+label,
+div,
+section,
+article,
+b,
+strong,
+ul,
+li,
+a,
+button {
+    text-align: left;
+}
+
+/* Bootstrap */
+.alert-dismissible {
+    i,svg{
+        margin-right: 5px;
+    }
+}
+///////////////////////////////////////////////////////////////// DELETE
+// Page Title And Button Add New
+#links-bar {
+    float: left;
+}
+
+.btn-add-new {
+    float: right;
+    margin-left: 5px;
+}
+
+// Padding Remove
+.pr-remove {
+    padding-right: 0px !important;
+}
+
+// Categories
+.search-buttons {
+    button,
+    a {
+        // Dir
+        right: 0px;
+        border-radius: 0px var(--border-radius) var(--border-radius) 0px;
+    }
+}

@@ -1,0 +1,659 @@
+/* Create Page */
+#main-section {
+    position: relative;
+    .image-perview {
+        position: absolute;
+        top: -70px;
+        right: -15px;
+        left: 0px;
+        height: 460px;
+        width: calc(100% + 30px);
+        object-fit: cover;
+    }
+
+    .main-info-box {
+        padding-top: 120px;
+    }
+}
+
+/*  Index Page  */
+.product-box {
+    position: relative;
+    .btn-group {
+        position: absolute;
+        right: 15px;
+        top: 0px;
+        button {
+            background-color: #fff;
+            padding: 8px 16px;
+            font-size: 20px;
+        }
+    }
+}
+
+/* edit */
+#gallery {
+    #uploader {
+        .box {
+            padding: 70px 10px;
+            // border: dashed 3px var(--secondary-color);
+            position: relative;
+            .progress {
+                position: absolute;
+                top: 0px;
+                right: 0px;
+                left: 0px;
+                border-radius: var(--border-radius) var(--border-radius) 0px 0px !important;
+                width: 100%;
+                height: 20px;
+                background-color: #f2f2f2;
+            }
+
+            .upload-icon {
+                i,
+                svg {
+                    font-size: 34px;
+                }
+                position: absolute;
+                top: 35px;
+                right: calc(50% - 15px);
+            }
+            .icon-anim {
+                animation-name: upload;
+                animation-duration: 1s;
+                animation-iteration-count: infinite;
+                animation-timing-function: linear;
+            }
+        }
+        .active {
+            border: solid 3px var(--secondary-color) !important;
+        }
+    }
+
+    /*
+
+
+    */
+    .thumbnails-col {
+        .thumbnails-box {
+            cursor: pointer;
+            $imgH: 90px;
+            // Image
+            height: $imgH;
+            text-align: center;
+            img {
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+            }
+            // Display File Name
+            span {
+                line-height: $imgH;
+                font-size: 28px;
+                font-weight: bold;
+                opacity: 0.2;
+            }
+        }
+    }
+
+    #show-box,
+    .show-box-overlay {
+        position: fixed;
+        top: 0px;
+        right: 0px;
+        left: 0px;
+        bottom: 0px;
+        display: none;
+    }
+    .show-box-overlay {
+        cursor: zoom-out;
+    }
+    // Add Border
+    #show-box,
+    .image,
+    #img-preview,
+    .content {
+        border-radius: var(--border-radius);
+    }
+    #file-preview {
+        font-size: 50px;
+        font-weight: bold;
+        opacity: 0.2;
+    }
+    #show-box {
+        background-color: var(--background);
+        z-index: 99999999999;
+        width: 90%;
+        height: 90%;
+        top: 5%;
+        right: 5%;
+        overflow-y: scroll !important;
+        overflow-x: hidden !important;
+
+        /* width */
+        &::-webkit-scrollbar {
+            width: 7px;
+            cursor: pointer;
+        }
+
+        /* Track */
+        &::-webkit-scrollbar-track {
+            background: #f3f4f6;
+        }
+
+        /* Handle */
+        &::-webkit-scrollbar-thumb {
+            background: var(--main-color);
+        }
+
+        .content,
+        .row {
+            height: 100%;
+        }
+        .content {
+            .image {
+                background-color: var(--card-background);
+                width: 100%;
+                height: 100%;
+
+                img {
+                    max-width: 100%;
+                    max-height: 100%;
+
+                    object-fit: contain !important;
+                }
+            }
+            .details {
+                padding: 15px;
+            }
+        }
+
+        // Controls
+        .controls {
+            text-align: right;
+            button {
+                width: 40px;
+                height: 40px;
+                background-color: var(--card-background);
+                text-align: center;
+                color: var(--card-color);
+                &:hover {
+                    background-color: var(--btn-main-background);
+                    color: var(--btn-main-color);
+                }
+
+                &:disabled {
+                    opacity: 0.3;
+                }
+            }
+            #btn-close {
+                &:hover {
+                    background-color: red;
+                    color: #fff;
+                }
+            }
+            i,
+            svg {
+                font-size: 24px;
+            }
+        }
+
+        // Info Table In Slider
+        .info-table {
+            #file-name {
+                word-wrap: break-word;
+                max-width: 300px;
+            }
+            .info-content {
+                font-size: 14px;
+                font-weight: 400;
+                background-color: var(--card-background) !important;
+            }
+        }
+        table {
+            tr th {
+                font-size: 14px;
+                font-weight: 400;
+                background-color: var(--card-background) !important;
+            }
+        }
+    }
+
+    .show-box-overlay {
+        width: 100%;
+        height: 100%;
+        z-index: 9999;
+        background-color: rgba(0, 0, 0, 0.85);
+    }
+}
+.gallery-image-box {
+    position: relative;
+
+    .btn-delete-attech {
+        position: absolute;
+        top: 5px;
+        right: 20px;
+    }
+
+}
+@keyframes upload {
+    from {
+        top: 35px;
+    }
+    to {
+        top: 30px;
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// #search-box {
+//     .sticky-top {
+//         position: sticky;
+//         top: 90px;
+//         margin-bottom: 20px;
+//         z-index: 1;
+//     }
+// }
+// #properties {
+//     .propertie-image {
+//         position: relative;
+//         .units-count-badge {
+//             position: absolute;
+//             top: 10px;
+//             right: 10px;
+//         }
+//     }
+
+//     .card-title {
+//         svg,
+//         i {
+//             width: 15px;
+//             height: 15px;
+//         }
+//     }
+
+//     .button {
+//         vertical-align: middle;
+
+//         padding: 4.8px 10px;
+//         border-radius: var(--border-radius);
+//         font-size: 14px;
+//         background-color: var(--main-color);
+//         color: #fff;
+//         border-radius: var(--border-radius);
+//         svg,
+//         i {
+//             fill: #fff;
+//             color: #fff;
+//             margin-left: 2px;
+//             height: 13px;
+//         }
+//     }
+
+//     .box {
+//         .currency-icon {
+//             svg {
+//                 fill: #28a745 !important;
+//                 width: 16px;
+//                 height: 16px;
+//             }
+//         }
+//     }
+
+//     @media (max-width: 768px) {
+//         .scroll {
+//             height: auto;
+//         }
+//         .box {
+//             img {
+//                 border-top-left-radius: var(--border-radius);
+//                 border-bottom-right-radius: 0px;
+//             }
+//         }
+//     }
+// }
+
+// /*--------------------------------------------------------------
+// # Pagination
+// --------------------------------------------------------------*/
+// .main-pageinate {
+//     .pagination {
+//         flex-wrap: wrap;
+
+//         .active {
+//             .page-link {
+//                 background-color: var(--btn-main-background) !important;
+//                 color: var(--btn-main-color) !important;
+//             }
+//         }
+
+//         .page-link {
+//             $link-h: 40px;
+//             border-radius: var(--border-radius);
+//             width: $link-h;
+//             height: $link-h;
+//             margin: 5px 2px;
+//             text-align: center;
+//             display: flex;
+//             align-items: center;
+//             justify-content: center;
+//             line-height: unset;
+//             border: none !important;
+
+//             &:focus {
+//                 box-shadow: none !important;
+//             }
+
+//             &:hover {
+//                 background-color: var(--btn-main-background);
+//                 color: var(--btn-main-color);
+//                 border-color: var(--second-color);
+//                 svg {
+//                     fill: #fff;
+//                 }
+//             }
+//         }
+//     }
+// }
+
+// /* edit */
+// #gallery {
+//     #uploader {
+//         .box {
+//             padding: 70px 10px;
+//             // border: dashed 3px var(--secondary-color);
+//             position: relative;
+//             .progress {
+//                 position: absolute;
+//                 top: 0px;
+//                 right: 0px;
+//                 left: 0px;
+//                 border-radius: var(--border-radius) var(--border-radius) 0px 0px !important;
+//                 width: 100%;
+//                 height: 20px;
+//                 background-color: #f2f2f2;
+//             }
+
+//             .upload-icon {
+//                 i,
+//                 svg {
+//                     font-size: 34px;
+//                 }
+//                 position: absolute;
+//                 top: 35px;
+//                 right: calc(50% - 15px);
+//             }
+//             .icon-anim {
+//                 animation-name: upload;
+//                 animation-duration: 1s;
+//                 animation-iteration-count: infinite;
+//                 animation-timing-function: linear;
+//             }
+//         }
+//         .active {
+//             border: solid 3px var(--secondary-color) !important;
+//         }
+//     }
+
+//     /*
+
+//     */
+//     .thumbnails-col {
+//         .thumbnails-box {
+//             cursor: pointer;
+//             $imgH: 90px;
+//             // Image
+//             height: $imgH;
+//             text-align: center;
+//             img {
+//                 width: 100%;
+//                 height: 100%;
+//                 object-fit: cover;
+//             }
+//             // Display File Name
+//             span {
+//                 line-height: $imgH;
+//                 font-size: 28px;
+//                 font-weight: bold;
+//                 opacity: 0.2;
+//             }
+//         }
+//     }
+
+//     #show-box,
+//     .show-box-overlay {
+//         position: fixed;
+//         top: 0px;
+//         right: 0px;
+//         left: 0px;
+//         bottom: 0px;
+//         display: none;
+//     }
+//     .show-box-overlay {
+//         cursor: zoom-out;
+//     }
+//     // Add Border
+//     #show-box,
+//     .image,
+//     #img-preview,
+//     .content {
+//         border-radius: var(--border-radius);
+//     }
+//     #file-preview {
+//         font-size: 50px;
+//         font-weight: bold;
+//         opacity: 0.2;
+//     }
+//     #show-box {
+//         background-color: var(--background);
+//         z-index: 99999999999;
+//         width: 90%;
+//         height: 90%;
+//         top: 5%;
+//         right: 5%;
+//         overflow-y: scroll !important;
+//         overflow-x: hidden !important;
+
+//         /* width */
+//         &::-webkit-scrollbar {
+//             width: 7px;
+//             cursor: pointer;
+//         }
+
+//         /* Track */
+//         &::-webkit-scrollbar-track {
+//             background: #f3f4f6;
+//         }
+
+//         /* Handle */
+//         &::-webkit-scrollbar-thumb {
+//             background: var(--main-color);
+//         }
+
+//         .content,
+//         .row {
+//             height: 100%;
+//         }
+//         .content {
+//             .image {
+//                 background-color: var(--card-background);
+//                 width: 100%;
+//                 height: 100%;
+
+//                 img {
+//                     max-width: 100%;
+//                     max-height: 100%;
+
+//                     object-fit: contain !important;
+//                 }
+//             }
+//             .details {
+//                 padding: 15px;
+//             }
+//         }
+
+//         // Controls
+//         .controls {
+//             text-align: right;
+//             button {
+//                 width: 40px;
+//                 height: 40px;
+//                 background-color: var(--card-background);
+//                 text-align: center;
+//                 color: var(--card-color);
+//                 &:hover {
+//                     background-color: var(--btn-main-background);
+//                     color: var(--btn-main-color);
+//                 }
+
+//                 &:disabled {
+//                     opacity: 0.3;
+//                 }
+//             }
+//             #btn-close {
+//                 &:hover {
+//                     background-color: red;
+//                     color: #fff;
+//                 }
+//             }
+//             i,
+//             svg {
+//                 font-size: 24px;
+//             }
+//         }
+
+//         // Info Table In Slider
+//         .info-table {
+//             #file-name {
+//                 word-wrap: break-word;
+//                 max-width: 300px;
+//             }
+//             .info-content {
+//                 font-size: 14px;
+//                 font-weight: 400;
+//                 background-color: var(--card-background) !important;
+//             }
+//         }
+//         table {
+//             tr th {
+//                 font-size: 14px;
+//                 font-weight: 400;
+//                 background-color: var(--card-background) !important;
+//             }
+//         }
+//     }
+
+//     .show-box-overlay {
+//         width: 100%;
+//         height: 100%;
+//         z-index: 9999;
+//         background-color: rgba(0, 0, 0, 0.85);
+//     }
+// }
+// .gallery-image-box {
+//     position: relative;
+
+//     .btn-delete-attech {
+//         position: absolute;
+//         top: 5px;
+//         right: 20px;
+//     }
+// }
+// @keyframes upload {
+//     from {
+//         top: 35px;
+//     }
+//     to {
+//         top: 30px;
+//     }
+// }
+
+// /////// Create Update
+// .create-update-section {
+//     .box {
+//         .box-title {
+//             cursor: pointer;
+//         }
+//     }
+
+//     .hide-body {
+//         .box-body {
+//             display: none;
+//         }
+//         position: relative;
+//         &::before {
+//             content: "...";
+//             position: absolute;
+//             bottom: 8px;
+//             right: 1.5rem;
+//         }
+//     }
+// }

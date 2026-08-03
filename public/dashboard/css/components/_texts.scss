@@ -1,0 +1,26 @@
+// Color
+.text-main {
+    color: var(--color);
+}
+.text-second {
+    color: var(--color-second);
+}
+
+// Decoration
+.text-decoration-underline {
+    text-decoration: underline !important;
+}
+
+
+.text-theme {
+    color: var(--main-color);
+}
+
+.text-black{
+    color: #000000;
+}
+
+
+.text-gray{
+    color: #404040;
+}

@@ -1,0 +1,430 @@
+@php
+    $interests = DB::table('interests')->where('is_read', '0')->count();
+    $my_interests = DB::table('interests')->where('action_completed', '0')->where('marketer_id', adminId())->count();
+    /////////////
+    $icons = [
+        'clients' =>
+            '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-tabler icons-tabler-outline icon-tabler-users"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M9 7m-4 0a4 4 0 1 0 8 0a4 4 0 1 0 -8 0" /><path d="M3 21v-2a4 4 0 0 1 4 -4h4a4 4 0 0 1 4 4v2" /><path d="M16 3.13a4 4 0 0 1 0 7.75" /><path d="M21 21v-2a4 4 0 0 0 -3 -3.85" /></svg>',
+    ];
+@endphp
+<aside id="aside">
+    {{-- 
+    <a href="" class="aside-brand d-block ">
+       <img src="{{ website_logo() }}" alt="">
+        <span class="name"></span> 
+    </a> --}}
+
+    <div class="btn-group aside-brand">
+        <button class="btn btn-secondary dropdown-toggle" type="button" id="triggerId" data-toggle="dropdown"
+            aria-haspopup="true" aria-expanded="false">
+
+            <div class=" d-flex align-items-center">
+                <div class="avatar">
+                    <img src="{{ asset('assets/images/default/avatar.png') }}" alt="">
+                </div>
+
+                <div class="name">
+                    <h6>{{ adminAuth('full_name') }}</h6>
+                    <span>{{ adminAuth('email') }}</span>
+                </div>
+            </div>
+
+            <div class="icon">
+                <i class="fa-solid fa-angle-down"></i>
+            </div>
+
+        </button>
+        <div class="dropdown-menu dropdown-menu-right" aria-labelledby="triggerId">
+            <a class="dropdown-item" href="#">Action</a>
+            <a class="dropdown-item disabled" href="#">Disabled action</a>
+            <h6 class="dropdown-header">Section header</h6>
+            <a class="dropdown-item" href="#">Action</a>
+            <div class="dropdown-divider"></div>
+            <a class="dropdown-item" href="#">After divider action</a>
+        </div>
+    </div>
+
+
+
+    <ul class="side-menu">
+
+
+        <li class="side-item-category">علاقات العملاء</li>
+
+        <x-dashboard.aside :details="[
+            'name' => 'العملاء',
+            'icon' => $icons['clients'],
+            'link' => 'crm/contacts',
+        ]" />
+
+
+
+
+        <!--------------------------------------------------------->
+
+
+        @can('properties_create')
+            <x-dashboard.aside :details="[
+                'name' => 'اضافة إعلان جديد',
+                'icon' => '<i class=\'fa fa-plus\'></i>',
+                'link' => 'properties/create',
+            ]" />
+        @endcan
+
+        <x-dashboard.aside :details="[
+            'name' => 'الإعلانات العقارية',
+            'icon' => '<i class=\'fa-solid fa-house\'></i>',
+            'link' => 'properties',
+        ]" />
+
+
+
+        <x-dashboard.aside :details="[
+            'name' =>
+                '<span style=\'color:#000000 !important\' class=\'badge badge-warning mt-1 float-left \'>' .
+                $my_interests .
+                '</span> مركز الإشعارات',
+            'icon' => '<i class=\'fa-solid fa-bell\'></i>',
+            'link' => 'notifications/interests',
+        ]" />
+
+        @can('interest_allow_view')
+            <x-dashboard.aside :details="[
+                'name' =>
+                    '<span style=\'color:#000000 !important\' class=\'badge badge-warning mt-1 float-left \'>' .
+                    $interests .
+                    '</span> رسائل الاهتمام',
+                'icon' => '<i class=\'fa-solid fa-envelope\'></i>',
+                'link' => 'interests',
+            ]" />
+        @endcan
+
+
+
+
+
+
+        <!--
+         |
+         | Start System Tabs
+         |
+        -->
+
+        @can('admins')
+            <li class="side-item-category">الإدارة</li>
+            <x-dashboard.aside :details="[
+                'name' => 'المستخدمين',
+                'icon' => '<i class=\'fa-solid fa-users\'></i>',
+                'link' => 'admins',
+            ]" /><!-- End Admins -->
+        @endcan
+
+
+        @can('create_admin')
+            <x-dashboard.aside :details="[
+                'name' => 'اضافة مستخدم جديد',
+                'icon' => '<i class=\'fa-solid fa-user-plus\'></i>',
+                'link' => 'admins/create',
+            ]" /><!-- End Admins -->
+        @endcan
+
+
+
+
+        <li class="side-item-category">النظام</li>
+
+
+        @canany(['city_view', 'neighborhood_view', 'property_status_view', 'property_furnishing_view',
+            'property_features_view', 'property_amenities_view'])
+            <x-dashboard.aside :details="[
+                'name' => 'بيانات النظام',
+                'icon' => '<i class=\'fa-solid fa-circle-question\'></i>',
+                'sub_menu' => [
+                    [
+                        'name' => 'المدن',
+                        'link' => 'cities',
+                        'can' => 'city_view',
+                    ],
+                    [
+                        'name' => 'المناطق',
+                        'link' => 'neighborhoods',
+                        'can' => 'neighborhood_view',
+                    ],
+                    [
+                        'name' => 'الحالة & الغرض',
+                        'link' => 'property-status',
+                        'can' => 'property_status_view',
+                    ],
+                    [
+                        'name' => 'مستويات التشطيب',
+                        'link' => 'property-furnishing',
+                        'can' => 'property_furnishing_view',
+                    ],
+                    [
+                        'name' => 'أنواع المميزات',
+                        'link' => 'property-features',
+                        'can' => 'property_features_view',
+                    ],
+                    [
+                        'name' => 'وسائل الراحة',
+                        'link' => 'property-amenities',
+                        'can' => 'property_amenities_view',
+                    ],
+                ],
+            ]" />
+            <!-- settings -->
+        @endcanany
+
+        @role(owner())
+            <x-dashboard.aside :details="[
+                'name' => 'الأدوار & الصلاحيات',
+                'icon' => '<i class=\'fa-solid fa-unlock\'></i>',
+                'link' => 'roles',
+            ]" /><!-- End roles -->
+        @endrole
+
+
+        @can('website_setting_allow_edit_and_view')
+            <x-dashboard.aside :details="[
+                'name' => 'إعدادات الموقع',
+                'icon' => '<i class=\'fa-solid fa-gear\'></i>',
+                'link' => 'settings/general',
+            ]" />
+            <!-- settings -->
+        @endcan
+
+
+
+        <li class="side-item ">
+            <a href="{{ url('') }}" target="__blank" class=" w-100 d-block">
+                <span class="side-icon"><i class='fa-solid fa-chart-simple'></i></span>
+                <span class="side-name-lable">صفحة التسويق</span>
+            </a>
+        </li>
+
+        <li class="side-item mb-5">
+            <form action="{{ route('logout') }}" method="POST">
+                @csrf
+                <button type="submit" class=" w-100 d-block">
+                    <a class=" w-100 d-block">
+                        <span class="side-icon"><i class="fa-solid fa-arrow-right-to-bracket"></i></span>
+                        <span class="side-name-lable">{{ trans('aside.Logout') }}</span>
+                    </a>
+                </button>
+            </form>
+        </li>
+        <!-- End Logout -->
+
+    </ul>
+
+    {{-- <a style="font-size: 15px;position: absolute;bottom: 15px;left: 30%;" class="text-secondary"
+        href="https://salehmegawer.com/" target="_blank"><i class="fa-solid fa-arrow-right ml-2"
+            style="font-size: 13px"></i>By Saleh Megawer</a> --}}
+
+
+</aside><!-- End Aside Bar  -->
+
+<div class="aside-overlay"></div>
+<!---OverLay -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+@php
+    $interests = DB::table('interests')->where('is_read', '0')->count();
+    $my_interests = DB::table('interests')->where('action_completed', '0')->where('marketer_id', adminId())->count();
+
+@endphp
+<aside id="aside">
+
+    <a href="" class="aside-brand d-block ">
+        <img src="{{ website_logo() }}" alt="">
+        <span class="name"></span>
+    </a>
+
+
+    <ul class="side-menu">
+
+        @can('properties_create')
+            <x-dashboard.aside :details="[
+                'name' => 'اضافة إعلان جديد',
+                'icon' => '<i class=\'fa fa-plus\'></i>',
+                'link' => 'properties/create',
+            ]" />
+        @endcan
+
+        <x-dashboard.aside :details="[
+            'name' => 'الإعلانات العقارية',
+            'icon' => '<i class=\'fa-solid fa-house\'></i>',
+            'link' => 'properties',
+        ]" />
+
+
+
+        <x-dashboard.aside :details="[
+            'name' =>
+                '<span style=\'color:#000000 !important\' class=\'badge badge-warning mt-1 float-left \'>' .
+                $my_interests .
+                '</span> مركز الإشعارات',
+            'icon' => '<i class=\'fa-solid fa-bell\'></i>',
+            'link' => 'notifications/interests',
+        ]" />
+
+        @can('interest_allow_view')
+            <x-dashboard.aside :details="[
+                'name' =>
+                    '<span style=\'color:#000000 !important\' class=\'badge badge-warning mt-1 float-left \'>' .
+                    $interests .
+                    '</span> رسائل الاهتمام',
+                'icon' => '<i class=\'fa-solid fa-envelope\'></i>',
+                'link' => 'interests',
+            ]" />
+        @endcan
+
+
+
+
+
+
+        <!--
+         |
+         | Start System Tabs
+         |
+        -->
+
+        @can('admins')
+            <li class="side-item-category">الإدارة</li>
+            <x-dashboard.aside :details="[
+                'name' => 'المستخدمين',
+                'icon' => '<i class=\'fa-solid fa-users\'></i>',
+                'link' => 'admins',
+            ]" /><!-- End Admins -->
+        @endcan
+
+
+        @can('create_admin')
+            <x-dashboard.aside :details="[
+                'name' => 'اضافة مستخدم جديد',
+                'icon' => '<i class=\'fa-solid fa-user-plus\'></i>',
+                'link' => 'admins/create',
+            ]" /><!-- End Admins -->
+        @endcan
+
+
+
+
+        <li class="side-item-category">النظام</li>
+
+
+        @canany(['city_view', 'neighborhood_view', 'property_status_view', 'property_furnishing_view',
+            'property_features_view', 'property_amenities_view'])
+            <x-dashboard.aside :details="[
+                'name' => 'بيانات النظام',
+                'icon' => '<i class=\'fa-solid fa-circle-question\'></i>',
+                'sub_menu' => [
+                    [
+                        'name' => 'المدن',
+                        'link' => 'cities',
+                        'can' => 'city_view',
+                    ],
+                    [
+                        'name' => 'المناطق',
+                        'link' => 'neighborhoods',
+                        'can' => 'neighborhood_view',
+                    ],
+                    [
+                        'name' => 'الحالة & الغرض',
+                        'link' => 'property-status',
+                        'can' => 'property_status_view',
+                    ],
+                    [
+                        'name' => 'مستويات التشطيب',
+                        'link' => 'property-furnishing',
+                        'can' => 'property_furnishing_view',
+                    ],
+                    [
+                        'name' => 'أنواع المميزات',
+                        'link' => 'property-features',
+                        'can' => 'property_features_view',
+                    ],
+                    [
+                        'name' => 'وسائل الراحة',
+                        'link' => 'property-amenities',
+                        'can' => 'property_amenities_view',
+                    ],
+                ],
+            ]" />
+            <!-- settings -->
+        @endcanany
+
+        @role(owner())
+            <x-dashboard.aside :details="[
+                'name' => 'الأدوار & الصلاحيات',
+                'icon' => '<i class=\'fa-solid fa-unlock\'></i>',
+                'link' => 'roles',
+            ]" /><!-- End roles -->
+        @endrole
+
+
+        @can('website_setting_allow_edit_and_view')
+            <x-dashboard.aside :details="[
+                'name' => 'إعدادات الموقع',
+                'icon' => '<i class=\'fa-solid fa-gear\'></i>',
+                'link' => 'settings/general',
+            ]" />
+            <!-- settings -->
+        @endcan
+
+
+
+        <li class="side-item ">
+            <a href="{{ url('') }}" target="__blank" class=" w-100 d-block">
+                <span class="side-icon"><i class='fa-solid fa-chart-simple'></i></span>
+                <span class="side-name-lable">صفحة التسويق</span>
+            </a>
+        </li>
+
+        <li class="side-item mb-5">
+            <form action="{{ route('logout') }}" method="POST">
+                @csrf
+                <button type="submit" class=" w-100 d-block">
+                    <a class=" w-100 d-block">
+                        <span class="side-icon"><i class="fa-solid fa-arrow-right-to-bracket"></i></span>
+                        <span class="side-name-lable">{{ trans('aside.Logout') }}</span>
+                    </a>
+                </button>
+            </form>
+        </li>
+        <!-- End Logout -->
+
+    </ul>
+
+    {{-- <a style="font-size: 15px;position: absolute;bottom: 15px;left: 30%;" class="text-secondary"
+        href="https://salehmegawer.com/" target="_blank"><i class="fa-solid fa-arrow-right ml-2"
+            style="font-size: 13px"></i>By Saleh Megawer</a> --}}
+
+
+</aside><!-- End Aside Bar  -->
+
+<div class="aside-overlay"></div>
+<!---OverLay -->

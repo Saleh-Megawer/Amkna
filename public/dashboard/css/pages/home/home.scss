@@ -1,0 +1,813 @@
+@import "../../helpers/colors";
+
+// #analytics {
+//     .analytics-card {
+//         transition: all 0.3s ease;
+//         position: relative;
+//         overflow: hidden;
+
+//         &::before {
+//             content: "";
+//             position: absolute;
+//             top: 0;
+//             left: 0;
+//             width: 4px;
+//             height: 100%;
+//             background: var(--second-color);
+//             transform: scaleY(0);
+//             transition: transform 0.3s ease;
+//         }
+
+//         &:hover {
+//             transform: translateY(-4px);
+//             box-shadow: 0 8px 16px rgba(0, 0, 0, 0.08);
+//             border-color: var(--second-color) !important;
+
+//             &::before {
+//                 transform: scaleY(1);
+//             }
+
+//             .analytics-card-arrow {
+//                 transform: translateX(-4px);
+//                 opacity: 1;
+//             }
+
+//             .analytics-card-icon {
+//                 transform: scale(1.1);
+//             }
+//         }
+//     }
+
+//     .analytics-card-icon {
+//         width: 60px;
+//         height: 60px;
+//         transition: transform 0.3s ease;
+
+//         svg {
+//             color: #fff;
+//         }
+
+//         &.clients {
+//             background: linear-gradient(135deg, var(--third-color) 0%, #4a6fa5 100%);
+//         }
+
+//         &.properties {
+//             background: linear-gradient(135deg, var(--second-color) 0%, #b8935a 100%);
+//         }
+
+//         &.contracts {
+//             background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+//         }
+
+//         &.payments {
+//             background: linear-gradient(135deg, #f59e0b 0%, #d97706 100%);
+//         }
+//     }
+
+//     .analytics-card-number {
+//         font-size: 28px;
+//         font-weight: 700;
+//         color: var(--main-color);
+//         line-height: 1;
+//     }
+
+//     .analytics-card-label {
+//         font-size: 14px;
+//         font-weight: 500;
+//     }
+
+//     .analytics-card-arrow {
+//         opacity: 0.4;
+//         transition: all 0.3s ease;
+
+//         svg {
+//             color: var(--second-color);
+//         }
+//     }
+// }
+
+// #quick-links {
+//     height: 270px;
+//     overflow-y: scroll;
+
+//     &::-webkit-scrollbar {
+//         width: 5px;
+//         border-radius: 5px;
+//     }
+
+//     /* Track */
+//     &::-webkit-scrollbar-track {
+//         background: #ffffff;
+
+//     }
+
+//     /* Handle */
+//     &::-webkit-scrollbar-thumb {
+//         background: #888;
+//         border-radius: 5px;
+
+//     }
+
+//     /* Handle on hover */
+//     &::-webkit-scrollbar-thumb:hover {
+//         background: #555;
+//     }
+
+//     .quick-links-card {
+//         margin-left: 3px;
+//     }
+
+//     .quick-links-icon {
+//         width: 40px;
+//         height: 40px;
+//         flex-shrink: 0;
+
+//         svg {
+//             color: #fff;
+//         }
+
+//         &.crm {
+//             background: linear-gradient(135deg, var(--third-color) 0%, #4a6fa5 100%);
+//         }
+
+//         &.properties {
+//             background: linear-gradient(135deg, var(--second-color) 0%, #b8935a 100%);
+//         }
+
+//         &.associations {
+//             background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+//         }
+
+//         &.settings {
+//             background: linear-gradient(135deg, #8b5cf6 0%, #7c3aed 100%);
+//         }
+//     }
+
+//     .quick-links-list {
+//         display: flex;
+//         flex-direction: column;
+//         gap: 8px;
+//     }
+
+//     .quick-link-item {
+//         padding: 8px 12px;
+//         border-radius: 6px;
+//         background: #f9fafb;
+//         color: #374151;
+//         text-decoration: none;
+//         font-size: 14px;
+//         transition: all 0.2s ease;
+
+//         svg {
+//             opacity: 0;
+//             transform: translateX(4px);
+//             transition: all 0.2s ease;
+//             color: var(--second-color);
+//         }
+
+//         &:hover {
+//             background: var(--soft-main-color);
+//             color: var(--main-color);
+//             text-decoration: none;
+//             padding-left: 8px;
+
+//             svg {
+//                 opacity: 1;
+//                 transform: translateX(0);
+//             }
+//         }
+//     }
+// }
+// ========================================
+// Dashboard Variables
+// ========================================
+
+$primary: #007bff;
+$success: #28a745;
+$danger: #dc3545;
+$warning: #ffc107;
+$info: #17a2b8;
+$purple: #6f42c1;
+$indigo: #6610f2;
+$pink: #e83e8c;
+$teal: #20c997;
+
+$border-radius: 0.5rem;
+$transition-base: all 0.3s ease;
+$box-shadow-sm: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075);
+$box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15);
+#home-dashboard {
+    // ========================================
+    // Stat Cards
+    // ========================================
+
+    .stat-card {
+        transition: $transition-base;
+        border-right: 4px solid transparent;
+        overflow: hidden;
+        position: relative;
+
+        .card-body {
+            h2 {
+                color: #393939 !important;
+            }
+        }
+
+        &:hover {
+            transform: translateY(-5px);
+            box-shadow: $box-shadow;
+        }
+
+        &::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            right: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(0, 0, 0, 0.1), transparent);
+            transition: right 0.5s;
+        }
+
+        &:hover::before {
+            right: 100%;
+        }
+
+        // Card Variants
+        &.stat-card-primary {
+            border-right-color: $primary;
+            .stat-icon {
+                background-color: rgba($primary, 0.1);
+                color: $primary;
+            }
+        }
+
+        &.stat-card-success {
+            border-right-color: $success;
+            .stat-icon {
+                background-color: rgba($success, 0.1);
+                color: $success;
+            }
+        }
+
+        &.stat-card-danger {
+            border-right-color: $danger;
+            .stat-icon {
+                background-color: rgba($danger, 0.1);
+                color: $danger;
+            }
+        }
+
+        &.stat-card-warning {
+            border-right-color: $warning;
+            .stat-icon {
+                background-color: rgba($warning, 0.1);
+                color: $warning;
+            }
+        }
+
+        &.stat-card-info {
+            border-right-color: $info;
+            .stat-icon {
+                background-color: rgba($info, 0.1);
+                color: $info;
+            }
+        }
+
+        &.stat-card-purple {
+            border-right-color: $purple;
+            .stat-icon {
+                background-color: rgba($purple, 0.1);
+                color: $purple;
+            }
+        }
+
+        &.stat-card-indigo {
+            border-right-color: $indigo;
+            .stat-icon {
+                background-color: rgba($indigo, 0.1);
+                color: $indigo;
+            }
+        }
+
+        &.stat-card-teal {
+            border-right-color: $teal;
+            .stat-icon {
+                background-color: rgba($teal, 0.1);
+                color: $teal;
+            }
+        }
+
+        // Stat Icon
+        .stat-icon {
+            width: 3rem;
+            height: 3rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: $border-radius;
+            transition: $transition-base;
+
+            svg {
+                width: 1.5rem;
+                height: 1.5rem;
+            }
+        }
+
+        // Animations
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        animation: fadeInUp 0.6s ease-out;
+        animation-fill-mode: both;
+
+        @for $i from 1 through 8 {
+            &:nth-child(#{$i}) {
+                animation-delay: #{$i * 0.1}s;
+            }
+        }
+    }
+
+    // ========================================
+    // Quick Action Buttons
+    // ========================================
+
+    .quick-action-btn {
+        padding: 1.25rem 0.75rem;
+        border-width: 2px;
+        transition: $transition-base;
+        position: relative;
+        overflow: hidden;
+        background-color: #f0f0f0 !important;
+        border: 0px !important;
+        color: #000 !important;
+        &:hover {
+            transform: translateY(-3px);
+            box-shadow: $box-shadow-sm;
+        }
+
+        &::after {
+            content: "";
+            position: absolute;
+            top: 50%;
+            right: 50%;
+            width: 0;
+            height: 0;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.4);
+            transform: translate(50%, -50%);
+            transition:
+                width 0.6s,
+                height 0.6s;
+        }
+
+        &:hover::after {
+            width: 300px;
+            height: 300px;
+        }
+
+        svg {
+            transition: $transition-base;
+        }
+
+        &:hover svg {
+            transform: scale(1.1);
+        }
+
+        // Outline Variants
+        &.btn-outline-purple {
+            color: $purple;
+            border-color: $purple;
+
+            &:hover {
+                background-color: $purple;
+                border-color: $purple;
+                color: #fff;
+            }
+        }
+
+        &.btn-outline-teal {
+            color: $teal;
+            border-color: $teal;
+
+            &:hover {
+                background-color: $teal;
+                border-color: $teal;
+                color: #fff;
+            }
+        }
+
+        &.btn-outline-pink {
+            color: $pink;
+            border-color: $pink;
+
+            &:hover {
+                background-color: $pink;
+                border-color: $pink;
+                color: #fff;
+            }
+        }
+    }
+
+    // ========================================
+    // Activity Lists
+    // ========================================
+
+    .activity-list {
+        max-height: 500px;
+        overflow-y: auto;
+
+        &::-webkit-scrollbar {
+            width: 6px;
+        }
+
+        &::-webkit-scrollbar-track {
+            background: #f1f1f1;
+            border-radius: 10px;
+        }
+
+        &::-webkit-scrollbar-thumb {
+            background: #888;
+            border-radius: 10px;
+
+            &:hover {
+                background: #555;
+            }
+        }
+    }
+
+    .activity-item {
+        transition: $transition-base;
+        cursor: pointer;
+
+        &:hover {
+            background-color: #f8f9fa;
+        }
+    }
+
+    // ========================================
+    // Avatar Components
+    // ========================================
+
+    .avatar-circle {
+        width: 40px;
+        height: 40px;
+
+        img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+    }
+
+    .avatar-placeholder {
+        width: 40px;
+        height: 40px;
+        background-color: #e9ecef;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        svg {
+            width: 24px;
+            height: 24px;
+            color: #6c757d;
+        }
+    }
+
+    .avatar-circle-small {
+        width: 32px;
+        height: 32px;
+        background-color: rgba($primary, 0.1);
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    // ========================================
+    // Chart Container
+    // ========================================
+
+    .chart-container {
+        position: relative;
+        height: 300px;
+        padding: 1rem;
+    }
+
+    // ========================================
+    // Badge Variants
+    // ========================================
+
+    .badge-pill {
+        padding: 0.35rem 0.75rem;
+        font-size: 0.75rem;
+        font-weight: 600;
+    }
+
+    .badge-purple {
+        background-color: $purple;
+        color: #fff;
+    }
+
+    .badge-indigo {
+        background-color: $indigo;
+        color: #fff;
+    }
+
+    .badge-pink {
+        background-color: $pink;
+        color: #fff;
+    }
+
+    .badge-teal {
+        background-color: $teal;
+        color: #fff;
+    }
+
+    // ========================================
+    // Card Enhancements
+    // ========================================
+
+    .card {
+        // border-radius: $border-radius;
+        // border: 1px solid rgba(0, 0, 0, 0.06);
+
+        .card-header {
+            background-color: #fff;
+            border-bottom: 1px solid rgba(0, 0, 0, 0.06);
+            padding: 1rem 1.25rem;
+        }
+
+        .card-body {
+            padding: 1.25rem;
+        }
+    }
+
+    // ========================================
+    // Tabler Icons
+    // ========================================
+    .icon-tabler {
+        width: 24px;
+        height: 24px;
+        stroke-width: 2;
+        stroke: currentColor;
+        fill: none;
+        stroke-linecap: round;
+        stroke-linejoin: round;
+    }
+    #statistics-section {
+        .icon-tabler {
+            color: #fff;
+        }
+    }
+
+    // ========================================
+    // Utility Classes
+    // ========================================
+
+    // Background Colors
+    .bg-purple {
+        background-color: $purple !important;
+    }
+
+    .bg-indigo {
+        background-color: $indigo !important;
+    }
+
+    .bg-pink {
+        background-color: $pink !important;
+    }
+
+    .bg-teal {
+        background-color: $teal !important;
+    }
+
+    // Text Colors
+    .text-purple {
+        color: $purple !important;
+    }
+
+    .text-pink {
+        color: $pink !important;
+    }
+
+    .text-teal {
+        color: $teal !important;
+    }
+
+    // ========================================
+    // Responsive Adjustments
+    // ========================================
+
+    @media (max-width: 768px) {
+        .stat-card {
+            margin-bottom: 1rem;
+
+            h2 {
+                font-size: 1.75rem;
+            }
+        }
+
+        .quick-action-btn {
+            padding: 1rem 0.5rem;
+            font-size: 0.875rem;
+
+            svg {
+                width: 24px;
+                height: 24px;
+            }
+        }
+
+        .chart-container {
+            height: 250px;
+        }
+    }
+
+    @media (max-width: 576px) {
+        .stat-card {
+            h2 {
+                font-size: 1.5rem;
+            }
+        }
+
+        .quick-action-btn {
+            padding: 0.75rem 0.5rem;
+        }
+    }
+
+    // ========================================
+    // Loading Animation
+    // ========================================
+
+    .skeleton {
+        background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
+        background-size: 200px 100%;
+        animation: skeleton-loading 1.5s ease-in-out infinite;
+    }
+
+    @keyframes skeleton-loading {
+        0% {
+            background-position: -200px 0;
+        }
+        100% {
+            background-position: calc(200px + 100%) 0;
+        }
+    }
+
+    // ========================================
+    // Pulse Animation for Urgent Items
+    // ========================================
+
+    @keyframes pulse {
+        0%,
+        100% {
+            opacity: 1;
+        }
+        50% {
+            opacity: 0.7;
+        }
+    }
+
+    .badge-danger {
+        animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+    }
+
+    // ========================================
+    // RTL Specific Adjustments
+    // ========================================
+
+    [dir="rtl"] {
+        .stat-card {
+            border-right: none;
+            border-left: 4px solid;
+
+            &::before {
+                right: auto;
+                left: -100%;
+            }
+
+            &:hover::before {
+                right: auto;
+                left: 100%;
+            }
+        }
+
+        .quick-action-btn {
+            &::after {
+                right: auto;
+                left: 50%;
+                transform: translate(-50%, -50%);
+            }
+        }
+
+        .activity-list {
+            &::-webkit-scrollbar {
+                right: auto;
+                left: 0;
+            }
+        }
+    }
+
+    // ========================================
+    // Dark Mode Support (Optional)
+    // ========================================
+
+    // @media (prefers-color-scheme: dark) {
+    //     .stat-card {
+    //         background-color: #1f2937;
+    //         color: #f9fafb;
+
+    //         .text-muted {
+    //             color: #9ca3af !important;
+    //         }
+    //     }
+
+    //     .activity-item {
+    //         &:hover {
+    //             background-color: #374151;
+    //         }
+    //     }
+
+    //     .card {
+    //         background-color: #1f2937;
+    //         color: #f9fafb;
+    //         border-color: #374151;
+
+    //         .card-header {
+    //             background-color: #1f2937;
+    //             border-bottom-color: #374151;
+    //         }
+    //     }
+
+    //     .avatar-placeholder {
+    //         background-color: #374151;
+    //     }
+    // }
+
+    // ========================================
+    // Custom Animations
+    // ========================================
+
+    @keyframes slideInRight {
+        from {
+            opacity: 0;
+            transform: translateX(30px);
+        }
+        to {
+            opacity: 1;
+            transform: translateX(0);
+        }
+    }
+
+    .activity-item {
+        animation: slideInRight 0.4s ease-out;
+
+        @for $i from 1 through 10 {
+            &:nth-child(#{$i}) {
+                animation-delay: #{$i * 0.05}s;
+            }
+        }
+    }
+
+    // ========================================
+    // Smooth Transitions
+    // ========================================
+
+    // * {
+    //     transition-property: background-color, border-color, color, fill, stroke, opacity, box-shadow, transform;
+    //     transition-duration: 0.2s;
+    //     transition-timing-function: ease-in-out;
+    // }
+
+    .hover-bg-light {
+        transition: background-color 0.2s ease;
+    }
+
+    .hover-bg-light:hover {
+        background-color: #f8f9fa !important;
+    }
+
+    .transition-all {
+        transition: all 0.2s ease;
+    }
+
+    .badge-pill {
+        font-size: 0.75rem;
+        font-weight: 600;
+        letter-spacing: 0.3px;
+    }
+
+    .list-group-item {
+        cursor: pointer;
+    }
+}

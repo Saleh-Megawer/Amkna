@@ -1,0 +1,150 @@
+// Button Action Effects
+.btn {
+    border-radius: var(--border-radius);
+    transition: all 0.1s linear;
+    padding: 0.5rem 1rem;
+    &:disabled {
+        cursor: not-allowed;
+        opacity: 0.6;
+    }
+    &:hover {
+      //  opacity: 0.9;
+    }
+    &:active {
+        opacity: 0.9;
+        transform: scale(0.98);
+    }
+    &:focus {
+        box-shadow: none !important;
+    }
+    font-size: 16px;
+    svg {
+        transition: all 0.1s linear;
+    }
+}
+.btn-xs {
+    padding: 0.2rem 0.4rem;
+    font-size: 0.875rem;
+    line-height: 1.5;
+    border-radius: var(--border-radius);
+    svg {
+        width: 20px;
+        height: 20px;
+    }
+}
+
+.btn-sm {
+    padding: 0.3rem 0.6rem;
+    font-size: 0.875rem;
+    line-height: 1.5;
+    border-radius: var(--border-radius);
+}
+
+.btn-light {
+    background-color: #e2e2e28c;
+}
+
+.btn-light:hover {
+    color: #212529;
+    background-color: #eeeeee;
+    border-color: #eeeeee;
+}
+.btn-action-icon {
+    padding: 0;
+    width: 32px;
+    height: 28px;
+    line-height: 1;
+    padding-bottom: 2px;
+    svg {
+        width: 18px;
+        height: 18px;
+    }
+}
+/*
+|
+| Soft Buttons
+|
+*/
+
+$buttons-soft: (
+    "btn-soft-success" $success $soft-success,
+    "btn-soft-info" $info $soft-info,
+    "btn-soft-primary" $primary $soft-primary,
+    "btn-soft-warning" $warning $soft-warning,
+    "btn-soft-danger" $danger $soft-danger,
+    "btn-soft-light" $light $soft-light,
+    "btn-soft-main" var(--btn-soft-main-color) var(--btn-soft-main-background),
+    "btn-soft-third" var(--btn-soft-third-color) var(--btn-soft-third-background)
+);
+@each $class-name, $color, $bg in $buttons-soft {
+    .#{$class-name} {
+        background-color: $bg;
+        color: $color;
+        border-radius: var(--border-radius);
+        font-weight: 500;
+
+        transition:
+            background-color 0.1s linear,
+            color 0.1s linear;
+
+        &:hover {
+            background-color: $color;
+            color: #fff;
+            svg {
+                color: #fff;
+            }
+        }
+    }
+}
+
+.btn-outline-primary {
+    color: $primary;
+    border-color: $primary;
+    &:hover {
+        background-color: $primary;
+        border-color: $primary;
+    }
+}
+
+.btn-outline-main {
+    background-color: transparent;
+    border: solid 1px var(--btn-main-background);
+    color: var(--btn-main-background);
+
+    &:hover {
+        background-color: var(--btn-main-background);
+        color: var(--btn-main-color);
+        svg {
+            color: var(--btn-main-color);
+        }
+    }
+}
+
+.btn-main {
+    background-color: var(--btn-main-background);
+    color: var(--btn-main-color) !important;
+}
+.btn-second {
+    background-color: var(--btn-second-background);
+    color: var(--btn-second-color) !important;
+}
+
+.btn-third {
+    background-color: var(--btn-third-background);
+    color: var(--btn-third-color) !important;
+}
+
+.btn-outline-third {
+    background-color: transparent;
+    border: solid 1px var(--btn-third-background);
+    color: var(--btn-third-background);
+
+    &:hover {
+        background-color: var(--btn-third-background);
+        color: var(--btn-third-color);
+        svg {
+            color: var(--btn-third-color);
+        }
+    }
+}
+////////////////////////////////////

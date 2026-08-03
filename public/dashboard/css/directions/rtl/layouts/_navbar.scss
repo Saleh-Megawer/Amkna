@@ -1,0 +1,44 @@
+.toggle {
+    right: var(--aside-minus-width) !important; // Replace
+}
+// Navbar
+#navbar {
+    direction: rtl !important;
+    border-right:  1px solid #7070701c;
+    #btn-aside-toggle {
+        float: right; // Replace
+    }
+    /* IF Clicked Button #btn-sidebar-toggle Start This Action*/
+    .toggle {
+        right: var(--aside-minus-width) !important; // Replace
+    }
+}
+
+#start-of-navbar{
+    float: right !important;
+}
+
+
+#end-of-navbar{
+    float: left !important;
+}
+@media (max-width: 1024px) {
+    // Body
+    body {
+        padding-right: 0px !important; // Replace
+    }
+    // Aside
+    #aside {
+        right: var(--aside-minus-width); // Replace
+        .aside-overlay {
+            left: 0px; // Replace
+        }
+    }
+    .toggle {
+        right: 0px !important; // Replace
+    }
+
+    #navbar {
+        width: 100% !important;
+    }
+}

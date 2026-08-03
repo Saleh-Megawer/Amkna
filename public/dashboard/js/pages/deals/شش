@@ -1,0 +1,233 @@
+$(document).ready(function () {
+
+
+    // جيب الـ UUID و ID من الـ meta tags
+    const dealUuid = $('meta[name="deal-uuid"]').attr('content');
+    const dealId = $('meta[name="deal-id"]').attr('content');
+
+
+    // عرض الوحدات المطابقة
+    $('#btn-match-properties').on('click', function () {
+        let filters = {
+            deal_uuid: dealUuid,
+            client_id: $('[name="client_id"]').val(),
+            city_id: $('[name="city_id"]').val(),
+            neighborhood_id: $('[name="neighborhood_id"]').val(),
+            budget_min: $('[name="budget_min"]').val(),
+            budget_max: $('[name="budget_max"]').val(),
+            area_min: $('[name="area_min"]').val(),
+            area_max: $('[name="area_max"]').val(),
+            bedrooms: $('[name="bedrooms"]').val(),
+            bathrooms: $('[name="bathrooms"]').val(),
+            purpose: $('[name="purpose"]').val(),
+            neighborhoods: $('[name="neighborhoods[]"]').val(),
+            // _token: $('meta[name="csrf-token"]').attr('content')
+        };
+
+
+        $("#matched-properties-container")
+            .data('deal-uuid', dealUuid)
+            .fadeOut(200, function () {
+                $(this).html('<div style="min-height:200px;" class="pb-4 text-center col-12 d-flex align-items-center justify-content-center">جاري التحميل...</div>')
+                    .fadeIn(200);
+            });
+
+        // اخفي رسالة الوحدات المرتبطة واظهر رسالة البحث
+        $('#deal-properties-result').fadeOut(200);
+        $('#search-properties-result').fadeIn(200);
+
+        $.post(adminUrl + "/crm/deals/match-properties", filters, function (response) {
+            // اخفي ثم اظهر بالنتائج
+            $("#matched-properties-container").fadeOut(300, function () {
+                $(this).html(response).fadeIn(600);
+            });
+
+            // حدث عدد نتائج البحث
+            const totalProperties = $(response).filter('.parents').length;
+            $('#search-properties-result .result-count').text(totalProperties);
+
+        }).fail(function () {
+            iziToast.error({ message: 'تعذر تحميل النتائج' });
+        });
+    });
+
+
+
+    // إضافة العقار للصفقة
+    $(document).on('click', '.add-property-to-deal', function () {
+        const btn = $(this);
+        const propertyId = btn.data('property-id');
+        const dealUuid = $("#matched-properties-container").data('deal-uuid') || $('meta[name="deal-uuid"]').attr('content');
+
+        if (!dealUuid) {
+            iziToast.error({ message: 'لم يتم تحديد الصفقة' });
+            return;
+        }
+
+        btn.prop('disabled', true);
+
+        $.ajax({
+            url: adminUrl + '/crm/deals/add-property',
+            method: 'POST',
+            data: {
+                property_id: propertyId,
+                deal_uuid: dealUuid,
+                _token: $('meta[name="csrf-token"]').attr('content')
+            },
+            success: function (response) {
+                iziToast.success({ message: 'تم ربط العقار بالصفقة بنجاح' });
+
+                btn.prop('disabled', false).hide();
+                btn.siblings('.remove-property-from-deal').prop('disabled', false).show();
+                btn.siblings('.assign-badge-status').show();
+
+                // حدث عداد الوحدات المرتبطة
+                const currentCount = parseInt($('#deal-properties-result .deal-count').text()) || 0;
+                $('#deal-properties-result .deal-count').text(currentCount + 1);
+                $('#deal-properties-result').removeClass('display-none');
+            },
+            error: function (xhr) {
+                iziToast.error({ message: xhr.responseJSON?.message || 'حدث خطأ' });
+                btn.prop('disabled', false);
+            }
+        });
+    });
+
+    // إلغاء ربط العقار
+    $(document).on('click', '.remove-property-from-deal', function () {
+        const btn = $(this);
+        const propertyId = btn.data('property-id');
+        const dealUuid = $("#matched-properties-container").data('deal-uuid') || $('meta[name="deal-uuid"]').attr('content');
+
+        if (!dealUuid) {
+            iziToast.error({ message: 'لم يتم تحديد الصفقة' });
+            return;
+        }
+
+        btn.prop('disabled', true);
+
+        $.ajax({
+            url: adminUrl + '/crm/deals/remove-property',
+            method: 'POST',
+            data: {
+                property_id: propertyId,
+                deal_uuid: dealUuid,
+                _token: $('meta[name="csrf-token"]').attr('content')
+            },
+            success: function (response) {
+                iziToast.success({ message: 'تم إلغاء ربط العقار' });
+
+                btn.prop('disabled', false).hide();
+                btn.siblings('.add-property-to-deal').prop('disabled', false).show();
+                btn.siblings('.assign-badge-status').hide();
+
+                // حدث عداد الوحدات المرتبطة
+                const currentCount = parseInt($('#deal-properties-result .deal-count').text()) || 0;
+                const newCount = Math.max(0, currentCount - 1);
+                $('#deal-properties-result .deal-count').text(newCount);
+
+                // لو وصل العداد لـ 0 اخفي الرسالة
+                if (newCount === 0) {
+                    $('#deal-properties-result').addClass('display-none');
+                }
+            },
+            error: function (xhr) {
+                iziToast.error({ message: xhr.responseJSON?.message || 'حدث خطأ' });
+                btn.prop('disabled', false);
+            }
+        });
+    });
+
+
+    // عرض الوحدات المرتبطة فقط
+    $('#btn-show-matched-properties-only').on('click', function () {
+        const dealUuid = $('meta[name="deal-uuid"]').attr('content');
+
+        $("#matched-properties-container")
+            .data('deal-uuid', dealUuid)
+            .fadeOut(200, function () {
+                $(this).html('<div style="height:400px;" class="pb-4 text-center col-12 d-flex align-items-center justify-content-center">جاري التحميل...</div>')
+                    .fadeIn(200);
+            });
+
+        $('#search-properties-result').fadeOut(200);
+        $('#deal-properties-result').fadeIn(200);
+
+        $.post(adminUrl + "/crm/deals/show-linked-properties", {
+            deal_uuid: dealUuid,
+            _token: $('meta[name="csrf-token"]').attr('content')
+        }, function (response) {
+            $("#matched-properties-container").fadeOut(200, function () {
+                $(this).html(response).fadeIn(400);
+            });
+
+            const totalProperties = $(response).filter('.parents').length;
+            $('#deal-properties-result .deal-count').text(totalProperties);
+
+        }).fail(function () {
+            iziToast.error({ message: 'تعذر تحميل الوحدات المرتبطة' });
+        });
+    });
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    // // البحث بـ ID
+    // $('#btn-search-by-id').on('click', function () {
+    //     const propertyId = $('#property_id_search').val().trim();
+    //     const dealUuid = $('meta[name="deal-uuid"]').attr('content');
+
+    //     if (!propertyId) {
+    //         iziToast.warning({ message: 'الرجاء إدخال ID العقار' });
+    //         return;
+    //     }
+
+    //     $("#matched-properties-container").html('<div class="col-12 p-4 text-center">جاري البحث...</div>');
+
+    //     // اخفي رسالة الوحدات المرتبطة واظهر رسالة البحث
+    //     $('#deal-properties-result').addClass('display-none');
+    //     $('#search-properties-result').removeClass('display-none');
+
+    //     $.post(adminUrl + "/crm/deals/match-properties", {
+    //         property_id: propertyId,
+    //         deal_uuid: dealUuid,
+    //         _token: $('meta[name="csrf-token"]').attr('content')
+    //     }, function (response) {
+    //         $("#matched-properties-container").html(response);
+
+    //         // حدث عدد نتائج البحث
+    //         const totalProperties = $(response).filter('.parents').length;
+    //         $('#search-properties-result .result-count').text(totalProperties);
+
+    //     }).fail(function () {
+    //         iziToast.error({ message: "لم يتم العثور على العقار" });
+    //     });
+    // });
+
+    // // Enter للبحث
+    // $('#property_id_search').on('keypress', function (e) {
+    //     if (e.which === 13) {
+    //         $('#btn-search-by-id').click();
+    //     }
+    // });
+
+
+
+});
+
+
+
+
+

@@ -1,0 +1,32 @@
+
+.border{
+    border-color: var(--border-color) !important;
+}
+
+/* Main Border Radius */
+.radius {
+    border-radius: var(--border-radius);
+}
+
+.radius-md {
+    border-radius: var(--border-radius-md);
+}
+.radius-sm {
+    border-radius: var(--border-radius-sm);
+}
+
+.radius-xs {
+    border-radius: var(--border-radius-xs);
+}
+
+
+// .t-r-radius {
+//     border-top-right-radius:  var(--border-radius);
+// }
+// .t-l-radius {
+//     border-top-left-radius:  var(--border-radius);
+// }
+
+// .border-b {
+//     border-bottom: 1px solid #f5f6fa;
+// }

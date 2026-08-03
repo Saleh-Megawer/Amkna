@@ -1,0 +1,172 @@
+@import "variables";
+@import "../../../helpers/colors";
+
+header {
+    height: $header-height;
+    background: center center no-repeat;
+
+    background-size: cover;
+    position: relative;
+
+    // Btn Change Cover
+    $btn-width: 160px;
+    #btn-choose-cover {
+        position: absolute;
+        top: 15px;
+        width: $btn-width;
+    }
+    #form-change-cover {
+        button {
+            position: absolute;
+            top: 15px;
+        }
+        .controls {
+            position: absolute;
+            top: 0px;
+        }
+    }
+}
+
+#edit {
+    margin-top: -$profile-margin-top;
+
+    // Avatar
+    #avatar {
+        .image {
+            position: relative;
+            #btn-choose-profile-img {
+                $btn-size: 35px;
+                position: absolute;
+                bottom: 0px;
+                background-color: var(--card-background);
+                border: 1px solid var(--border-color);
+                width: $btn-size;
+                height: $btn-size;
+                line-height: $btn-size - 2;
+                text-align: center;
+                color: var(--color);
+                cursor: pointer;
+                right: 0px;
+            }
+        }
+    }
+
+    // portfolio
+    #portfolio {
+        $icon-size: 32px;
+        $input-h: 36px;
+        position: relative;
+
+        .display-social-media {
+            .icon,
+            .form-group {
+                display: inline-block;
+            }
+            .icon {
+                color: #fff;
+                text-align: center;
+                height: $icon-size;
+                width: $icon-size;
+                line-height: $icon-size;
+                border-radius: 50%;
+                font-size: 14px;
+            }
+            .form-group {
+                input {
+                    height: $input-h !important;
+                }
+                width: calc(100% - 36.5px);
+                &:last-of-type {
+                    margin-bottom: 0px !important;
+                }
+            }
+        }
+        #btn-portfolio-open-model {
+            position: absolute;
+            top: 0px;
+            margin: 15px 15px;
+        }
+        #portfolioModel {
+            .input-social-media-url {
+                display: none;
+            }
+        }
+    }
+
+    // Profile Details
+    #profile-details {
+        .box-head {
+            .nav-tabs {
+                width: 100%;
+                .nav-link {
+                    border: none;
+                    font-size: 14px;
+                    color: var(--color-second);
+                    font-weight: 600;
+                    padding: 15px 8px;
+                    margin: 0px 5px;
+                }
+                .active {
+                    //  border-bottom: 1px solid var(--main-color);
+                     color: var(--main-color) !important;
+                }
+            }
+        }
+
+        // Experience
+        #experience {
+            #form-inputs {
+                .row {
+                    $padding-top: 18px;
+                    position: relative;
+                    padding-top: $padding-top;
+                    padding-bottom: 5px;
+                    margin-bottom: 5px;
+                    &:first-of-type {
+                        padding-top: 0px !important;
+                        .btn-delete-job {
+                            top: -4px;
+                        }
+                    }
+                    .btn-delete-job {
+                        position: absolute;
+                        top: $padding-top - 4px;
+                        margin: 0px 15px;
+                        cursor: pointer;
+                        padding: 2px 8px !important;
+                    }
+                }
+
+                .add-new-effect {
+                    animation: newExpEffect 2s linear 0s alternate;
+                }
+                @keyframes newExpEffect {
+                    25% {
+                        background-color: $soft-warning;
+                    }
+
+                    50% {
+                        background-color: transparent;
+                    }
+
+                    75% {
+                        background-color: $soft-warning;
+                    }
+
+                    100% {
+                        background-color: transparent;
+                    }
+                }
+            }
+        }
+
+        .owner-update-password {
+            position: relative;
+            button {
+                position: absolute;
+                top: 30px;
+                height: var(--input-height);
+            }
+        }
+    }
+}

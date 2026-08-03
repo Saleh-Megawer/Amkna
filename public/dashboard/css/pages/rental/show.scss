@@ -1,0 +1,150 @@
+// بطاقات الإحصائيات - تصميم أفقي مضغوط
+.stat-card {
+    @extend .modern-card;
+    position: relative;
+    overflow: hidden;
+    padding: 1.25rem;
+
+    &::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        right: 0;
+        width: 100%;
+        height: 2px;
+        background: var(--second-color);
+    }
+
+    .stat-content {
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+    }
+
+    .stat-icon {
+        width: 48px;
+        height: 48px;
+        min-width: 48px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 10px;
+        background: var(--btn-soft-main-background);
+        svg {
+            width: 24px;
+            height: 24px;
+            fill: var(--main-color);
+        }
+    }
+
+    .stat-info {
+        flex: 1;
+        min-width: 0;
+    }
+
+    .stat-label {
+        font-size: 0.8125rem;
+        color: var(--color-second);
+        margin-bottom: 0.25rem;
+        display: block;
+    }
+
+    .stat-value {
+        font-size: 1.5rem;
+        font-weight: 700;
+        color: var(--card-color);
+        margin: 0;
+        line-height: 1.2;
+    }
+
+    // ألوان مختلفة للأيقونات
+    &.stat-success .stat-icon {
+        background: #10b98115;
+        svg {
+            fill: #10b981;
+        }
+    }
+
+    &.stat-warning .stat-icon {
+        background: #f59e0b15;
+        svg {
+            fill: #f59e0b;
+        }
+    }
+
+    &.stat-danger .stat-icon {
+        background: #ef444415;
+        svg {
+            fill: #ef4444;
+        }
+    }
+
+    &.stat-primary .stat-icon {
+        background: #3b83f625;
+        svg {
+            fill: #3b82f6;
+        }
+    }
+
+}
+
+// تحسين بنية الكروت
+.info-section {
+    .info-item {
+        padding: 0.875rem 0;
+        border-bottom: 1px solid var(--border-color-light);
+
+        &:first-child {
+            padding-top: 0;
+        }
+
+        &:last-child {
+            border-bottom: none;
+            padding-bottom: 0;
+        }
+
+        .info-label {
+            font-size: 0.8125rem;
+            color: var(--color-second);
+            margin-bottom: 0.25rem;
+            display: block;
+        }
+
+        .info-value {
+            font-weight: 600;
+            color: var(--card-color);
+            font-size: 0.9375rem;
+        }
+    }
+}
+
+// تقليل padding العناوين
+.section-header {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    margin-bottom: 1rem;
+    padding-bottom: 0.625rem;
+    border-bottom: 1px solid var(--border-color-light);
+
+    .section-icon {
+        width: 20px;
+        height: 20px;
+        fill: var(--second-color);
+        flex-shrink: 0;
+    }
+
+    h5 {
+        margin: 0;
+        font-weight: 700;
+        font-size: 1.0625rem;
+        color: var(--card-color);
+    }
+}
+
+// تحسين padding الكروت
+.modern-card {
+    background: var(--card-background);
+    border-radius: var(--border-radius);
+    padding: 1.25rem;
+}

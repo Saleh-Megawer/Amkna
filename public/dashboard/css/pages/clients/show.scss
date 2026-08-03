@@ -1,0 +1,100 @@
+// ============================
+// Client Details Page
+// ============================
+
+.client-header {
+    .client-avatar {
+        width: 80px;
+        height: 80px;
+        object-fit: cover;
+    }
+
+    .client-avatar-placeholder {
+        width: 80px;
+        height: 80px;
+        background-color: var(--primary-color, #007bff);
+        font-size: 32px;
+        font-weight: bold;
+    }
+
+    @media (max-width: 767px) {
+        .client-avatar,
+        .client-avatar-placeholder {
+            width: 60px;
+            height: 60px;
+            font-size: 24px;
+        }
+
+        h4 {
+            font-size: 1.25rem;
+        }
+    }
+}
+
+// Info rows
+.info-row {
+    padding: 0.75rem 0;
+    border-bottom: 1px solid #dee2e6a4;
+
+    &:last-child {
+        border-bottom: none;
+    }
+
+    .info-label {
+        font-weight: 500;
+        color: #6c757d;
+    }
+
+    @media (max-width: 576px) {
+        flex-direction: column !important;
+        align-items: flex-start !important;
+    }
+}
+
+// Stats cards
+.stats-card {
+    text-align: center;
+
+    .stats-icon {
+        width: 50px;
+        height: 50px;
+        margin: 0 auto 1rem;
+
+        &.bg-primary-light {
+            background-color: rgba(0, 123, 255, 0.1);
+            color: #007bff;
+        }
+
+        &.bg-success-light {
+            background-color: rgba(40, 167, 69, 0.1);
+            color: #28a745;
+        }
+
+        &.bg-info-light {
+            background-color: rgba(23, 162, 184, 0.1);
+            color: #17a2b8;
+        }
+
+        &.bg-warning-light {
+            background-color: rgba(255, 193, 7, 0.1);
+            color: #ffc107;
+        }
+    }
+
+    .stats-value {
+        font-size: 2rem;
+        font-weight: 700;
+        line-height: 1;
+    }
+}
+
+// Empty state
+.empty-state {
+    padding: 3rem 1rem;
+
+    svg {
+        width: 80px;
+        height: 80px;
+        opacity: 0.3;
+    }
+}

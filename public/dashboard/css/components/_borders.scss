@@ -1,0 +1,28 @@
+/* Main Border Radius */
+.radius {
+    border-radius: var(--border-radius);
+}
+.radius-0 {
+    border-radius: 0px !important;
+}
+
+.border-b {
+    border-bottom: 1px solid #f5f6fa;
+}
+
+.radius-tr {
+    border-top-right-radius: var(--border-radius);
+}
+
+.radius-br {
+    border-bottom-right-radius: var(--border-radius);
+}
+
+.border {
+    border: var(--border-color) 1px solid ;
+
+}
+
+.border-light {
+    border: var(--border-color-light) 1px solid ;
+}

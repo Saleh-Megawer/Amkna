@@ -1,0 +1,15 @@
+.overlay {
+    inset: 0px;
+    height: 100%;
+    width: 100%;
+}
+
+$overlays-color: (
+    "black": linear-gradient(0deg, rgba(24,25,26,0.76234243697479) 5%, rgba(33,37,41,0.35898109243697474) 80%),
+);
+
+@each $class-name, $bg-color in $overlays-color {
+    .overlay-#{$class-name} {
+        background: $bg-color;
+    }
+}

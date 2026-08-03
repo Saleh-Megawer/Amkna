@@ -1,0 +1,24 @@
+
+#categories {
+    #btn-reset-form-for-add-new {
+        display: none;
+    }
+}
+
+.search-buttons {
+    position: relative;
+
+    button,a {
+        position: absolute;
+        top: 0px;
+        height: 100%;
+        background-color: var(--btn-main-background);
+        color: var(--btn-main-color);
+        width: 50px;
+        text-align: center;
+        line-height: 42px;
+        font-size: 17px;
+
+    }
+}
+

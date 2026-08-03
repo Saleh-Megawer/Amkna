@@ -1,0 +1,527 @@
+<?php
+
+use App\Http\Controllers\Dashboard\AchievementsController;
+use App\Http\Controllers\Dashboard\Admin\AdminController;
+use App\Http\Controllers\Dashboard\Admin\PortfolioController;
+use App\Http\Controllers\Dashboard\Admin\ProfileController;
+use App\Http\Controllers\Dashboard\Auth\LoginController;
+use App\Http\Controllers\Dashboard\Auth\LogoutController;
+use App\Http\Controllers\Dashboard\CitiesController;
+use App\Http\Controllers\Dashboard\DevelopersRealEstateController;
+use App\Http\Controllers\Dashboard\FaqsController;
+use App\Http\Controllers\Dashboard\General\GeneralLinksController;
+use App\Http\Controllers\Dashboard\General\ProductAttributesController;
+use App\Http\Controllers\Dashboard\General\ProductDealingTypesController;
+use App\Http\Controllers\Dashboard\General\ProductPropertyTypeController;
+use App\Http\Controllers\Dashboard\General\ProductStatusController;
+use App\Http\Controllers\Dashboard\HomeController;
+use App\Http\Controllers\Dashboard\MailBox\MailboxController;
+use App\Http\Controllers\Dashboard\MailBox\MailReplyController;
+use App\Http\Controllers\Dashboard\NeighborhoodsController;
+use App\Http\Controllers\Dashboard\PartnersController;
+use App\Http\Controllers\Dashboard\PrivacyController;
+use App\Http\Controllers\Dashboard\ProductGalleryController;
+use App\Http\Controllers\Dashboard\ProductItemsController;
+use App\Http\Controllers\Dashboard\ProductsController;
+use App\Http\Controllers\Dashboard\Products\Ads\AdsController;
+use App\Http\Controllers\Dashboard\Products\Ads\AdsGalleryController;
+use App\Http\Controllers\Dashboard\Products\Ads\AdsItemsController;
+use App\Http\Controllers\Dashboard\RequestsController;
+use App\Http\Controllers\Dashboard\ServicesController;
+use App\Http\Controllers\Dashboard\ServicesDetailsController;
+use App\Http\Controllers\Dashboard\Settings\SettingController;
+use App\Http\Controllers\Dashboard\Settings\SettingHomeController;
+use Illuminate\Support\Facades\Route;
+
+// Guest
+Route::controller(LoginController::class)->group(function () {
+    Route::middleware('guest')->group(function () {
+        Route::get('', 'index');
+        Route::post('login', 'login')->name("login");
+    });
+    Route::get('forgot-passowrd', 'forgotPassword');
+});
+
+Route::prefix(adminPrefix())->group(function () {
+
+    /**
+     * Admin Middleware
+     */
+    Route::middleware(['AdminAuth'])->group(function () {
+
+        /*
+        |
+        | Admins & Profile
+        |
+         */
+        Route::prefix('profile')->group(function () { // Admin Profile
+
+            // Profile
+            Route::controller(ProfileController::class)->group(function () {
+
+                Route::get('show/{id?}', 'show'); // Show Profile
+                Route::get('edit', 'edit');
+
+                // Update
+                Route::patch('update-personal-data', 'updatePersonalData')->name('update-personal-data');
+                Route::patch('change-password', 'changeProfilePassword')->name('change-profile-password');
+
+                /**
+                 * Not Complate
+                 */
+                Route::post('experience', 'experience')->name('experience');
+                /**
+                 * Not Complate
+                 */
+
+                Route::patch('update-avatar', 'updateProfileAvatar')->name('update-profile-avatar');
+                Route::patch('update-cover', 'updateProfileCover')->name('update-profile-cover');
+
+                /**
+                 * Not Complate
+                 */
+                // Delete Experience
+                Route::delete('delete-experience', 'destroyExperience');
+                /**
+                 * Not Complate
+                 */
+
+                // Verified Email
+                Route::post('verify-email', 'sendMailForVerifyEmail')->name('sendMailForVerifyEmail');
+                Route::get('verified-email/{token}', 'verifiedEmail');
+
+                                                                                                     // Forgot Password
+                Route::post('forgot-password', 'forgotPassword');                                    // Send Mail
+                Route::get('reset-password/{token}', 'resetPasswordView');                           // View To Reset
+                Route::patch('reset-password', 'resetPasswordUpdate')->name('reset-admin-password'); // Update
+
+                // Update Roles
+                Route::patch('change-roles', 'changeRoles')->name('change-roles');
+            });
+
+            // Portfolio
+            Route::controller(PortfolioController::class)->group(function () {
+                Route::patch('portfolio-update', 'update')->name('portfolio-update');
+            });
+        });
+
+        Route::prefix('admins')->group(function () {
+
+            Route::controller(AdminController::class)->group(function () {
+                Route::get('', 'index');
+                Route::post('search', 'search')->name("admin-search");
+                // Create New Admin
+                Route::post('store', 'store')->name("create-admin");
+
+                // Status
+                Route::patch('closed-account', 'closedAccount')->name("closed-admin-account");
+                Route::patch('active-account', 'activeAccount')->name("active-admin-account");
+
+                // Global Actions From Admins By Owner
+                Route::middleware('role:' . owner())->group(function () {
+                    Route::delete('destroy', 'destroy')->name("delete-admin");
+                });
+            });
+
+            Route::middleware('role:' . owner())->group(function () {
+                // Edit
+                Route::get('edit/{id}', [ProfileController::class, 'edit']);
+                // Chnage Other Admin Password By Owner
+                Route::patch('change-admin-password', [AdminController::class, 'changeAdminPassword'])->name("change-admin-password");
+            });
+        });
+
+        /*
+        |
+        | privacy
+        |
+         */
+        Route::controller(PrivacyController::class)->group(function () {
+            Route::prefix('privacy')->group(function () {
+
+                // All
+                Route::get('', 'index');
+                Route::post('store-update', 'storeUpdate')->name("privacy-store-update");
+            });
+        });
+
+        /*
+        |
+        | Faqs
+        |
+         */
+        Route::controller(FaqsController::class)->group(function () {
+            Route::prefix('faqs')->group(function () {
+
+                // All
+                Route::get('', 'index');
+
+                // Create
+                Route::get('create', 'create');
+                Route::post('store', 'store')->name("faqs-store");
+
+                // // Update
+                Route::get('edit/{id}', 'edit');
+                Route::patch('update', 'update')->name("faqs-update");
+
+                // Actions
+                Route::delete('destroy', 'destroy')->name('faqs-destroy');
+            });
+        });
+
+        /*
+        |
+        | requests
+        |
+         */
+        Route::prefix('requests')->group(function () {
+            Route::controller(RequestsController::class)->group(function () {
+                Route::get('', 'index');
+                Route::get('show/{id}', 'show');
+                //    Route::post('load-latest', 'loadLatest');
+                //    Route::post('count-latest', 'countLatest');
+
+                // General
+                Route::delete('destroy', 'destroy')->name('requests-destroy');
+            });
+        });
+
+        /*
+        |
+        | Mailbox
+        |
+         */
+        Route::prefix('mail')->group(function () {
+
+            Route::controller(MailboxController::class)->group(function () {
+                Route::get('', 'index');
+                Route::get('read/{id}', 'show');
+                Route::post('actions', 'multiActions')->name('mail-multi-actions');
+                Route::post('load-latest', 'loadLatest');
+            });
+
+            // Reply
+            Route::controller(MailReplyController::class)->group(function () {
+                Route::post('reply', 'store')->name('reply-mail');
+                Route::get('show/reply/{id}', 'show');
+            });
+        });
+
+        /*
+        |
+        | Services
+        |
+         */
+        Route::prefix('settings')->group(function () {
+
+            Route::controller(SettingController::class)->group(function () {
+                Route::get('', 'index');
+                Route::post('store', 'store')->name('store-settings');
+
+                Route::prefix('general')->group(function () {
+
+                    Route::get('', 'indexGeneral');
+                }); // general
+
+            });
+
+            Route::prefix('home')->group(function () {
+                Route::controller(SettingHomeController::class)->group(function () {
+                    Route::get('', 'index');
+                    Route::post('headerSliderAttech', 'headerSliderAttech')->name('headerSliderAttech');
+                    Route::post('headerSliderDeleteSingle', 'headerSliderDeleteSingle')->name('headerSliderDeleteSingle');
+                    Route::post('headerSliderRankUp', 'headerSliderRankUp')->name('headerSliderRankUp');
+                    Route::post('headerStoreTitleDesc', 'headerStoreTitleDesc')->name('headerStoreTitleDesc');
+                });
+            }); // Home
+
+        }); //settings
+
+        /*
+        |
+        | Services
+        |
+         */
+
+        Route::prefix('services')->group(function () {
+
+            Route::controller(ServicesController::class)->group(function () {
+                // All
+                Route::get('', 'index');
+
+                // Create
+                Route::get('create', 'create');
+                Route::post('store', 'store')->name("service-store");
+
+                // // Update
+                Route::get('edit/{id}', 'edit');
+                Route::patch('update', 'update')->name("service-update");
+
+                // Actions
+                Route::delete('destroy', 'destroy')->name('services-destroy');
+
+            });
+
+            Route::prefix('details')->group(function () {
+                Route::controller(ServicesDetailsController::class)->group(function () {
+                    // All
+                    //Route::get('', 'index');
+
+                    // Create
+                    Route::get('create', 'create')->name('services.details.create');
+                    Route::post('store', 'store')->name("services.details.store");
+
+                    // // // Update
+                    // Route::get('edit/{id}', 'edit');
+                    Route::post('update', 'update')->name("services.details.update");
+
+                    // // Actions
+                    // Route::delete('destroy', 'destroy')->name('services-destroy');
+                });
+            });
+        });
+
+        /*
+        |
+        | Achievements
+        |
+        */
+        Route::controller(AchievementsController::class)->group(function () {
+            Route::prefix('achievements')->group(function () {
+                // All
+                Route::get('', 'index');
+                // Create
+                Route::post('store', 'store')->name("achievements-store");
+                // Update
+                Route::patch('update', 'update')->name("achievements-update");
+                // Destroy
+                Route::delete('destroy', 'destroy')->name('achievements-destroy');
+            });
+        });
+
+        /*
+        |
+        | partners
+        |
+         */
+        Route::controller(PartnersController::class)->group(function () {
+            Route::prefix('partners')->group(function () {
+
+                // All
+                Route::get('', 'index');
+
+                // Create
+                Route::post('store', 'store')->name("partners-store");
+
+                // Actions
+                Route::delete('destroy', 'destroy')->name('partners-destroy');
+            });
+        });
+
+        /*
+        |
+        | Products
+        |
+        */
+        Route::prefix('products')->group(function () {
+
+            Route::controller(ProductItemsController::class)->group(function () {
+                Route::prefix('items')->group(function () {
+                    // Items Actions
+                    Route::post('get-row', 'getRow');
+                    Route::post('item-update', 'update');
+                });
+            });
+
+            Route::controller(ProductsController::class)->group(function () {
+
+                // All
+                Route::get('', 'index');
+                // Create
+                Route::get('create', 'create');
+                Route::post('store', 'store')->name("products-store");
+                // Update
+                Route::get('edit/{id}', 'edit');
+                Route::post('update', 'update')->name("products-update");
+
+                Route::patch('product-update-display-status', 'updateDisplayStatus')->name("product-update-display-status");
+                Route::delete('destroy', 'destroy')->name('products-destroy');
+
+                // Actions
+                Route::post('get-neighborhoods', 'getNeighborhoods')->name("getNeighborhoods");
+            });
+
+            Route::post('gallery-upload-store', [ProductGalleryController::class, 'store'])->name('gallery-upload-store');
+            Route::delete('gallery-upload-destroy', [ProductGalleryController::class, 'destroy'])->name('gallery-destroy');
+
+            /**
+             * Ads
+             */
+            Route::prefix('ads')->group(function () {
+
+                Route::controller(AdsItemsController::class)->group(function () {
+                    Route::prefix('items')->group(function () {
+                        // Items Actions
+                        Route::post('get-row', 'getRow');
+                        Route::post('item-update', 'update');
+                    });
+                });
+
+                Route::controller(AdsController::class)->group(function () {
+
+                    // All
+                    Route::get('', 'index');
+                    Route::get('analytics', 'analytics');
+
+                    // Create
+                    Route::get('create', 'create');
+                    Route::post('store', 'store')->name("products-ads-store");
+
+                    // Update
+                    Route::get('edit/{id}', 'edit');
+                    Route::post('update', 'update')->name("products-ads-update");
+
+                    Route::patch('product-update-display-status', 'updateDisplayStatus')->name("product-ads-update-display-status");
+                    Route::delete('destroy', 'destroy')->name('products-ads-destroy');
+                    Route::delete('adsNewsDestroy', 'adsNewsDestroy')->name('product-ads-news-destroy');
+
+                    // Actions
+                    Route::post('get-neighborhoods', 'getNeighborhoods')->name("getNeighborhoods");
+
+                });
+
+                Route::post('gallery-upload-store', [AdsGalleryController::class, 'store'])->name('gallery-ads-upload-store');
+                Route::delete('gallery-upload-destroy', [AdsGalleryController::class, 'destroy'])->name('gallery-ads-destroy');
+            });
+        });
+
+        /*
+        |
+        | General Links
+        |
+        */
+        Route::prefix('general-links')->group(function () {
+
+            Route::controller(GeneralLinksController::class)->group(function () {
+                // All
+                Route::get('', 'index');
+            });
+
+            Route::controller(ProductStatusController::class)->group(function () {
+                Route::prefix('status')->group(function () {
+                    //View
+                    Route::get('', 'index');
+                    // Create
+                    Route::post('store', 'store')->name("status-store");
+                    // Update
+                    Route::patch('update', 'update')->name("status-update");
+                    // Destroy
+                    Route::delete('destroy', 'destroy')->name('status-destroy');
+                });
+            });
+
+            Route::controller(ProductDealingTypesController::class)->group(function () {
+                Route::prefix('deal-type')->group(function () {
+                    //View
+                    Route::get('', 'index');
+                    // Create
+                    Route::post('store', 'store')->name("deal-type-store");
+                    // Update
+                    Route::patch('update', 'update')->name("deal-type-update");
+                    // Destroy
+                    Route::delete('destroy', 'destroy')->name('deal-type-destroy');
+                });
+            });
+
+            Route::controller(ProductAttributesController::class)->group(function () {
+                Route::prefix('attributes')->group(function () {
+                    //View
+                    Route::get('', 'index');
+                    // Create
+                    Route::post('store', 'store')->name("attributes-store");
+                    // Update
+                    Route::patch('update', 'update')->name("attributes-update");
+                    // Destroy
+                    Route::delete('destroy', 'destroy')->name('attributes-destroy');
+                });
+            });
+
+            Route::controller(ProductPropertyTypeController::class)->group(function () {
+                Route::prefix('property-types')->group(function () {
+                    //View
+                    Route::get('', 'index');
+                    // Create
+                    Route::post('store', 'store')->name("property-types-store");
+                    // Update
+                    Route::patch('update', 'update')->name("property-types-update");
+                    // Destroy
+                    Route::delete('destroy', 'destroy')->name('property-types-destroy');
+                });
+            });
+        });
+
+        /*
+        |
+        | Developers Real Estate
+        |
+        */
+        Route::controller(DevelopersRealEstateController::class)->group(function () {
+            Route::prefix('developers-real-estate')->group(function () {
+                // All
+                Route::get('', 'index');
+                // Create
+                Route::get('create', 'create');
+                Route::post('store', 'store')->name("developers-store");
+                // Update
+                Route::get('edit/{id}', 'edit');
+                Route::patch('update', 'update')->name("developers-update");
+                // Actions
+                Route::delete('destroy', 'destroy')->name('developers-destroy');
+            });
+        });
+
+        /*
+        |
+        | Neighborhoods
+        |
+        */
+        Route::controller(NeighborhoodsController::class)->group(function () {
+            Route::prefix('neighborhoods')->group(function () {
+                // All
+                Route::get('', 'index');
+                // Create
+                Route::post('store', 'store')->name("neighborhoods-store");
+                // Update
+                Route::patch('update', 'update')->name("neighborhoods-update");
+                // Destroy
+                Route::delete('destroy', 'destroy')->name('neighborhoods-destroy');
+            });
+        });
+
+        /*
+        |
+        | Cities
+        |
+        */
+        Route::controller(CitiesController::class)->group(function () {
+            Route::prefix('cities')->group(function () {
+                // All
+                Route::get('', 'index');
+                // Create
+                Route::post('store', 'store')->name("cities-store");
+                // Update
+                Route::patch('update', 'update')->name("cities-update");
+                // Destroy
+                Route::delete('destroy', 'destroy')->name('cities-destroy');
+            });
+        });
+
+        // Logout
+        Route::post('logout', [LogoutController::class, 'logout'])->name("logout");
+        // Home
+        Route::controller(HomeController::class)->group(function () {
+            Route::get('home', 'index');
+        });
+    }); // AdminAuth
+
+}); // end adminPrefix()

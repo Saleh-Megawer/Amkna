@@ -1,0 +1,27 @@
+
+@import "helpers/media";
+@import "helpers/dir";
+
+@import "components/components.scss";
+
+/* Layout */
+@import "layouts/navbar.scss";
+@import "layouts/footer.scss";
+
+/* Global Style */
+@import "global/global.scss";
+
+
+/* Override Styles */
+@import "override/override.scss";
+
+/**
+**
+** Load Pages Styles
+**
+**/
+@import "pages/home/index.scss"; // Home
+@import "pages/main/main.scss"; // main
+
+/** users **/
+@import "pages/clients/_login.scss"; // Home
