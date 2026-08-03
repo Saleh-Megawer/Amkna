@@ -27,7 +27,7 @@ class CityNeighborhoodSeeder extends Seeder
             foreach ($list as $city) {
                 City::create([
                     'ar' => ['name' => $city['ar']],
-                    'en' => ['name' => $city['en']],
+                   // 'en' => ['name' => $city['en']],
                 ]);
             }
 
