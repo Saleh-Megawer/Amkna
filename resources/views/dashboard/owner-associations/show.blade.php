@@ -566,7 +566,7 @@
                                                         <thead class="thead-inverse bg-light">
                                                             <tr>
                                                                 <th>العميل</th>
-                                                                <th>الجوال</th>
+                                                                <th>الهاتف</th>
                                                                 <th>التصويت</th>
                                                                 <th>الملاحظات</th>
                                                                 <th>التاريخ</th>

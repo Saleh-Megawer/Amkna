@@ -50,7 +50,7 @@
                                         'value' => request('search'),
                                         'options' => [
                                             'class' => 'input-multi-search ltr text-right',
-                                            'placeholder' => 'بالاسم أو رقم الجوال أو #رقم الاهتمام',
+                                            'placeholder' => 'بالاسم أو رقم الهاتف أو #رقم الاهتمام',
                                         ],
                                     ],
                                     'label' => [
@@ -258,7 +258,7 @@
                     @endif
                     <th title="الرقم المرجعي / التعريفي" class="tip">رقم</th>
                     <th>العميل</th>
-                    <th>الجوال</th>
+                    <th>الهاتف</th>
                     <th>الإجراء الحالي</th>
                     @if (adminAuth('type') === 'admin')
                         <th class="noExl">المكلّف</th>

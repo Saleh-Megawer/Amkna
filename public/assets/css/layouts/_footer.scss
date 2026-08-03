@@ -1,14 +1,23 @@
 .main-footer {
-    background: var(--accent);
+    background: linear-gradient(180deg, #1a3556 0%, #102133 100%);
     color: #ffffff;
 
+    // position: relative;
+    // &::before {
+    //     content: "";
+    //     height: 2px;
+    //     position: absolute;
+    //     top: -2px;
+    //     width: 100%;
+    //     background: linear-gradient(90deg, transparent, var(--accent-1), transparent);
+    // }
     a {
         color: #dddddd;
         text-decoration: none;
         transition: all 0.3s ease;
 
         &:hover {
-            color:var(--accent-1);
+            color: var(--accent-1);
         }
     }
 }
@@ -198,12 +207,12 @@
 
 // Footer Bottom
 .footer-bottom {
-    padding: 25px 0;
-    background: var(--accent);
+    padding: 15px 0;
+    background: #ffffff;
 
     p {
         font-size: 14px;
-        color: #ffffff;
+        color: #000000;
 
         a {
             color: var(--accent-1);

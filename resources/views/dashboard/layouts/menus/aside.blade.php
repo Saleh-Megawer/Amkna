@@ -270,7 +270,7 @@
         {{-- ========================================================= --}}
         {{-- Owner Associations --}}
         {{-- ========================================================= --}}
-        @if (isSalesAdmin())
+        {{-- @if (isSalesAdmin())
             <li class="side-item-category">اتحاد الملاك</li>
         @else
             @canany(['owner_associations_create', 'owner_associations_view_requests_page'])
@@ -301,7 +301,7 @@
                 'الطلبات & الشكاوي <span class=\'aside-owner-associations-requests-count display-none badge badge-danger text-white float-left\'></span>',
             'icon' => $icons['interests'],
             'link' => 'owner-associations/requests',
-        ]" />
+        ]" /> --}}
 
 
 

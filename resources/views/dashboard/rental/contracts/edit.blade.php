@@ -286,12 +286,12 @@
                         <div class="form-row">
 
                             <div class="col-md-6">
-                                <x-dashboard.input-client-search :required="true" label='المالك (ابحث بالاسم أو الجوال)'
+                                <x-dashboard.input-client-search :required="true" label='المالك (ابحث بالاسم أو الهاتف)'
                                     name="owner_client_id" :valueId="$contract->owner_client_id" :valueText="$contract->owner->name ?? ''" />
                             </div><!-- owner_client_id -->
 
                             <div class="col-md-6">
-                                <x-dashboard.input-client-search :required="true" label='المستأجر (ابحث بالاسم أو الجوال)'
+                                <x-dashboard.input-client-search :required="true" label='المستأجر (ابحث بالاسم أو الهاتف)'
                                     name="tenant_client_id" :valueId="$contract->tenant_client_id" :valueText="$contract->tenant->name ?? ''" />
                             </div><!-- tenant_client_id -->
 

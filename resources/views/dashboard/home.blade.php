@@ -100,7 +100,7 @@
                             <div class="small font-weight-bold">الاهتمامات</div>
                         </a>
                     </div>
-                    <div class="col-6 col-md-4 col-lg-3 col-xl mb-3 mb-xl-0">
+                    {{-- <div class="col-6 col-md-4 col-lg-3 col-xl mb-3 mb-xl-0">
                         <a href="{{ route('owner-associations.index') }}"
                             class="btn btn-block btn-outline-info quick-action-btn">
                             <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-buildings mb-2"
@@ -114,7 +114,7 @@
                             </svg>
                             <div class="small font-weight-bold">اتحادات الملاك</div>
                         </a>
-                    </div>
+                    </div> --}}
                     <div class="col-6 col-md-4 col-lg-3 col-xl mb-3 mb-xl-0">
                         <a href="{{ route('rental.contracts.index') }}"
                             class="btn btn-block btn-outline-teal quick-action-btn">

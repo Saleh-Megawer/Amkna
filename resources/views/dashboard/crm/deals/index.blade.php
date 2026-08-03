@@ -50,7 +50,7 @@
                                 <div class="form-group mb-3 mb-lg-0">
                                     <label class="form-label">البحث عن عميل</label>
                                     <input type="text" name="search" class="form-control"
-                                        placeholder="بالاسم أو رقم الجوال..." value="{{ request('search') }}">
+                                        placeholder="بالاسم أو رقم الهاتف..." value="{{ request('search') }}">
                                 </div>
                             </div>
 
@@ -167,7 +167,7 @@
 
                         <th title="الرقم التعريفي للصفقة" class="tip">رقم</th>
                         <th>العميل</th>
-                        <th>الجوال</th>
+                        <th>الهاتف</th>
                         <th>نوع الصفقة</th>
                         <th>نوع العقار</th>
                         <th>حالة الصفقة</th>

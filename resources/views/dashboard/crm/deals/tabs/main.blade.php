@@ -187,7 +187,7 @@
                                         'options' => ['readonly', 'class' => 'ltr text-right'],
                                     ],
                                     'label' => [
-                                        'text' => 'رقم الجوال',
+                                        'text' => 'رقم الهاتف',
                                     ],
                                 ]" />
                             </div><!-- phone -->
@@ -201,7 +201,7 @@
                                         'options' => ['readonly'],
                                     ],
                                     'label' => [
-                                        'text' => 'رقم الجوال',
+                                        'text' => 'رقم الهاتف',
                                     ],
                                 ]" />
                             </div><!-- email -->

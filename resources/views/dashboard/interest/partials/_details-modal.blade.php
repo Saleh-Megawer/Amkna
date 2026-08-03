@@ -84,7 +84,7 @@
                                     <div class="col-md-6">
 
                                         <p class="mb-2">
-                                            <strong class="text-muted">الجوال:</strong>
+                                            <strong class="text-muted">الهاتف:</strong>
                                             <a target="__blank"
                                                 href="https://wa.me/{{ ltrim($interest->client->country_code, '+') }}{{ $interest->client->phone }}">
                                                 <bdi class="ltr mr-2">

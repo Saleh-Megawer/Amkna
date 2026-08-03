@@ -271,7 +271,7 @@
                             <div class="col-6 mb-3">
                                 <div class="info-section">
                                     <div class="info-item">
-                                        <span class="info-label">رقم الجوال</span>
+                                        <span class="info-label">رقم الهاتف</span>
                                         <p class="info-value mb-1 ltr">
                                             {{ $contract->owner->country_code }}{{ $contract->owner->phone }}</p>
                                     </div><!--  -->
@@ -329,7 +329,7 @@
                             <div class="col-6 mb-3">
                                 <div class="info-section">
                                     <div class="info-item">
-                                        <span class="info-label">رقم الجوال</span>
+                                        <span class="info-label">رقم الهاتف</span>
                                         <p class="info-value mb-1 ltr">
                                             {{ $contract->tenant->country_code }}{{ $contract->tenant->phone }}</p>
                                     </div><!--  -->

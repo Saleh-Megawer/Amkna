@@ -45,6 +45,10 @@
                             <li><a href="{{ appUrl('contact') }}">{{ __('main.footer.contact') }}</a></li>
                             <li><a href="{{ appUrl('privacy-policy') }}">{{ __('main.footer.privacy_policy') }}</a>
                             </li>
+
+                            <li><a href=""> أعلن عن عقارك</a></li>
+                            <li><a href="#" data-toggle="modal" data-target="#joinMarketerModal">انضم كمسوق</a></li>
+
                             {{-- <li><a href="{{ appUrl('login') }}">{{ __('main.footer.login') }}</a></li>
                             <li><a href="{{ appUrl('register') }}">{{ __('main.footer.register') }}</a></li> --}}
                         </ul>
@@ -136,7 +140,7 @@
         <div class="footer-bottom">
             <div class="container">
 
-                <div class="mb-2 mb-md-0 ">
+                <div class="mb-2 mb-md-0 text-center">
                     <p class="mb-0">
                         {{ __('main.footer.rights') }}
                         <a href="{{ appUrl('') }}">{{ __('main.app_name') }}</a>

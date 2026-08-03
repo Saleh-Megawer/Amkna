@@ -7,7 +7,7 @@ class LogFields
     {
         return [
             'name'         => 'الاسم',
-            'phone'        => 'الجوال',
+            'phone'        => 'الهاتف',
             'email'        => 'البريد الإلكتروني',
             'status_id'    => 'الحالة',
             'assigned_to'  => 'الموظف المكلّف',

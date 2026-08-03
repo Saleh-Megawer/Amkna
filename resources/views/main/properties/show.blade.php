@@ -132,7 +132,7 @@
                     <div class="row">
 
                         @if ($row->description)
-                            <div class="col-md-7">
+                            <div class=" {{ count($row->features) + count($row->amenities) > 0 ? 'col-md-7' : 'col-12' }}">
                                 <section id="desc" class="section-gap">
                                     <div class="box p-4 p-md-5">
                                         <h4 class="section-title mb-3">{{ __('main.property.description') }}</h4>
@@ -159,34 +159,35 @@
                                 </section>
                             </div>
                         @endif
+                        @if (count($row->features) + count($row->amenities) > 0)
+                            <div class="col-md-5">
+                                <section id="features" class="section-gap">
+                                    <div class="box p-4 p-lg-5">
+                                        <h4 class="section-title mb-3">{{ __('main.property.features') }} &
+                                            {{ __('main.property.amenities') }}</h4>
 
-                        <div class="col-md-5">
-                            <section id="features" class="section-gap">
-                                <div class="box p-4 p-lg-5">
-                                    <h4 class="section-title mb-3">{{ __('main.property.features') }} &
-                                        {{ __('main.property.amenities') }}</h4>
-
-                                    <div class="row">
-                                        @foreach (collect($row->features)->merge($row->amenities) as $feature)
-                                            <div class="col-md-6 col-sm-6 col-12 mb-2">
-                                                <div class="feature-item">
-                                                    <span class="icon mr-2">
-                                                        <svg xmlns="http://www.w3.org/2000/svg" width="32"
-                                                            height="32" fill="#000000" viewBox="0 0 256 256">
-                                                            <path
-                                                                d="M176.49,95.51a12,12,0,0,1,0,17l-56,56a12,12,0,0,1-17,0l-24-24a12,12,0,1,1,17-17L112,143l47.51-47.52A12,12,0,0,1,176.49,95.51ZM236,128A108,108,0,1,1,128,20,108.12,108.12,0,0,1,236,128Zm-24,0a84,84,0,1,0-84,84A84.09,84.09,0,0,0,212,128Z">
-                                                            </path>
-                                                        </svg>
-                                                    </span>
-                                                    <span class="font-weight-400">{{ $feature->name }}</span>
+                                        <div class="row">
+                                            @foreach (collect($row->features)->merge($row->amenities) as $feature)
+                                                <div class="col-md-6 col-sm-6 col-12 mb-2">
+                                                    <div class="feature-item">
+                                                        <span class="icon mr-2">
+                                                            <svg xmlns="http://www.w3.org/2000/svg" width="32"
+                                                                height="32" fill="#000000" viewBox="0 0 256 256">
+                                                                <path
+                                                                    d="M176.49,95.51a12,12,0,0,1,0,17l-56,56a12,12,0,0,1-17,0l-24-24a12,12,0,1,1,17-17L112,143l47.51-47.52A12,12,0,0,1,176.49,95.51ZM236,128A108,108,0,1,1,128,20,108.12,108.12,0,0,1,236,128Zm-24,0a84,84,0,1,0-84,84A84.09,84.09,0,0,0,212,128Z">
+                                                                </path>
+                                                            </svg>
+                                                        </span>
+                                                        <span class="font-weight-400">{{ $feature->name }}</span>
+                                                    </div>
                                                 </div>
-                                            </div>
-                                        @endforeach
-                                    </div>
+                                            @endforeach
+                                        </div>
 
-                                </div>
-                            </section>
-                        </div>
+                                    </div>
+                                </section>
+                            </div>
+                        @endif
                     </div>
 
 
@@ -304,6 +305,90 @@
                         </div>
                     @endif
 
+
+                           <section id="property-whatsapp-cta" class="section-gap pt-0">
+
+                        <div class="whatsapp-cta">
+
+                            <div class="row align-items-center">
+
+                                <div class="col-lg-8">
+
+                                    <div class="whatsapp-cta-icon">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                                            viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                                            stroke-linecap="round" stroke-linejoin="round"
+                                            class="icon icon-tabler icons-tabler-outline icon-tabler-brand-whatsapp">
+                                            <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                                            <path d="M3 21l1.65 -3.8a9 9 0 1 1 3.4 2.9l-5.05 .9" />
+                                            <path
+                                                d="M9 10a.5 .5 0 0 0 1 0v-1a.5 .5 0 0 0 -1 0v1a5 5 0 0 0 5 5h1a.5 .5 0 0 0 0 -1h-1a.5 .5 0 0 0 0 1" />
+                                        </svg>
+                                    </div>
+
+                                    <div class="whatsapp-cta-content">
+
+                                        <h3>
+                                          تواصل معنا مباشر
+                                        </h3>
+
+                                        <p>
+                                            إذا كنت تفضل عدم استخدام النموذج، يمكنك التواصل معنا عبر واتساب أو الاتصال بنا
+                                            مباشرة، وسنكون سعداء بخدمتك.
+                                        </p>
+
+                                        <span class="reply-time">
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                                                viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                                stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                                                class="icon icon-tabler icons-tabler-outline icon-tabler-bolt">
+                                                <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                                                <path d="M13 3l0 7l6 0l-8 11l0 -7l-6 0l8 -11" />
+                                            </svg>
+                                            بنرد عليك في أسرع وقت.
+                                        </span>
+
+                                    </div>
+
+                                </div>
+
+                                <div class="col-lg-4">
+
+                                    <div class="whatsapp-cta-actions">
+
+                                        <a href="https://wa.me/201234567890" target="_blank" class="btn btn-whatsapp">
+                                             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                                            viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                                            stroke-linecap="round" stroke-linejoin="round"
+                                            class="icon icon-tabler icons-tabler-outline icon-tabler-brand-whatsapp">
+                                            <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                                            <path d="M3 21l1.65 -3.8a9 9 0 1 1 3.4 2.9l-5.05 .9" />
+                                            <path
+                                                d="M9 10a.5 .5 0 0 0 1 0v-1a.5 .5 0 0 0 -1 0v1a5 5 0 0 0 5 5h1a.5 .5 0 0 0 0 -1h-1a.5 .5 0 0 0 0 1" />
+                                        </svg>
+                                            ابدأ المحادثة
+                                        </a>
+
+                                        <a href="tel:+201234567890" class="btn btn-call">
+
+                                           <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-tabler icons-tabler-outline icon-tabler-phone"><path stroke="none" d="M0 0h24v24H0z" fill="none" /><path d="M5 4h4l2 5l-2.5 1.5a11 11 0 0 0 5 5l1.5 -2.5l5 2v4a2 2 0 0 1 -2 2a16 16 0 0 1 -15 -15a2 2 0 0 1 2 -2" /></svg>
+
+                                            اتصل بنا
+
+                                        </a>
+
+                                    </div>
+
+                                </div>
+
+                            </div>
+
+                        </div>
+
+
+                    </section>
+
+                    
                     <section id="interest" class="mb-5 section-gap">
                         <div class="box p-4 p-lg-5">
 
@@ -431,6 +516,10 @@
 
                         </div>
                     </section>
+
+
+             
+
 
                 </div><!-- col-lg-8 -->
 

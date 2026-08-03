@@ -258,7 +258,7 @@
                                     'options' => [
                                         'class' => 'client-search-input',
                                         'required',
-                                        'placeholder' => 'ابحث بواسطة ( الاسم او رقم الجوال )',
+                                        'placeholder' => 'ابحث بواسطة ( الاسم او رقم الهاتف )',
                                     ],
                                 ],
                                 'label' => [
@@ -274,7 +274,7 @@
                         {{-- <input type="hidden" id="hidden-client-id-input" name="client_id" value=""> --}}
 
 
-                        <x-dashboard.input-client-search :required="true" label='ابحث بواسطة ( الاسم او رقم الجوال )'
+                        <x-dashboard.input-client-search :required="true" label='ابحث بواسطة ( الاسم او رقم الهاتف )'
                             name="client_id" />
 
 

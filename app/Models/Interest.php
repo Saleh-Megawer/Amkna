@@ -140,7 +140,7 @@ class Interest extends Model
                     //  لو لقى نتيجة بالـ ID، ابحث بالـ ID فقط
                     $query->where('id', $search);
                 } else {
-                    //  لو ملقاش بالـ ID، ابحث بالجوال
+                    //  لو ملقاش بالـ ID، ابحث بالهاتف
                     $query->whereHas('client', function ($q) use ($search) {
                         $cleanedSearch = ltrim($search, '0');
                         $q->where('phone', 'like', "%{$search}%")

@@ -27,7 +27,7 @@
 
                                 <div class="row">
                                     @foreach (languages() as $key => $val)
-                                        <div class="col-6">
+                                        <div class="col-12">
                                             <x-form-group :properties="[
                                                 'input' => [
                                                     'name' => $key . '[name]',

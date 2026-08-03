@@ -1,6 +1,6 @@
 <div class="ltr mb-2">
     <span class="required"></span>
-    رقم الجوال
+    رقم الهاتف
 </div>
 
 <div class="phone-inputs">

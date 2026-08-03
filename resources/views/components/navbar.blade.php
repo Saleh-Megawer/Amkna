@@ -86,7 +86,7 @@
 
 
                     <!-- Account -->
-                    <li class="nav-item">
+                    <li class="nav-item tip" title="دعم العملاء">
                         <a class="nav-link d-flex flex-column align-items-center" href="{{ appUrl('login') }}">
                             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
                                 fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
@@ -102,8 +102,21 @@
                             {{-- <span class="nav-label">{{ __('navbar.account') }}</span> --}}
                         </a>
                     </li>
+                   
 
-                    <li class="nav-item btn-advertise-your-property">
+                    <li class="nav-item mr-2 tip d-block d-lg-none " title="أعلن عن عقارك">
+                        <a class="nav-link d-flex flex-column align-items-center" href="{{ appUrl('login') }}">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                                fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                stroke-linejoin="round" class="icon icon-tabler icons-tabler-outline icon-tabler-plus">
+                                <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                                <path d="M12 5l0 14" />
+                                <path d="M5 12l14 0" />
+                            </svg>
+                        </a>
+                    </li>
+
+                    <li class="nav-item btn-advertise-your-property d-none d-lg-block">
                         <a class="nav-link d-flex align-items-center" href="{{ appUrl('login') }}">
                             <span class="nav-label">أعلن عن عقارك</span>
                         </a>
@@ -150,7 +163,7 @@
 
                     <!-- Toggler Button -->
                     <li class="nav-item d-lg-none">
-                        <button class="navbar-toggler" type="button" data-toggle="collapse"
+                        <button class="navbar-toggler mr-3" type="button" data-toggle="collapse"
                             data-target="#collapsibleNavId" aria-controls="collapsibleNavId" aria-expanded="false"
                             aria-label="Toggle navigation">
                             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"

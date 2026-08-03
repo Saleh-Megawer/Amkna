@@ -35,7 +35,7 @@
                                         'value' => request('search'),
                                         'options' => [
                                             'class' => 'input-multi-search ltr text-right',
-                                            'placeholder' => 'بالاسم أو رقم الجوال أو #رقم الطلب',
+                                            'placeholder' => 'بالاسم أو رقم الهاتف أو #رقم الطلب',
                                         ],
                                     ],
                                     'label' => [
@@ -239,7 +239,7 @@
                             <th>الإجراء الحالي</th>
                             <th>عنوان الطلب</th>
                             <th>العميل</th>
-                            <th>الجوال</th>
+                            <th>الهاتف</th>
                             @if (adminAuth('type') === 'admin')
                                 <th>المكلف</th>
                             @endif

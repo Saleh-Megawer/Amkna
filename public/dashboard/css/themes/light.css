@@ -10,8 +10,8 @@
 
 
     /* Main & Secondary Colors For This Theme */
-    --main-color: #000000;
-    --second-color: #d0a968;
+    --main-color: #C9A227 ;
+    --second-color: #1B3A5C;
     --third-color: #5682B1;
     --soft-main-color: #464d4632;
 
@@ -38,7 +38,7 @@
     --btn-soft-main-color: #000000;
     /**/
     --btn-second-background: var(--second-color);
-    --btn-second-color: #000000;
+    --btn-second-color: #ffffff;
     /**/
     --btn-third-background: var(--third-color);
     --btn-third-color: #ffffff;
@@ -59,7 +59,7 @@
     --input-border-color: #dddddd;
     --input-focus-border-color: var(--main-color);
     --input-focus-background: #ffffff;
-    --input-focus-shadow: 0 0 0 0.2rem #464d461b;
+    --input-focus-shadow: 0 0 0 0.2rem #c9a3272d;
 
 
 

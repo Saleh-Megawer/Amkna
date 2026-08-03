@@ -4,7 +4,7 @@
     // replace *word* with span (keep position)
     $cleanTitle = preg_replace('/\*(.*?)\*/', '<span class="app-name">$1</span>', $headerSliderTitleDesc);
 @endphp
-@section('title', strip_tags(Str::limit($cleanTitle, 60, '')))
+@section('title', 'أمكنة | عقارات للبيع والإيجار في مصر - شقق، فلل ومحلات بالتقسيط أو الكاش')
 @section('description', __('main.footer.description'))
 @section('image', metaImage('meta-home.webp'))
 @section('image-type', 'webp')

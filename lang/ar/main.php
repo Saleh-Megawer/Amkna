@@ -54,8 +54,8 @@ return [
                 'name'             => 'الاسم',
                 'name_placeholder' => 'الاسم الأول واسم العائلة',
                 'email'            => 'البريد الإلكتروني (اختياري)',
-                'phone'            => 'الجوال',
-                'phone_number'     => 'رقم الجوال',
+                'phone'            => 'الهاتف',
+                'phone_number'     => 'رقم الهاتف',
                 'password'         => 'كلمة المرور',
                 'submit'           => 'تسجيل',
                 'have_account'     => 'عندك حساب؟ سجّل الدخول',
@@ -136,11 +136,11 @@ return [
         'contact_prompt'                   => 'هل لديك أسئلة؟ أرسل لنا تفاصيلك وسنساعدك على الفور.',
         // ...
         'full_name'                        => 'الاسم بالكامل',
-        'phone'                            => 'الجوال',
+        'phone'                            => 'الهاتف',
         'message'                          => 'الرسالة',
         'email_optional'                   => 'البريد الإلكتروني ( اختياري )',
         'placeholder_name'                 => 'اسمك',
-        'placeholder_phone'                => 'رقم الجوال والواتساب',
+        'placeholder_phone'                => 'رقم الهاتف والواتساب',
         'placeholder_email'                => 'عنوان البريد الإلكتروني',
         'placeholder_interest_message'     => 'مرحباً :name 👋 اكتب رسالتك أو استفسارك هنا',
         //
@@ -205,13 +205,13 @@ return [
         'get_in_touch'        => 'تواصل معنا',
         'whatsapp'            => 'واتساب',
         'chat_now'            => 'تحدث الآن',
-        'phone'               => 'الجوال',
+        'phone'               => 'الهاتف',
         'email'               => 'البريد الإلكتروني',
         'send_message'        => 'أرسل رسالتك',
 
         // Aria Labels
         'whatsapp_aria'       => 'تحدث معنا على واتساب',
-        'phone_aria'          => 'اتصل بنا عبر الجوال',
+        'phone_aria'          => 'اتصل بنا عبر الهاتف',
         'email_aria'          => 'أرسل لنا بريداً إلكترونياً',
 
         // Form Fields

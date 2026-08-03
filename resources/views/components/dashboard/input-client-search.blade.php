@@ -6,7 +6,7 @@
             'value' => $valueText ?? null,
             'options' => array_filter([
                 'class' => 'client-search-input',
-                'placeholder' => 'ابحث بالاسم أو الجوال',
+                'placeholder' => 'ابحث بالاسم أو الهاتف',
                 $required ? 'required' : null,
                 'autocomplete' => 'off',
             ]),
@@ -31,7 +31,7 @@
                 'value' => $valueText ?? null,
                 'options' => array_filter([
                     'class' => 'client-search-input',
-                    'placeholder' => 'ابحث بالاسم أو الجوال',
+                    'placeholder' => 'ابحث بالاسم أو الهاتف',
                     $required ? 'required' : null,
                     'autocomplete' => 'off',
                 ]),

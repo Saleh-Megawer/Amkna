@@ -132,7 +132,7 @@ class PropertyController extends Controller
 
         // Normalize titles for search optimization
         $data['title_normalized_ar'] = normalizeArabic($data['ar']['title']);
-        $data['title_normalized_en'] = Str::lower($data['en']['title']);
+      //  $data['title_normalized_en'] = Str::lower($data['en']['title']);
 
         // Create property record
         $property = Property::create($data);
@@ -180,9 +180,9 @@ class PropertyController extends Controller
 
         // Normalize searchable fields
         $baseData['title_normalized_ar']       = normalizeArabic($data['ar']['title']);
-        $baseData['title_normalized_en']       = Str::lower($data['en']['title']);
+      //  $baseData['title_normalized_en']       = Str::lower($data['en']['title']);
         $baseData['description_normalized_ar'] = normalizeArabic($data['ar']['description']);
-        $baseData['description_normalized_en'] = Str::lower($data['en']['description']);
+       // $baseData['description_normalized_en'] = Str::lower($data['en']['description']);
 
         // Archive flag handling
         $baseData['is_archived'] = $request->boolean('is_archived');

@@ -51,7 +51,7 @@
                                             'value' => request('search'),
                                             'options' => [
                                                 'class' => 'input-multi-search ltr text-right',
-                                                'placeholder' => 'بالاسم أو رقم الجوال...',
+                                                'placeholder' => 'بالاسم أو رقم الهاتف...',
                                             ],
                                         ],
                                         'label' => [
@@ -157,7 +157,7 @@
 
                         <th>#</th>
                         <th>اسم العميل</th>
-                        <th>رقم الجوال</th>
+                        <th>رقم الهاتف</th>
                         <th>البريد الإلكتروني</th>
                         <th class="noExl">حالة الحساب</th>
                         {{-- <th class="noExl">المكلف</th> --}}
