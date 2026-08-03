@@ -94,7 +94,7 @@ class FinishingTypeController extends Controller
         $data = $request->validate($this->validateAttr);
 
         // Generate slug from English name
-        $slug = Str::slug($data['en']['name']);
+        $slug = Str::slug($data['ar']['name']);
 
         // Validate slug uniqueness
         $validator = Validator::make(
@@ -140,7 +140,7 @@ class FinishingTypeController extends Controller
         $data = $request->validate($this->validateAttr);
 
         // Generate slug from English name
-        $slug = Str::slug($data['en']['name']);
+        $slug = Str::slug($data['ar']['name']);
 
         // Validate slug unique
         $validator = Validator::make(
