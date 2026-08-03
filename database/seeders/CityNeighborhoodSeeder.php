@@ -19,9 +19,10 @@ class CityNeighborhoodSeeder extends Seeder
 
         if ($cities == 0) {
 
+            // English values disabled - app is Arabic only
             $list = [
-                ['ar' => 'الجيزة', 'en' => 'Giza'],
-                ['ar' => 'القاهرة', 'en' => 'Cairo'],
+                ['ar' => 'الجيزة'],
+                ['ar' => 'القاهرة'],
             ];
 
             foreach ($list as $city) {
@@ -33,19 +34,19 @@ class CityNeighborhoodSeeder extends Seeder
 
             $cities_neighborhoods = [
                 "الجيزة"  => [
-                    ['ar' => '6 اكتوبر', 'en' => '6 October'],
-                    ['ar' => 'الشيخ زايد', 'en' => '6 October'],
-                    ['ar' => 'الهرم', 'en' => 'Haram'],
-                    ['ar' => 'الدقي', 'en' => 'Dokki'],
-                    ['ar' => 'فيصل', 'en' => 'Faisal'],
+                    ['ar' => '6 اكتوبر'],
+                    ['ar' => 'الشيخ زايد'],
+                    ['ar' => 'الهرم'],
+                    ['ar' => 'الدقي'],
+                    ['ar' => 'فيصل'],
                 ],
 
                 "القاهرة" => [
-                    ['ar' => 'الزمالك', 'en' => 'Zamalek'],
-                    ['ar' => 'المعادي', 'en' => 'Maadi'],
-                    ['ar' => 'مصر الجديدة', 'en' => 'Heliopolis'],
-                    ['ar' => 'المهندسين', 'en' => 'Mohandessin'],
-                    ['ar' => 'مدينة نصر', 'en' => 'Nasr City'],
+                    ['ar' => 'الزمالك'],
+                    ['ar' => 'المعادي'],
+                    ['ar' => 'مصر الجديدة'],
+                    ['ar' => 'المهندسين'],
+                    ['ar' => 'مدينة نصر'],
                 ],
             ];
 

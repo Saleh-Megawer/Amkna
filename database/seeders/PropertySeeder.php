@@ -317,11 +317,12 @@ class PropertySeeder extends Seeder
                 'description' => $arDesc,
             ]);
 
-            $property->translations()->create([
-                'locale'      => 'en',
-                'title'       => $enTitle,
-                'description' => $enDesc,
-            ]);
+            // English disabled - app is Arabic only
+            // $property->translations()->create([
+            //     'locale'      => 'en',
+            //     'title'       => $enTitle,
+            //     'description' => $enDesc,
+            // ]);
 
             $featurePickCount = min(mt_rand(1, 5), $featuresCount);
             $selectedFeatures = [];

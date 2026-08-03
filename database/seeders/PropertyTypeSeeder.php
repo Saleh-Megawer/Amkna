@@ -13,23 +13,23 @@ class PropertyTypeSeeder extends Seeder
 
             [
                 'ar' => ['name' => 'شقة'],
-                'en' => ['name' => 'Apartment'],
+               // 'en' => ['name' => 'Apartment'],
             ],
             [
                 'ar' => ['name' => 'فيلا'],
-                'en' => ['name' => 'Villa'],
+               // 'en' => ['name' => 'Villa'],
             ],
             [
                 'ar' => ['name' => 'دوبلكس'],
-                'en' => ['name' => 'Duplex'],
+               // 'en' => ['name' => 'Duplex'],
             ],
             [
                 'ar' => ['name' => 'روف'],
-                'en' => ['name' => 'Penthouse'],
+              //  'en' => ['name' => 'Penthouse'],
             ],
             [
                 'ar' => ['name' => 'ستوديو'],
-                'en' => ['name' => 'Studio'],
+              //  'en' => ['name' => 'Studio'],
             ],
             // [
             //     'ar' => ['name' => 'عمارة سكنية'],
@@ -37,23 +37,23 @@ class PropertyTypeSeeder extends Seeder
             // ],
             [
                 'ar' => ['name' => 'محل تجاري'],
-                'en' => ['name' => 'Shop'],
+              //  'en' => ['name' => 'Shop'],
             ],
             [
                 'ar' => ['name' => 'معرض تجاري'],
-                'en' => ['name' => 'Showroom'],
+               // 'en' => ['name' => 'Showroom'],
             ],
             [
                 'ar' => ['name' => 'مكتب إداري'],
-                'en' => ['name' => 'Office'],
+               // 'en' => ['name' => 'Office'],
             ],
             [
                 'ar' => ['name' => 'عيادة'],
-                'en' => ['name' => 'Clinic'],
+                //'en' => ['name' => 'Clinic'],
             ],
             [
                 'ar' => ['name' => 'صيدلية'],
-                'en' => ['name' => 'Pharmacy'],
+              //  'en' => ['name' => 'Pharmacy'],
             ],
             // [
             //     'ar' => ['name' => 'مخزن'],

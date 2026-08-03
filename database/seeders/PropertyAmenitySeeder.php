@@ -14,84 +14,84 @@ class PropertyAmenitySeeder extends Seeder
             [
                 'slug'         => 'parking',
                 'translations' => [
-                    'en' => 'Parking',
+                    // 'en' => 'Parking', // English disabled - app is Arabic only
                     'ar' => 'موقف سيارات',
                 ],
             ],
             [
                 'slug'         => 'security',
                 'translations' => [
-                    'en' => 'Security',
+                    // 'en' => 'Security', // English disabled - app is Arabic only
                     'ar' => 'أمن وحراسة',
                 ],
             ],
             [
                 'slug'         => 'elevator',
                 'translations' => [
-                    'en' => 'Elevator',
+                    // 'en' => 'Elevator', // English disabled - app is Arabic only
                     'ar' => 'مصعد',
                 ],
             ],
             [
                 'slug'         => 'maintenance',
                 'translations' => [
-                    'en' => 'Maintenance',
+                    // 'en' => 'Maintenance', // English disabled - app is Arabic only
                     'ar' => 'صيانة',
                 ],
             ],
             [
                 'slug'         => 'cleaning',
                 'translations' => [
-                    'en' => 'Cleaning Service',
+                    // 'en' => 'Cleaning Service', // English disabled - app is Arabic only
                     'ar' => 'خدمة نظافة',
                 ],
             ],
             [
                 'slug'         => 'backup-generator',
                 'translations' => [
-                    'en' => 'Backup Generator',
+                    // 'en' => 'Backup Generator', // English disabled - app is Arabic only
                     'ar' => 'مولد كهرباء احتياطي',
                 ],
             ],
             [
                 'slug'         => 'fire-system',
                 'translations' => [
-                    'en' => 'Fire System',
+                    // 'en' => 'Fire System', // English disabled - app is Arabic only
                     'ar' => 'نظام إطفاء حريق',
                 ],
             ],
             [
                 'slug'         => 'central-reception',
                 'translations' => [
-                    'en' => 'Reception',
+                    // 'en' => 'Reception', // English disabled - app is Arabic only
                     'ar' => 'استقبال',
                 ],
             ],
             [
                 'slug'         => 'central-ac',
                 'translations' => [
-                    'en' => 'Central Air Conditioning',
+                    // 'en' => 'Central Air Conditioning', // English disabled - app is Arabic only
                     'ar' => 'تكييف مركزي',
                 ],
             ],
             [
                 'slug'         => 'disabled-access',
                 'translations' => [
-                    'en' => 'Disabled Access',
+                    // 'en' => 'Disabled Access', // English disabled - app is Arabic only
                     'ar' => 'مداخل لذوي الاحتياجات الخاصة',
                 ],
             ],
             [
                 'slug'         => 'storage',
                 'translations' => [
-                    'en' => 'Storage Rooms',
+                    // 'en' => 'Storage Rooms', // English disabled - app is Arabic only
                     'ar' => 'مخازن',
                 ],
             ],
             [
                 'slug'         => 'solar-power',
                 'translations' => [
-                    'en' => 'Solar Power',
+                    // 'en' => 'Solar Power', // English disabled - app is Arabic only
                     'ar' => 'طاقة شمسية',
                 ],
             ],

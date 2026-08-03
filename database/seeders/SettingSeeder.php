@@ -36,7 +36,7 @@ class SettingSeeder extends Seeder
         Pages::create([
             'page'              => 'home',
             'slider'            => '{"76657907":{"rank":0,"file_name":"banner-home.webp","type":"image","id":76657907}}',
-            'header_title_desc' => '{"442130739":{"lang":"en","title":"Find Your Property in\r\nEgypt with *Sahd*","desc":null,"id":442130739},"753524184":{"lang":"ar","title":"مكانك القادم يبدأ هنا","desc":null,"id":753524184}}',
+            'header_title_desc' => '{"753524184":{"lang":"ar","title":"مكانك القادم يبدأ هنا","desc":null,"id":753524184}}',
         ]);
 
         $faqs = [
@@ -208,48 +208,49 @@ class SettingSeeder extends Seeder
             ],
         ];
 
-        $englishFaqs = [
-            [
-                'title' => 'What is your real estate platform?',
-                'desc'  => 'We are a specialized real estate platform connecting sellers, buyers, and renters with advanced services.',
-            ],
-            [
-                'title' => 'Is registration on the platform free?',
-                'desc'  => 'Yes, registration and property search are completely free. Premium services are paid.',
-            ],
-            [
-                'title' => 'How can I contact the seller?',
-                'desc'  => 'You can contact the seller directly via Call Now or WhatsApp.',
-            ],
-            [
-                'title' => 'How do I add a property listing?',
-                'desc'  => 'Log in, click Add Property, fill details, upload photos and publish.',
-            ],
-            [
-                'title' => 'Can I edit my listing after publication?',
-                'desc'  => 'Yes, you can edit your listing anytime from your dashboard.',
-            ],
-            [
-                'title' => 'How many photos can I add?',
-                'desc'  => 'You can upload up to 20 photos per listing.',
-            ],
-            [
-                'title' => 'What payment methods are available?',
-                'desc'  => 'We accept credit cards, bank transfer, and e-wallets.',
-            ],
-            [
-                'title' => 'Can I get a refund?',
-                'desc'  => 'Yes, refunds can be requested within 7 days in case of issues.',
-            ],
-            [
-                'title' => 'How do I change my password?',
-                'desc'  => 'Go to Account Settings and update your password.',
-            ],
-            [
-                'title' => 'Can I delete my account?',
-                'desc'  => 'Yes, you can permanently delete your account from settings.',
-            ],
-        ];
+        // English disabled - app is Arabic only
+        // $englishFaqs = [
+        //     [
+        //         'title' => 'What is your real estate platform?',
+        //         'desc'  => 'We are a specialized real estate platform connecting sellers, buyers, and renters with advanced services.',
+        //     ],
+        //     [
+        //         'title' => 'Is registration on the platform free?',
+        //         'desc'  => 'Yes, registration and property search are completely free. Premium services are paid.',
+        //     ],
+        //     [
+        //         'title' => 'How can I contact the seller?',
+        //         'desc'  => 'You can contact the seller directly via Call Now or WhatsApp.',
+        //     ],
+        //     [
+        //         'title' => 'How do I add a property listing?',
+        //         'desc'  => 'Log in, click Add Property, fill details, upload photos and publish.',
+        //     ],
+        //     [
+        //         'title' => 'Can I edit my listing after publication?',
+        //         'desc'  => 'Yes, you can edit your listing anytime from your dashboard.',
+        //     ],
+        //     [
+        //         'title' => 'How many photos can I add?',
+        //         'desc'  => 'You can upload up to 20 photos per listing.',
+        //     ],
+        //     [
+        //         'title' => 'What payment methods are available?',
+        //         'desc'  => 'We accept credit cards, bank transfer, and e-wallets.',
+        //     ],
+        //     [
+        //         'title' => 'Can I get a refund?',
+        //         'desc'  => 'Yes, refunds can be requested within 7 days in case of issues.',
+        //     ],
+        //     [
+        //         'title' => 'How do I change my password?',
+        //         'desc'  => 'Go to Account Settings and update your password.',
+        //     ],
+        //     [
+        //         'title' => 'Can I delete my account?',
+        //         'desc'  => 'Yes, you can permanently delete your account from settings.',
+        //     ],
+        // ];
 
         foreach ($arabicFaqs as $index => $arItem) {
 
@@ -263,13 +264,13 @@ class SettingSeeder extends Seeder
                 'desc'    => $arItem['desc'],
             ]);
 
-            // English translation (same index)
-            FaqsTranslation::create([
-                'faqs_id' => $faq->id,
-                'locale'  => 'en',
-                'title'   => $englishFaqs[$index]['title'],
-                'desc'    => $englishFaqs[$index]['desc'],
-            ]);
+            // English translation (same index) - English disabled, app is Arabic only
+            // FaqsTranslation::create([
+            //     'faqs_id' => $faq->id,
+            //     'locale'  => 'en',
+            //     'title'   => $englishFaqs[$index]['title'],
+            //     'desc'    => $englishFaqs[$index]['desc'],
+            // ]);
         }
     }
 }

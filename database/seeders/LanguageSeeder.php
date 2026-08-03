@@ -17,10 +17,11 @@ class LanguageSeeder extends Seeder
     {
         if (Languages::count() == 0) {
 
-            Languages::create([
-                'language_name' => "English",
-                'language_code' => "en"
-            ]);
+            // English disabled - app is Arabic only
+            // Languages::create([
+            //     'language_name' => "English",
+            //     'language_code' => "en"
+            // ]);
 
             Languages::create([
                 'language_name' => "Arabic",

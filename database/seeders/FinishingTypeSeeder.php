@@ -14,27 +14,27 @@ class FinishingTypeSeeder extends Seeder
             [
                 'slug' => 'no-finish',
                 'ar'   => 'بدون تشطيب',
-                'en'   => 'No Finish',
+                // 'en'   => 'No Finish', // English disabled - app is Arabic only
             ],
             [
                 'slug' => 'half-finish',
                 'ar'   => 'نصف تشطيب',
-                'en'   => 'Half Finished',
+                // 'en'   => 'Half Finished', // English disabled - app is Arabic only
             ],
             [
                 'slug' => 'full-finish',
                 'ar'   => 'تشطيب كامل',
-                'en'   => 'Fully Finished',
+                // 'en'   => 'Fully Finished', // English disabled - app is Arabic only
             ],
             [
                 'slug' => 'super-lux',
                 'ar'   => 'سوبر لوكس',
-                'en'   => 'Super Lux',
+                // 'en'   => 'Super Lux', // English disabled - app is Arabic only
             ],
             [
                 'slug' => 'ultra-super-lux',
                 'ar'   => 'ألترا سوبر لوكس',
-                'en'   => 'Ultra Super Lux',
+                // 'en'   => 'Ultra Super Lux', // English disabled - app is Arabic only
             ],
         ];
 
@@ -45,7 +45,7 @@ class FinishingTypeSeeder extends Seeder
             ]);
 
             $type->translateOrNew('ar')->name = $item['ar'];
-            $type->translateOrNew('en')->name = $item['en'];
+            // $type->translateOrNew('en')->name = $item['en']; // English disabled - app is Arabic only
 
             $type->save();
         }
