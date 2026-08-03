@@ -343,7 +343,7 @@
                             <div class="form-row">
 
                                 @foreach (languages() as $key => $val)
-                                    <div class="col-6">
+                                    <div class="col-12">
                                         <x-form-group :properties="[
                                             'input' => [
                                                 'name' => $key . '[title]',
@@ -362,7 +362,7 @@
                                 @endforeach
 
                                 @foreach (languages() as $key => $val)
-                                    <div class="col-6">
+                                    <div class="col-12">
                                         <x-form-group :properties="[
                                             'textarea' => [
                                                 'name' => $key . '[description]',
@@ -385,10 +385,10 @@
 
                     <section id="features-amenities">
                         <div class="form-box">
-                            <h5 class="mb-4 pb-2 font-weight-600">المميزات & الراحة</h5><!-- box-title -->
+                            <h5 class="mb-4 pb-2 font-weight-600">المميزات & المرافق</h5><!-- box-title -->
                             <div class="form-row">
 
-                                <div class="col-md-6">
+                                <div class="col-md-12">
                                     <div class="form-group">
                                         <label>المميزات</label>
                                         <select name="feature_id[]" class="form-control choices-multiple" multiple>
@@ -402,7 +402,7 @@
                                     </div>
                                 </div><!-- feature_id -->
 
-                                <div class="col-md-6">
+                                {{-- <div class="col-md-6">
                                     <div class="form-group">
                                         <label>وسائل الراحة</label>
                                         <select name="amenity_id[]" class="form-control choices-multiple" multiple>
@@ -414,7 +414,7 @@
                                             @endforeach
                                         </select>
                                     </div>
-                                </div><!-- amenity_id -->
+                                </div><!-- amenity_id --> --}}
 
                             </div>
                         </div><!--  -->

@@ -386,12 +386,12 @@
                         'link' => 'properties/features',
                         'icon' => $icons['property_features'],
                     ],
-                    [
-                        'can' => 'property_amenities_view', //
-                        'name' => 'مرافق الوحدات',
-                        'link' => 'properties/amenities',
-                        'icon' => $icons['property_features'],
-                    ],
+                    // [
+                    //     'can' => 'property_amenities_view', //
+                    //     'name' => 'مرافق الوحدات',
+                    //     'link' => 'properties/amenities',
+                    //     'icon' => $icons['property_features'],
+                    // ],
                 ],
             ]" />
         @endcanany
