@@ -77,7 +77,7 @@ return new class extends Migration
             $table->text('description_normalized_ar')->nullable();
 
             // Fulltext fields (English)
-            $table->string('title_normalized_en', 191);
+            $table->string('title_normalized_en', 191)->nullable();
             $table->text('description_normalized_en')->nullable();
 
             //  $table->text('notes')->nullable();

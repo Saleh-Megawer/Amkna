@@ -84,7 +84,7 @@ class NeighborhoodController extends Controller
             'city_id' => 'required|exists:cities,id',
             'image'   => 'nullable|max:3072|mimes:' . mimesType('image_accept_resize'),
         ], collect(languages())->flatMap(fn($val, $key) => [
-            "{$key}.name"                                   => "required|string|max:150|min:2|unique:neighborhood_translations,name,NULL,id,locale,{$key}",
+            "{$key}.name"                                   => "required|string|max:150|min:2|unique:neighborhoods_translations,name,NULL,id,locale,{$key}",
         ])->toArray());
 
         // Validate
