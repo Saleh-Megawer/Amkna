@@ -59,7 +59,7 @@ class CityNeighborhoodSeeder extends Seeder
                             'city_id' => $city->id,
                             'image'   => $loopIndex . '.webp',
                             'ar'      => ['name' => $hood['ar']],
-                            'en'      => ['name' => $hood['en']],
+                           // 'en'      => ['name' => $hood['en']],
                         ]);
                         $loopIndex++;
                     }
