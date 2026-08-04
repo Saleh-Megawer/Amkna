@@ -144,6 +144,10 @@
 <!-- Include From Other Pages -->
 @yield('js')
 
+<!-- Last Seen Heartbeat -->
+<script>window.dashboardHeartbeatUrl = {{ Js::from(route('dashboard.heartbeat')) }};</script>
+<script src="{{ asset('dashboard/js/modules/heartbeat.js') }}"></script>
+
 
 <!-- Plugins Run And Custom -->
 <script type='text/javascript' src="{{ asset('dashboard/js/plugins.js') }}"></script>

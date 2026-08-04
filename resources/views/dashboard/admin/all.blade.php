@@ -114,6 +114,11 @@
                                 @endforelse
                             </div>
 
+                            <small class="last-seen-status d-block text-center mt-2" @if($row->last_seen) title="{{ $row->last_seen->translatedFormat('d F Y - h:i A') }}" @endif>
+                                <span class="last-seen-dot {{ $row->is_online ? 'online' : 'offline' }}"></span>
+                                {{ $row->last_seen_label }}
+                            </small>
+
                         </div><!-- padding -->
 
                         @canany(['activate_deactivate_admin'])

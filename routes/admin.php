@@ -17,6 +17,7 @@ use App\Http\Controllers\Dashboard\Crm\Deal\DealFollowUpController;
 use App\Http\Controllers\Dashboard\FaqsController;
 use App\Http\Controllers\Dashboard\HomeController;
 use App\Http\Controllers\Dashboard\InterestController;
+use App\Http\Controllers\Dashboard\LastSeenController;
 use App\Http\Controllers\Dashboard\MailBox\MailboxController;
 use App\Http\Controllers\Dashboard\MailBox\MailReplyController;
 use App\Http\Controllers\Dashboard\NeighborhoodController;
@@ -70,7 +71,11 @@ Route::prefix(adminPrefix())->group(function () {
     /**
      * Admin Middleware
      */
-    Route::middleware(['AdminAuth'])->group(function () {
+    Route::middleware(['AdminAuth', 'update.last.seen'])->group(function () {
+
+        Route::post('heartbeat', LastSeenController::class)
+            ->name('dashboard.heartbeat')
+            ->withoutMiddleware('update.last.seen');
 
         /*
         | Settings

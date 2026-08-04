@@ -77,6 +77,7 @@ class Kernel extends HttpKernel
         'verified'              => \Illuminate\Auth\Middleware\EnsureEmailIsVerified::class,
         // Custom Middleware
         'AdminAuth'             => \App\Http\Middleware\AdminAuth::class,
+        'update.last.seen'      => \App\Http\Middleware\UpdateLastSeen::class,
         'user'                  => \App\Http\Middleware\RedirectIfNotUser::class,
         'clientAuth'            => \App\Http\Middleware\RedirectIfNotClient::class,
 

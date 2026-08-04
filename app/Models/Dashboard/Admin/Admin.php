@@ -3,6 +3,7 @@ namespace App\Models\Dashboard\Admin;
 
 use App\Models\Dashboard\Rental\RentalContract;
 use App\Models\Interest;
+use App\Services\AdminLastSeenUpdater;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
@@ -61,6 +62,29 @@ class Admin extends Authenticatable
         'password',
         'remember_token',
     ];
+
+    protected $casts = [
+        'last_seen' => 'datetime',
+    ];
+
+    public function getIsOnlineAttribute(): bool
+    {
+        return $this->last_seen !== null
+            && $this->last_seen->greaterThan(now()->subMinutes(AdminLastSeenUpdater::ONLINE_MINUTES));
+    }
+
+    public function getLastSeenLabelAttribute(): string
+    {
+        if (! $this->last_seen) {
+            return 'لم يظهر بعد';
+        }
+
+        if ($this->is_online) {
+            return 'متصل الآن';
+        }
+
+        return 'آخر ظهور '.$this->last_seen->diffForHumans();
+    }
 
     public function rentalContracts()
     {
