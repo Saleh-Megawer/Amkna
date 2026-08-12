@@ -169,9 +169,6 @@
                                     <td>
                                         @foreach (languages() as $key => $val)
                                             {{ $row->translate($key)?->name }}
-                                            @if ($loop->index == 0)
-                                                -
-                                            @endif
                                         @endforeach
                                     </td>
 

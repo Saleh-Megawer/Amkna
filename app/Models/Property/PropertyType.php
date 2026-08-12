@@ -13,8 +13,8 @@ class PropertyType extends Model implements TranslatableContract
 
     public $translatedAttributes = ['name', 'desc'];
     protected $table             = 'property_types';
+    protected $guarded           = [];
 
-    
     protected static function booted()
     {
         // When a property type is created or updated, clear the cached list
