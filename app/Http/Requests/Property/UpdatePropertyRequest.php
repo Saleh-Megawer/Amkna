@@ -27,7 +27,7 @@ class UpdatePropertyRequest extends FormRequest
     private function allowedPurpose()
     {
         // Types you want to allow
-        $allowed = ['rent', 'buy'];
+        $allowed = ['rent', 'sale'];
 
         return array_keys(
             array_intersect_key(config('project.purpose'), array_flip($allowed))
@@ -54,6 +54,8 @@ class UpdatePropertyRequest extends FormRequest
             'floor'                      => ['nullable', 'string', 'max:50'],
 
             // Foreign keys
+            'property_type_id'           => ['required', Rule::exists('property_types', 'id')],
+            'purpose'                    => ['required', Rule::in($this->allowedPurpose())],
             'facade_id'                  => ['nullable', Rule::exists('property_facades', 'id')],
             'city_id'                    => ['nullable', Rule::exists('cities', 'id')],
             'neighborhood_id'            => ['nullable', Rule::exists('neighborhoods', 'id')],

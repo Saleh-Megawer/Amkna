@@ -50,14 +50,20 @@
 
                                 <div class="col-lg-3 col-md-4">
                                     <x-form-group :properties="[
-                                        'input' => [
+                                        'select' => [
                                             'name' => 'property_type_id',
-                                            'type' => 'text',
-                                            'value' => $row->type->name,
-                                            'options' => ['readonly'],
+                                            'list' => getPropertyTypes(),
+                                            'selected' => $row->property_type_id,
+                                            'options' => [
+                                                'placeholder' => 'اختر نوع من القائمة',
+                                                'class' => 'choices',
+                                            ],
                                         ],
                                         'label' => [
                                             'text' => 'النوع العقاري',
+                                            'options' => [
+                                                'class' => 'required',
+                                            ],
                                         ],
                                     ]" />
                                 </div><!-- property_type_id -->
@@ -65,14 +71,28 @@
 
                                 <div class="col-lg-3 col-md-4">
                                     <x-form-group :properties="[
-                                        'input' => [
+                                        'select' => [
                                             'name' => 'purpose',
-                                            'type' => 'text',
-                                            'value' => $row->purpose_label,
-                                            'options' => ['readonly'],
+                                            'list' => collect(config('project.purpose'))
+                                                ->only(['rent', 'sale'])
+                                                ->map(fn ($p, $k) => [
+                                                    'value' => $k,
+                                                    'name' => $p['name_' . app()->getLocale()],
+                                                ])
+                                                ->values()
+                                                ->toArray(),
+                                            'value' => 'value',
+                                            'text' => 'name',
+                                            'selected' => $row->purpose,
+                                            'options' => [
+                                                'placeholder' => 'اختر الرغبة',
+                                            ],
                                         ],
                                         'label' => [
                                             'text' => 'الرغبة',
+                                            'options' => [
+                                                'class' => 'required',
+                                            ],
                                         ],
                                     ]" />
                                 </div><!-- purpose -->
