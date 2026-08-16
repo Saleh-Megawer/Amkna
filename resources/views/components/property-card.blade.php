@@ -105,7 +105,7 @@
 
                 <h4 class="property-details">
 
-                    @if ($property->bedrooms)
+                    @if ($property->area)
                         <div class="d-inline-block">
                             <span class="icon icon-area">
                                 <svg xmlns="http://www.w3.org/2000/svg" height="14px" viewBox="0 -960 960 960"

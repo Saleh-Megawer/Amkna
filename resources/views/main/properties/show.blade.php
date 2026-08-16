@@ -1,5 +1,5 @@
 @section('title', $row->title)
-@section('description', Str::limit($row->title, 150))
+@section('description', Str::limit($row->description, 150))
 @section('image', propertyImage($row->main_image, 'medium'))
 @section('image-type', 'webp')
 @extends('main.layouts.master')
